@@ -1,0 +1,113 @@
+skill: Advanced Java
+
+@ JDBC | B
+Which JDBC interface should you use to run a parameterized query and help prevent SQL injection?
+= PreparedStatement
+- Statement
+- ResultSet
+- DriverManager
+? PreparedStatement sends parameters separately from the SQL text, so user input is never executed as SQL.
+
+@ JDBC | B
+Which JDBC type represents the rows returned by a SELECT query?
+= ResultSet
+- Connection
+- Driver
+- Savepoint
+? A ResultSet is a cursor over the rows produced by executing a query.
+
+@ JDBC | B
+What does ResultSet.next() return when there are no more rows?
+= false
+- true
+- null
+- 0
+? next() moves the cursor forward and returns false once it passes the last row.
+
+@ JDBC | I
+Which JDBC method returns the number of rows affected by an INSERT, UPDATE or DELETE?
+= executeUpdate
+- executeQuery
+- getResultSet
+- next
+? executeUpdate returns an int row count for DML statements. executeQuery is meant for SELECT and returns a ResultSet.
+
+@ JDBC | I
+What is the recommended way to make sure JDBC resources are closed?
+= Use try-with-resources
+- Rely on garbage collection to close them
+- Close only the Connection and ignore the rest
+- Call System.gc() after the query
+? Connection, Statement and ResultSet implement AutoCloseable, so try-with-resources closes them automatically even when an exception occurs.
+
+@ JDBC | I
+What does calling connection.setAutoCommit(false) do?
+= Starts manual transaction control, so changes are saved only after commit()
+- Disables the connection permanently
+- Commits automatically after every statement
+- Makes the connection read-only
+? With auto-commit off you group statements into a transaction and decide when to commit or roll back.
+
+@ JDBC | B
+Which JDBC URL has the correct format for MySQL?
+= jdbc:mysql://localhost:3306/mydb
+- mysql:jdbc://localhost/mydb
+- http://localhost:3306/mydb
+- jdbc://mysql:localhost:3306/mydb
+? A JDBC URL starts with jdbc:, then the sub-protocol (mysql), then //host:port/database.
+
+@ Multithreading | B
+Which method starts a new thread of execution?
+= start()
+- run()
+- begin()
+- execute()
+? start() asks the JVM to create a new thread, which then calls run().
+
+@ Multithreading | I
+What happens when you call run() directly on a Thread object instead of start()?
+= The code runs in the calling thread and no new thread is created
+- A new thread is created and runs the code
+- An IllegalThreadStateException is always thrown
+- It does not compile
+? run() is an ordinary method call. Only start() creates a new thread.
+
+@ Multithreading | I
+What does the synchronized keyword provide?
+= Mutual exclusion, so only one thread at a time can run the guarded code for a given lock
+- Faster execution of the method
+- Automatic creation of a thread pool
+- Permission to catch checked exceptions
+? synchronized acquires the object's monitor lock so competing threads must wait, which prevents race conditions.
+
+@ Multithreading | A
+What is a deadlock?
+= Two or more threads wait forever for locks held by each other
+- A thread finishes before the others
+- A thread runs with the lowest priority
+- A thread is terminated by an exception
+? In a deadlock each thread holds a lock the other needs, so none of them can proceed.
+
+@ Servlets and JSP | B
+Which HttpServlet method handles HTTP GET requests?
+= doGet
+- onGet
+- handleGet
+- readRequest
+? HttpServlet dispatches GET requests to doGet(HttpServletRequest, HttpServletResponse).
+
+@ Servlets and JSP | I
+Which servlet lifecycle method is called once when the servlet is first initialized?
+= init()
+- service()
+- destroy()
+- doGet()
+? The container calls init() once, then service() for each request, and destroy() when the servlet is removed.
+
+@ Servlets and JSP | I
+Which JSP element prints the value of an expression into the response?
+= <%= expression %>
+- <% code %>
+- <%! declaration %>
+- <%@ directive %>
+? The expression tag <%= ... %> evaluates the expression and writes the result to the output.

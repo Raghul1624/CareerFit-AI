@@ -1,0 +1,148 @@
+skill: JavaScript
+
+@ Variables and Scope | B
+Which keyword declares a variable that cannot be reassigned?
+= const
+- let
+- var
+- static
+? const creates a block-scoped binding that cannot be reassigned. Objects assigned to it can still be mutated.
+
+@ Variables and Scope | I
+What is hoisting in JavaScript?
+= Declarations are moved to the top of their scope before the code runs
+- Variables are deleted after use
+- Functions are copied to another file
+- Loops are optimized by the engine
+? var declarations and function declarations are hoisted. let and const are hoisted but cannot be used before their declaration.
+
+@ Types and Operators | I
+What does console.log(typeof []) print?
+= object
+- array
+- list
+- undefined
+? Arrays are objects in JavaScript. Use Array.isArray to detect them.
+
+@ Types and Operators | I
+What are the results of "5" + 3 and "5" - 3 respectively?
+= "53" and 2
+- 8 and 2
+- "53" and "53"
+- 8 and 8
+? + concatenates when one operand is a string, while - converts both operands to numbers.
+
+@ Types and Operators | I
+What do console.log(0 == "0") and console.log(0 === "0") print?
+= true and then false
+- true and then true
+- false and then false
+- false and then true
+? == converts types before comparing, while === compares both type and value.
+
+@ Functions and Closures | I
+What is a closure?
+= A function that remembers variables from its outer scope even after the outer function has returned
+- A function with no parameters
+- A function that closes the browser window
+- A function that runs only once
+? Closures let inner functions keep access to the variables of the scope in which they were created.
+
+@ Functions and Closures | I
+Which is a valid arrow function that doubles its input?
+= x => x * 2
+- x -> x * 2
+- function => x * 2
+- (x) = x * 2
+? Arrow functions use the => syntax.
+
+@ Functions and Closures | A
+In non-strict mode, what is the value of this inside a regular function called without an object in a browser?
+= The global object (window)
+- undefined
+- null
+- The function itself
+? In strict mode this would be undefined, but non-strict code falls back to the global object.
+
+@ Arrays and Objects | I
+Which array method creates a new array by applying a function to every element?
+= map
+- forEach
+- reduce
+- push
+? map returns a new array of results. forEach returns undefined.
+
+@ Arrays and Objects | I
+What does [1, 2, 3].reduce((a, b) => a + b, 0) return?
+= 6
+- 0
+- [6]
+- 123
+? reduce accumulates the values: 0 + 1 + 2 + 3 = 6.
+
+@ Arrays and Objects | I
+What does const b = [...a, 4]; do when a is an array?
+= Creates a new array with the elements of a followed by 4
+- Changes a so it also contains 4
+- Creates an object
+- Throws a syntax error
+? The spread operator copies the elements into a new array.
+
+@ Arrays and Objects | A
+What does Object.keys({a: 1, b: 2}) return?
+= ["a", "b"]
+- [1, 2]
+- {a: 1, b: 2}
+- "a,b"
+? Object.keys returns an array of the object's own enumerable property names.
+
+@ Arrays and Objects | I
+What does JSON.stringify({a: 1}) return?
+= A string containing {"a":1}
+- An object with property a
+- The number 1
+- An array with one item
+? JSON.stringify converts a JavaScript value into a JSON string.
+
+@ Async JavaScript | I
+What does a Promise represent?
+= The eventual result of an asynchronous operation
+- A function that always succeeds
+- A loop that never ends
+- A saved copy of the DOM
+? A Promise is pending until it either resolves with a value or rejects with an error.
+
+@ Async JavaScript | A
+In what order does this code print?
+  console.log("A");
+  setTimeout(() => console.log("B"), 0);
+  console.log("C");
+= A, C, B
+- A, B, C
+- B, A, C
+- C, B, A
+? The timer callback is queued and runs after the current synchronous code finishes, even with a delay of 0.
+
+@ Async JavaScript | A
+What does await do inside an async function?
+= Pauses that function until the Promise settles without blocking the main thread
+- Blocks the whole browser until the Promise settles
+- Cancels the Promise
+- Converts the Promise into a callback
+? Other code keeps running while the awaiting function is suspended.
+
+@ DOM and Events | I
+Which method selects the first element that matches a CSS selector?
+= document.querySelector()
+- document.getElement()
+- document.selectFirst()
+- document.findAll()
+? querySelector returns the first match and querySelectorAll returns all matches.
+
+@ DOM and Events | I
+What is event bubbling?
+= An event travels from the target element up through its ancestors
+- An event travels from the document down to the target only
+- An event repeats until the user stops it
+- An event is cancelled automatically
+? Parent elements can handle events fired on their children, which enables event delegation.

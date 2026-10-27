@@ -1,0 +1,153 @@
+skill: Database Design and Optimization
+
+@ Normalization | B
+What is the main goal of database normalization?
+= Reduce data redundancy and improve data integrity
+- Make every query run faster
+- Encrypt the stored data
+- Increase the number of tables as much as possible
+? Normalization organizes data so each fact is stored once, which avoids update, insert and delete anomalies.
+
+@ Normalization | B
+A table is in First Normal Form (1NF) when:
+= Every column holds atomic values and there are no repeating groups
+- It has no partial dependencies on a composite key
+- It has no transitive dependencies
+- It has at least one index
+? 1NF requires single, indivisible values in each cell and no repeating groups of columns.
+
+@ Normalization | I
+Which normal form removes partial dependencies on part of a composite primary key?
+= Second Normal Form (2NF)
+- First Normal Form (1NF)
+- Third Normal Form (3NF)
+- Fourth Normal Form (4NF)
+? 2NF requires every non-key column to depend on the whole primary key, not just a part of it.
+
+@ Normalization | I
+Which normal form removes transitive dependencies between non-key columns?
+= Third Normal Form (3NF)
+- First Normal Form (1NF)
+- Second Normal Form (2NF)
+- Zero Normal Form
+? In 3NF, non-key columns depend only on the key, not on other non-key columns.
+
+@ Indexing | B
+What is the primary purpose of a database index?
+= Speed up the retrieval of rows
+- Reduce the disk space used by the table
+- Enforce foreign key relationships
+- Encrypt column values
+? An index works like a book index and lets the database locate rows without scanning the whole table.
+
+@ Indexing | I
+What is a common downside of creating too many indexes on a table?
+= INSERT, UPDATE and DELETE become slower and storage use grows
+- SELECT queries always become slower
+- The indexes delete old data automatically
+- The table can no longer have a primary key
+? Every write must also update each index, so indexes trade write speed and space for read speed.
+
+@ Indexing | I
+Which column is the best candidate for an index?
+= A column often used in WHERE or JOIN conditions that has many distinct values
+- A column with only two distinct values that is never filtered on
+- Every column of the table
+- A large text column that is never queried
+? Indexes help most on selective columns that queries actually use.
+
+@ Indexing | A
+A composite index exists on (last_name, first_name). Which query can use it efficiently?
+= WHERE last_name = 'Rao'
+- WHERE first_name = 'Anil' only
+- Both queries use it equally well
+- Neither query can use it
+? A composite index follows the leftmost-prefix rule, so the query must filter on the leading column.
+
+@ Transactions and ACID | B
+In the ACID properties, what does the letter A stand for?
+= Atomicity
+- Availability
+- Accuracy
+- Authorization
+? Atomicity means a transaction either completes entirely or has no effect at all.
+
+@ Transactions and ACID | I
+Which ACID property guarantees that committed data survives a system crash?
+= Durability
+- Isolation
+- Consistency
+- Atomicity
+? Durability means that once a transaction commits, its changes are permanently stored.
+
+@ Transactions and ACID | I
+Which SQL command undoes the changes made in the current transaction?
+= ROLLBACK
+- UNDO
+- REVERT
+- CANCEL
+? ROLLBACK discards uncommitted changes. COMMIT makes them permanent.
+
+@ Transactions and ACID | A
+Which problem occurs when a transaction reads data that another transaction has changed but not yet committed?
+= Dirty read
+- Phantom read
+- Deadlock
+- Index scan
+? A dirty read sees uncommitted changes that may later be rolled back. Higher isolation levels prevent it.
+
+@ Views and Stored Programs | B
+What is a view in SQL?
+= A stored query that behaves like a virtual table
+- A physical copy of a table
+- A type of index
+- A backup file
+? A view stores a SELECT definition and returns fresh results each time it is queried.
+
+@ Views and Stored Programs | I
+Which is a benefit of using stored procedures?
+= Reusable server-side logic that can reduce network round trips
+- They make every query faster automatically
+- They remove the need for backups
+- They replace table design
+? A stored procedure runs inside the database, so related statements execute in a single call.
+
+@ Query Optimization | B
+Which statement shows how MySQL plans to execute a query?
+= EXPLAIN
+- SHOW TABLES
+- USE
+- TRUNCATE
+? EXPLAIN displays the execution plan, such as which indexes are used and how tables are joined.
+
+@ Query Optimization | A
+Why can WHERE YEAR(order_date) = 2025 be slow on a large table even if order_date is indexed?
+= Wrapping the column in a function prevents the index from being used
+- YEAR is deprecated in SQL
+- Indexes only work on string columns
+- WHERE cannot contain functions
+? Functions applied to an indexed column hide it from the optimizer. A range such as order_date >= '2025-01-01' AND order_date < '2026-01-01' can use the index.
+
+@ Backup and Security | B
+Which security principle says users should get only the permissions they need?
+= Least privilege
+- Maximum access
+- Role inversion
+- Open access
+? Granting minimal permissions limits the damage from mistakes or compromised accounts.
+
+@ Backup and Security | I
+Which statement gives a MySQL user permission to read a table?
+= GRANT SELECT ON shop.orders TO 'report'@'localhost';
+- ALLOW SELECT ON shop.orders TO report;
+- PERMIT READ shop.orders FOR report;
+- GIVE SELECT shop.orders report;
+? GRANT assigns privileges. REVOKE removes them.
+
+@ Backup and Security | I
+Which backup type copies the data that changed since the last FULL backup?
+= Differential backup
+- Full backup
+- Snapshot of the schema only
+- Transaction rename
+? A differential backup grows over time until the next full backup. An incremental backup copies changes since the last backup of any kind.

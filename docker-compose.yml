@@ -1,0 +1,13 @@
+# OPTIONAL: only a local MySQL 8 database. The apps themselves run natively (see README).
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: careerfit
+    ports:
+      - "3306:3306"
+    volumes:
+      - careerfit-mysql:/var/lib/mysql
+volumes:
+  careerfit-mysql:

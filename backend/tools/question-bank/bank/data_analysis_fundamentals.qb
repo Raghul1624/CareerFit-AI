@@ -1,0 +1,145 @@
+skill: Data Analysis Fundamentals
+
+@ Data Cleaning | B
+Which of the following is a data cleaning task?
+= Removing duplicate records and fixing inconsistent formats
+- Adding random noise to every value
+- Copying rows to make the data set bigger
+- Encrypting the data set
+? Cleaning improves quality by removing duplicates, correcting errors and standardizing values.
+
+@ Data Cleaning | B
+What is an outlier?
+= A value that differs markedly from the other observations
+- The most common value in a data set
+- A missing value
+- The average of the data
+? Outliers may be errors or genuine rare events, so they should be investigated before being removed.
+
+@ Data Cleaning | I
+About 5 percent of the values in a numeric column are missing at random. Which approach is commonly reasonable?
+= Impute the values, for example with the median, or drop the affected rows depending on context
+- Fill every gap with the text "unknown"
+- Delete the whole column without checking
+- Ignore the gaps and continue silently
+? The right treatment depends on how much data is missing and why. The choice should be documented.
+
+@ Data Cleaning | I
+A data set stores dates as 01/02/2025, 2025-02-01 and Feb 1 2025. What is the best cleaning step?
+= Convert all dates to one consistent format
+- Delete the date column
+- Keep the mixed formats so no information is lost
+- Convert dates to random numbers
+? Consistent formats are needed for sorting, filtering and grouping by date.
+
+@ Data Cleaning | I
+Why should you check for duplicate records before calculating totals?
+= Duplicates can inflate counts and sums
+- Duplicates reduce the file size
+- Duplicates always improve accuracy
+- Totals ignore duplicates automatically
+? Counting the same transaction twice overstates the result.
+
+@ Data Cleaning | A
+Which rule is commonly used to flag outliers with quartiles?
+= Values more than 1.5 times the IQR below Q1 or above Q3
+- Values equal to the median
+- Values that appear more than once
+- Values that are exactly zero
+? The interquartile range rule is robust because it does not depend on the mean.
+
+@ Data Visualization | B
+Which chart type best displays how monthly revenue changed across a year?
+= Line chart
+- Pie chart
+- Stacked radar chart
+- Word cloud
+? Line charts show change over an ordered sequence such as time.
+
+@ Data Visualization | B
+Which chart is best for comparing the sales of five product categories?
+= Bar or column chart
+- Line chart with one point
+- Scatter plot of one variable
+- Gauge chart
+? Bars are easy to compare because length is judged accurately.
+
+@ Data Visualization | I
+What is a scatter plot mainly used to show?
+= The relationship between two numeric variables
+- The share of each category in a total
+- A single number against a target
+- The order of steps in a process
+? Each point shows two values, so patterns and correlations become visible.
+
+@ Data Visualization | I
+What is a common problem with 3D pie charts?
+= They distort proportions and make comparison difficult
+- They cannot show percentages
+- They need no data
+- They always show trends over time
+? Perspective makes some slices look bigger than they are.
+
+@ Data Visualization | I
+Which chart shows the distribution of a single numeric variable?
+= Histogram
+- Pie chart
+- Line chart
+- Treemap
+? A histogram groups values into bins and shows how many fall in each.
+
+@ Data Interpretation | I
+Sales were 200 in Q1 and 250 in Q2. What is the percentage growth from Q1 to Q2?
+= 25%
+- 20%
+- 50%
+- 12.5%
+? Growth = (250 - 200) / 200 = 0.25, which is 25%.
+
+@ Data Interpretation | I
+A chart shows that 40% of 500 surveyed customers prefer Product A. How many customers is that?
+= 200
+- 40
+- 250
+- 125
+? 40% of 500 = 0.4 x 500 = 200.
+
+@ Data Interpretation | A
+The average of five numbers is 20. After a sixth number is added the average becomes 22. What is the sixth number?
+= 32
+- 22
+- 42
+- 26
+? The new total is 6 x 22 = 132. The old total was 5 x 20 = 100, so the new number is 32.
+
+@ Data Interpretation | A
+Revenue increases by 20% and then decreases by 20%. Compared with the original value the final revenue is:
+= 4% lower
+- Unchanged
+- 4% higher
+- 20% lower
+? 1.20 x 0.80 = 0.96 of the original, which is 4% lower.
+
+@ Analytical Reasoning | I
+A website had 2,000 visits and 50 orders. What is the conversion rate (orders divided by visits)?
+= 2.5%
+- 4%
+- 25%
+- 0.25%
+? 50 / 2000 = 0.025, which is 2.5%.
+
+@ Analytical Reasoning | A
+A metric rose after a marketing campaign. What is needed to claim the campaign caused the increase?
+= A controlled comparison such as an A/B test or a control group
+- Only the fact that the metric rose
+- A larger chart
+- A higher number of dashboards
+? Without a comparison group, other factors such as seasonality could explain the change.
+
+@ Analytical Reasoning | I
+You receive a vague business question from a manager. What is the best first step?
+= Clarify the objective and agree on how success will be measured
+- Start building charts immediately
+- Collect every data set available
+- Wait for the manager to find the answer
+? A clear question and metric prevent wasted analysis and wrong conclusions.

@@ -1,0 +1,121 @@
+skill: REST APIs
+
+@ HTTP Methods | B
+Which HTTP method is normally used to retrieve a resource without changing it?
+= GET
+- POST
+- PUT
+- DELETE
+? GET is safe and read-only by convention.
+
+@ HTTP Methods | B
+Which HTTP method is normally used to create a new resource?
+= POST
+- GET
+- HEAD
+- OPTIONS
+? POST submits data to the server, typically creating a new resource under a collection.
+
+@ HTTP Methods | A
+Which HTTP methods are idempotent? (Select all that apply)
+= GET
+= PUT
+= DELETE
+- POST
+? Repeating an idempotent request has the same effect as sending it once. POST usually creates a new resource each time.
+
+@ HTTP Methods | I
+What is the difference between PUT and PATCH?
+= PUT replaces the whole resource while PATCH applies a partial update
+- PUT applies a partial update while PATCH replaces the whole resource
+- They are identical
+- PATCH is used only to create resources
+? Use PUT to send a complete representation and PATCH to change only some fields.
+
+@ Status Codes | B
+Which status code means a resource was created successfully?
+= 201
+- 200
+- 204
+- 301
+? 201 Created is returned after a successful POST that creates a resource.
+
+@ Status Codes | B
+What does HTTP status 404 mean?
+= The requested resource was not found
+- The server crashed
+- The request was not authorized
+- The request succeeded with no content
+? 404 Not Found means the URL does not map to an existing resource.
+
+@ Status Codes | I
+Which status code best represents missing or invalid authentication credentials?
+= 401
+- 403
+- 404
+- 500
+? 401 Unauthorized means the caller is not authenticated.
+
+@ Status Codes | I
+Which status code means the user is authenticated but not allowed to perform the action?
+= 403
+- 401
+- 400
+- 502
+? 403 Forbidden is returned when the identity is known but lacks permission.
+
+@ REST Principles | I
+Which REST constraint says each request must carry all the information needed to process it, with no server-side session state?
+= Statelessness
+- Cacheability
+- Layered system
+- Code on demand
+? In a stateless API the server stores no client session between requests, which makes scaling easier.
+
+@ REST Principles | I
+Which URL follows REST naming conventions for fetching the orders of user 5?
+= GET /users/5/orders
+- GET /getOrdersByUser?id=5
+- POST /fetchOrders/5
+- GET /user_orders_list/5
+? REST uses nouns for resources and HTTP methods for actions, not verbs in the URL.
+
+@ JSON and Data Formats | B
+Which header tells the server that the request body contains JSON?
+= Content-Type: application/json
+- Accept: text/html
+- Cache-Control: no-store
+- Authorization: Bearer
+? Content-Type describes the format of the body that is being sent.
+
+@ API Security | I
+How is a JWT usually sent to call a protected API?
+= In the Authorization header as a Bearer token
+- Inside the URL path
+- As a CSS class
+- In the HTTP status line
+? The standard form is Authorization: Bearer followed by the token.
+
+@ API Security | A
+What is the purpose of CORS?
+= It controls which web origins a browser allows to call a server API
+- It encrypts the request body
+- It caches API responses
+- It authenticates the user
+? Browsers block cross-origin responses unless the server allows the origin using CORS headers.
+
+@ Frontend-Backend Integration | I
+A React app on localhost:5173 calls an API on localhost:8080 and the browser blocks the response. What is the most likely cause?
+= The server does not allow the frontend origin in its CORS configuration
+- The CSS file is missing
+- The React version is too new
+- The JSON is minified
+? Different ports count as different origins, so the backend must list the frontend origin in its CORS settings.
+
+@ Frontend-Backend Integration | I
+Which is a good practice for an endpoint that returns a large list?
+= Accept page and size parameters and return paging metadata
+- Return every row in one response always
+- Use POST to read the list
+- Ignore any size sent by the client
+? Pagination keeps responses small and predictable for both server and client.

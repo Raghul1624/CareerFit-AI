@@ -1,0 +1,25 @@
+# Backend
+backend/target/
+*.class
+*.log
+# Frontend
+frontend/node_modules/
+frontend/dist/
+# Env / secrets
+.env
+.env.local
+*.env
+!.env.example
+# IDE
+.idea/
+.vscode/
+*.iml
+# Uploads (future resume storage)
+uploads/
+
+# Local resume storage
+backend/data/
+
+# Python tooling
+__pycache__/
+*.pyc

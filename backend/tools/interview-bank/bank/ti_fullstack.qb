@@ -1,0 +1,123 @@
+round: TECHNICAL_INTERVIEW
+roles: FULLSTACK
+
+@ Web Architecture | E
+Explain the client-server model and the request-response cycle in a web application.
+~ Client sends requests | 2 | req | client, browser, request
+~ Server processes and responds | 2 | req | server, response, backend, process
+~ HTTP methods and status codes | 2 | req | http, get, post, status code, 200, 404
+~ Data stored in a database | 1 | opt | database, sql, persist, store
+? The browser (client) sends an HTTP request, for example GET or POST, to the server. The backend processes it, may read or write a database, and returns a response with a status code and data such as HTML or JSON. The client then renders the response.
+
+@ APIs | E
+What is a REST API? Which HTTP methods and status codes do you use?
+~ Resources identified by URLs | 2 | req | resource, url, endpoint, noun
+~ HTTP methods for actions | 2 | req | get, post, put, delete, patch
+~ Stateless communication | 1 | req | stateless, no session, each request
+~ Status codes | 2 | req | 200, 201, 400, 401, 404, 500, status code
+? A REST API exposes resources through URLs and uses HTTP methods: GET to read, POST to create, PUT or PATCH to update and DELETE to remove. It is stateless, so each request carries everything needed. Status codes tell the result: 200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 404 Not Found and 500 for server errors.
+
+@ Databases | E
+What are primary keys and foreign keys, and why are they important?
+~ Primary key identifies a row uniquely | 2 | req | primary key, unique, identif
+~ Foreign key references another table | 2 | req | foreign key, reference, another table, parent table
+~ Referential integrity | 2 | req | integrity, consistent, orphan, constraint
+~ Example | 1 | opt | for example, orders, customer, user_id
+? A primary key uniquely identifies each row. A foreign key is a column that references the primary key of another table and links related data, such as orders.customer_id referring to customers.id. Together they enforce referential integrity, so you cannot create an order for a customer that does not exist.
+
+@ Data Exchange | E
+How do the front end and back end exchange data, and what is JSON?
+~ JSON is a text format for data | 2 | req | json, text format, key-value, lightweight
+~ Front end calls the API | 2 | req | fetch, axios, ajax, http request, api call
+~ Serialisation and parsing | 1 | req | serializ, serialis, parse, stringify, convert
+~ Content-Type header | 1 | opt | content-type, application/json, header
+? The front end sends HTTP requests with fetch or axios and the back end replies with JSON, a lightweight text format of key-value pairs and arrays. The server serialises objects to JSON and the client parses it back into objects. The Content-Type: application/json header describes the body.
+
+@ Architecture | E
+What is the MVC pattern and how does it relate to a full stack application?
+~ Model holds data and business rules | 2 | req | model, data, business logic, entity
+~ View shows the user interface | 2 | req | view, ui, template, presentation, react
+~ Controller handles requests | 2 | req | controller, request, route, handler
+~ Separation of concerns | 1 | opt | separation of concerns, maintain, test, responsibilit
+? In MVC the Model holds data and business rules, the View renders the user interface and the Controller receives requests and coordinates them. Separating these responsibilities makes the code easier to maintain and test. In a typical full stack app, entities and services are the model, controllers expose the API and React is the view.
+
+@ Authentication | M
+Explain how JWT-based authentication works from login to a protected request.
+~ Login with credentials | 1 | req | login, credentials, username, password
+~ Server issues a signed token | 2 | req | sign, token, issue, secret, generate
+~ Client sends the token with each request | 2 | req | authorization, bearer, header, each request
+~ Server verifies signature and expiry | 2 | req | verif, validate, expir, signature
+~ Security measures | 1 | opt | https, short-lived, refresh, hash, bcrypt
+? After a successful login the server returns a signed JWT. The client stores it and sends it in the Authorization: Bearer header on each request. The server verifies the signature and expiry and extracts the user identity. Use HTTPS, short expiry times and hashed passwords.
+
+@ Browser Security | M
+What is CORS and how do you fix a CORS error between a React app and a Spring Boot API?
+~ Browsers restrict cross-origin requests | 2 | req | same-origin, cross-origin, origin, browser blocks
+~ Server must allow the origin | 2 | req | access-control-allow-origin, allowed origin, allow the origin, origin allowed, cors configuration, cors headers, permits
+~ Preflight requests | 1 | req | preflight, options
+~ Configure the backend | 2 | req | corsconfiguration, @crossorigin, allowedorigins, spring, proxy
+? Browsers block responses from a different origin (scheme, host or port) unless the server permits it with CORS headers. Configure the backend, for example CorsConfiguration in Spring Security with the frontend origin allowed, including methods and headers for the preflight OPTIONS request. In development a dev-server proxy is another option.
+
+@ Database Design | M
+How would you design the database for an online store's orders? Mention normalisation.
+~ Separate tables for customers, orders and products | 2 | req | customer, order, product, table
+~ Order items link orders and products | 2 | req | order_item, order item, join table, many-to-many, line item
+~ Keys and relationships | 2 | req | primary key, foreign key, one-to-many, relationship
+~ Normalisation and price history | 1 | opt | normali, redundan, price at purchase, snapshot
+? Use customers, products, orders and order_items tables. An order belongs to a customer (one-to-many) and order_items link orders to products with quantity and the price at purchase. Use primary and foreign keys and normalise the data to avoid redundancy, while storing a snapshot of the price so history stays correct.
+
+@ Front-end Architecture | M
+How do you manage state in a large React application, and when would you use Context or a library like Redux?
+~ Local state first | 2 | req | local state, state local, keep state, usestate, component state
+~ Context for shared values | 2 | req | context, usecontext, provider, theme, auth
+~ Redux or similar for complex state | 2 | req | redux, zustand, store, reducer, global state
+~ Server state with a data-fetching library | 1 | opt | react query, swr, cache, server state
+? Keep state local when possible. Use Context for values shared widely and rarely changing, such as the current user or theme. For complex, frequently updated global state use a store such as Redux or Zustand. For data from the server a data-fetching library such as React Query manages caching and loading states.
+
+@ Error Handling | M
+How do you handle validation and errors consistently across the front end and back end?
+~ Validate on both sides | 2 | req | both, client-side, server-side, in the browser, on the server, front end and back end, never trust
+~ Meaningful status codes and messages | 2 | req | status code, 400, 422, error message, consistent
+~ Global exception handling | 2 | req | exception handler, controlleradvice, global, centralized
+~ Show errors to the user | 1 | opt | display, toast, field error, user-friendly, shows clear, the ui, messages
+? Validate in the browser for fast feedback and always again on the server, because client checks can be bypassed. The API should return consistent error responses with proper status codes, handled centrally, for example with @ControllerAdvice in Spring. The UI then shows clear field and general messages.
+
+@ Scalability | H
+How would you design a web application so it can handle ten times more users?
+~ Stateless servers behind a load balancer | 2 | req | load balancer, stateless, horizontal, scale out
+~ Caching | 2 | req | cache, redis, cdn
+~ Database scaling | 2 | req | index, replica, read replica, shard, partition, connection pool
+~ Asynchronous work and monitoring | 1 | opt | queue, async, message, kafka, monitor, metric
+? Make the application servers stateless and scale them horizontally behind a load balancer. Add caching with a CDN and an in-memory cache such as Redis. Scale the database with indexes, read replicas and connection pooling, move slow work to queues and use monitoring to find the next bottleneck.
+
+@ Performance | H
+How do you find and fix slow database queries in a web application?
+~ Measure with logs, EXPLAIN or APM | 2 | req | explain, slow query, profil, log, apm
+~ Add the right indexes | 2 | req | index
+~ Fix the N+1 problem and fetch less data | 2 | req | n+1, join fetch, pagination, select only, limit
+~ Caching | 1 | opt | cache, redis
+? Find slow queries with the slow query log or an APM tool and inspect them with EXPLAIN. Add indexes for columns used in WHERE, JOIN and ORDER BY, fix N+1 queries with join fetch or batching, paginate and select only needed columns, and cache results that rarely change.
+
+@ Security | H
+Name common web application vulnerabilities and how you would protect against them.
+~ SQL injection prevented by parameterised queries | 2 | req | sql injection, prepared statement, parameteri
+~ XSS prevented by escaping and CSP | 2 | req | xss, escap, sanitiz, content security policy
+~ CSRF protection | 1 | req | csrf, token, samesite
+~ Authentication, hashing and HTTPS | 2 | req | bcrypt, hash, https, authorization, least privilege
+? Use parameterised queries to prevent SQL injection, escape output and add a Content Security Policy against XSS, use CSRF tokens or SameSite cookies for cookie-based sessions, hash passwords with bcrypt, enforce authorisation on every endpoint, use HTTPS and apply least privilege.
+
+@ DevOps | H
+Describe a CI/CD pipeline you would set up for a full stack application.
+~ Build and test on every commit | 2 | req | build, test, commit, push, pull request
+~ Automated checks | 1 | req | lint, unit test, integration test, quality
+~ Automated deployment | 2 | req | deploy, release, staging, production
+~ Containers and rollback | 1 | opt | docker, container, rollback, blue-green, environment
+? On every push the pipeline builds the front end and back end, runs linting and unit and integration tests, and then builds a Docker image. A successful main branch deploys to staging and then to production with approval or automatically. Keep environment configuration outside the code and have a rollback strategy.
+
+@ Reliability | H
+How would you make a payment endpoint safe against duplicate requests and partial failures?
+~ Idempotency keys | 3 | req | idempotenc, idempotent, request id, unique key
+~ Database transactions | 2 | req | transaction, atomic, commit, rollback
+~ Handle retries and timeouts | 1 | req | retry, timeout, duplicate, exactly once
+~ Audit and reconciliation | 1 | opt | audit, log, reconcil, webhook
+? Require a client-generated idempotency key and store the result so a retried request returns the same outcome instead of charging twice. Wrap related changes in a database transaction so they succeed or fail together, handle timeouts and retries explicitly, and keep an audit trail and reconciliation with the payment provider.

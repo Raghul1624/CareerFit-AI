@@ -1,0 +1,150 @@
+skill: Python Functions and OOP
+
+@ Functions | B
+Which keyword defines a function in Python?
+= def
+- function
+- fn
+- define
+? Functions are defined with def name(parameters):.
+
+@ Functions | I
+What does a function return if it has no return statement?
+= None
+- 0
+- An empty string
+- It raises an error
+? Functions without an explicit return give back None.
+
+@ Functions | I
+What does *args allow a function to accept?
+= Any number of positional arguments, collected in a tuple
+- Keyword arguments collected in a dictionary
+- Only one argument
+- Arguments of type string only
+? *args packs extra positional arguments into a tuple and **kwargs packs keyword arguments into a dictionary.
+
+@ Functions | I
+What is lambda x: x * 2?
+= An anonymous function that doubles its input
+- A decorator
+- A class definition
+- A generator
+? lambda creates small unnamed functions for simple expressions.
+
+@ Functions | I
+What does this function return for fact(5)?
+  def fact(n):
+      return 1 if n <= 1 else n * fact(n - 1)
+= 120
+- 24
+- 60
+- 720
+? 5! = 5 * 4 * 3 * 2 * 1 = 120.
+
+@ Functions | A
+What does the yield keyword do inside a function?
+= Turns the function into a generator that produces values lazily
+- Ends the program
+- Raises an exception
+- Returns all values at once as a list
+? A generator function pauses at yield and resumes on the next request, saving memory for large sequences.
+
+@ Functions | A
+What is a decorator in Python?
+= A function that wraps another function to extend its behavior
+- A comment that describes a function
+- A type annotation
+- A built-in loop
+? Decorators use the @name syntax above a function definition.
+
+@ OOP in Python | B
+Which method initializes a new object of a class?
+= __init__
+- __create__
+- __start__
+- __main__
+? __init__ is called right after the object is created to set up its attributes.
+
+@ OOP in Python | I
+What does self refer to inside an instance method?
+= The instance on which the method is called
+- The class itself
+- The parent class
+- The module
+? Python passes the instance as the first argument, conventionally named self.
+
+@ OOP in Python | I
+How do you declare that class Dog inherits from class Animal?
+= class Dog(Animal):
+- class Dog extends Animal
+- class Dog : Animal
+- class Dog inherits Animal
+? Parent classes are listed in parentheses after the class name.
+
+@ OOP in Python | A
+What does super().__init__() do inside a subclass constructor?
+= Calls the initializer of the parent class
+- Creates a second object
+- Deletes the parent class
+- Makes the class abstract
+? It lets the parent class run its own initialization logic before the subclass adds more.
+
+@ OOP in Python | I
+What does this code print?
+  class A:
+      def hi(self): return "A"
+  class B(A):
+      def hi(self): return "B"
+  print(B().hi())
+= B
+- A
+- AB
+- An error
+? B overrides hi, so the subclass version is used.
+
+@ Exception Handling | B
+Which keyword raises an exception manually?
+= raise
+- throw
+- error
+- except
+? raise ValueError("message") raises an exception. except catches one.
+
+@ Exception Handling | I
+Which block runs only when the try block raised no exception?
+= else
+- except
+- finally
+- catch
+? The else block of a try statement runs when no exception occurred. finally always runs.
+
+@ Exception Handling | I
+What happens when this code runs?
+  try:
+      print(int("abc"))
+  except ValueError:
+      print("bad")
+  finally:
+      print("done")
+= It prints bad and then done
+- It prints only bad
+- It prints done and then raises an unhandled ValueError
+- It prints abc
+? int("abc") raises ValueError, the except block prints bad, and finally always prints done.
+
+@ File Handling and Modules | I
+Which statement makes sure a file is closed automatically after use?
+= with open("data.txt") as f:
+- f = open("data.txt")
+- open("data.txt").read_forever()
+- import file
+? The with statement uses a context manager that closes the file even if an error occurs.
+
+@ File Handling and Modules | B
+How do you import only the sqrt function from the math module?
+= from math import sqrt
+- import sqrt from math
+- include math.sqrt
+- using math.sqrt
+? from module import name brings a single name into the current namespace.

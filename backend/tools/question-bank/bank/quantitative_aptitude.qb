@@ -1,0 +1,417 @@
+skill: Quantitative Aptitude
+
+@ Percentages | B
+What is 25% of 480?
+= 120
+- 100
+- 125
+- 140
+? 25% is one quarter, and 480 / 4 = 120.
+
+@ Percentages | B
+A value increases from 80 to 100. What is the percentage increase?
+= 25%
+- 20%
+- 80%
+- 125%
+? Increase = 20, and 20 / 80 = 25%.
+
+@ Percentages | I
+A student scores 360 marks out of 600. What is the percentage?
+= 60%
+- 36%
+- 55%
+- 65%
+? 360 / 600 x 100 = 60%.
+
+@ Percentages | I
+A price is increased by 10% and then decreased by 10%. What is the net change?
+= 1% decrease
+- No change
+- 1% increase
+- 10% decrease
+? 1.10 x 0.90 = 0.99, which is a 1% decrease.
+
+@ Percentages | A
+Salary A is 25% more than salary B. By what percentage is B less than A?
+= 20%
+- 25%
+- 15%
+- 30%
+? Let B = 100, then A = 125. The difference 25 is 20% of 125.
+
+@ Percentages | I
+40% of a number is 120. What is the number?
+= 300
+- 48
+- 480
+- 200
+? If 40% = 120 then 100% = 120 / 0.4 = 300.
+
+@ Profit and Loss | B
+An item is bought for 200 and sold for 250. What is the profit percentage?
+= 25%
+- 20%
+- 50%
+- 30%
+? Profit = 50 and 50 / 200 = 25%.
+
+@ Profit and Loss | B
+A bat bought for 500 is sold for 450. What is the loss percentage?
+= 10%
+- 5%
+- 11%
+- 15%
+? Loss = 50 and 50 / 500 = 10%.
+
+@ Profit and Loss | I
+An article is sold for 540 at a loss of 10%. What is its cost price?
+= 600
+- 594
+- 486
+- 560
+? SP = 0.9 x CP, so CP = 540 / 0.9 = 600.
+
+@ Profit and Loss | I
+A shopkeeper marks goods 20% above cost price and allows a 10% discount. What is the profit percentage?
+= 8%
+- 10%
+- 12%
+- 30%
+? Selling price = 1.2 x 0.9 = 1.08 times the cost, so the profit is 8%.
+
+@ Profit and Loss | I
+The cost price of 12 articles equals the selling price of 10 articles. What is the profit percentage?
+= 20%
+- 10%
+- 12%
+- 25%
+? Let each article cost 1, then 10 x SP = 12, so SP = 1.2 and the profit is 20%.
+
+@ Profit and Loss | A
+Two articles are sold at 1200 each. One gives a 20% profit and the other a 20% loss. What is the overall result?
+= 4% loss
+- No profit or loss
+- 4% profit
+- 2% loss
+? Cost prices are 1000 and 1500, total 2500. Total sale is 2400, so the loss is 100 / 2500 = 4%.
+
+@ Ratio and Proportion | B
+Divide 120 in the ratio 3:5. What is the larger part?
+= 75
+- 45
+- 60
+- 80
+? Total parts = 8, one part = 15, so the larger part is 5 x 15 = 75.
+
+@ Ratio and Proportion | I
+If 3 : x = 9 : 15, what is x?
+= 5
+- 3
+- 9
+- 45
+? 3 / x = 9 / 15, so x = 3 x 15 / 9 = 5.
+
+@ Ratio and Proportion | I
+A : B = 2 : 3 and B : C = 4 : 5. What is A : B : C?
+= 8 : 12 : 15
+- 2 : 3 : 5
+- 8 : 12 : 20
+- 6 : 9 : 15
+? Make B equal in both ratios: A:B = 8:12 and B:C = 12:15, so A:B:C = 8:12:15.
+
+@ Ratio and Proportion | A
+A 16 litre mixture contains milk and water in the ratio 5 : 3. How much water must be added to make the ratio 5 : 4?
+= 2 litres
+- 1 litre
+- 3 litres
+- 4 litres
+? Milk = 10 L and water = 6 L. For 10 : x = 5 : 4, x = 8 L, so add 2 L.
+
+@ Time and Work | B
+A can complete a job in 10 days. What fraction of the job does A complete in one day?
+= 1/10
+- 10
+- 1/5
+- 1/100
+? Work done per day is 1 divided by the number of days.
+
+@ Time and Work | I
+A can finish a job in 12 days and B in 6 days. How many days will they take working together?
+= 4
+- 9
+- 6
+- 3
+? Combined rate = 1/12 + 1/6 = 3/12 = 1/4 per day, so 4 days.
+
+@ Time and Work | I
+A and B together finish a job in 8 days. A alone takes 12 days. How many days does B take alone?
+= 24
+- 20
+- 4
+- 18
+? B's rate = 1/8 - 1/12 = 1/24, so B takes 24 days.
+
+@ Time and Work | A
+10 men complete a job in 15 days. How many days will 25 men take?
+= 6
+- 9
+- 10
+- 37.5
+? Total work = 150 man-days. 150 / 25 = 6 days.
+
+@ Time and Work | A
+A tap fills a tank in 6 hours and a leak empties it in 12 hours. With both open, how long does the tank take to fill?
+= 12 hours
+- 4 hours
+- 6 hours
+- 18 hours
+? Net rate = 1/6 - 1/12 = 1/12 per hour.
+
+@ Time, Speed and Distance | B
+A car travels at 60 km/h for 2.5 hours. What distance does it cover?
+= 150 km
+- 120 km
+- 130 km
+- 180 km
+? Distance = speed x time = 60 x 2.5 = 150 km.
+
+@ Time, Speed and Distance | I
+Convert 72 km/h into metres per second.
+= 20 m/s
+- 18 m/s
+- 25 m/s
+- 72 m/s
+? Multiply by 5/18: 72 x 5 / 18 = 20 m/s.
+
+@ Time, Speed and Distance | I
+A 150 m long train runs at 54 km/h. How long does it take to cross a pole?
+= 10 seconds
+- 15 seconds
+- 9 seconds
+- 27 seconds
+? 54 km/h = 15 m/s, and 150 / 15 = 10 seconds.
+
+@ Time, Speed and Distance | I
+A person travels a distance at 60 km/h and returns at 40 km/h. What is the average speed for the whole trip?
+= 48 km/h
+- 50 km/h
+- 52 km/h
+- 45 km/h
+? Average speed = 2 x 60 x 40 / (60 + 40) = 48 km/h.
+
+@ Time, Speed and Distance | A
+Two trains 100 m and 120 m long run in opposite directions at 36 km/h and 54 km/h. How long do they take to cross each other?
+= 8.8 seconds
+- 10 seconds
+- 12.2 seconds
+- 9.6 seconds
+? Relative speed = 90 km/h = 25 m/s. Distance = 220 m, so time = 220 / 25 = 8.8 s.
+
+@ Time, Speed and Distance | A
+A boat has a speed of 12 km/h in still water and the stream flows at 3 km/h. How long does it take to go 45 km downstream?
+= 3 hours
+- 5 hours
+- 3.75 hours
+- 4 hours
+? Downstream speed = 12 + 3 = 15 km/h, so time = 45 / 15 = 3 hours.
+
+@ Simple and Compound Interest | B
+What is the simple interest on 1000 at 10% per annum for 2 years?
+= 200
+- 100
+- 210
+- 220
+? SI = P x R x T / 100 = 1000 x 10 x 2 / 100 = 200.
+
+@ Simple and Compound Interest | I
+What is the compound interest on 2000 at 10% per annum for 2 years, compounded annually?
+= 420
+- 400
+- 440
+- 410
+? Amount = 2000 x 1.1 x 1.1 = 2420, so CI = 420.
+
+@ Simple and Compound Interest | I
+At simple interest a sum becomes 1.5 times itself in 5 years. What is the rate per annum?
+= 10%
+- 5%
+- 12%
+- 15%
+? Interest is 50% of the principal over 5 years, so the rate is 10% per year.
+
+@ Simple and Compound Interest | A
+What is the difference between compound interest and simple interest on 5000 at 10% per annum for 2 years?
+= 50
+- 100
+- 25
+- 500
+? For two years the difference is P x (R/100)^2 = 5000 x 0.01 = 50.
+
+@ Simple and Compound Interest | I
+At what annual rate of compound interest does 4000 become 4840 in 2 years?
+= 10%
+- 8%
+- 12%
+- 21%
+? 4840 / 4000 = 1.21 = (1.10)^2, so the rate is 10%.
+
+@ Averages | B
+What is the average of 10, 20, 30 and 40?
+= 25
+- 20
+- 30
+- 100
+? The sum is 100 and there are 4 numbers, so the average is 25.
+
+@ Averages | I
+The average of 6 numbers is 15. If one of them, 9, is removed, what is the average of the remaining numbers?
+= 16.2
+- 15
+- 16
+- 14.5
+? Total = 90. Remaining total = 81 over 5 numbers, so the average is 16.2.
+
+@ Averages | I
+The average age of 5 people is 24. A sixth person aged 36 joins them. What is the new average age?
+= 26
+- 25
+- 27
+- 30
+? Total age = 120 + 36 = 156, and 156 / 6 = 26.
+
+@ Averages | A
+What is the average of the first 10 natural numbers?
+= 5.5
+- 5
+- 6
+- 55
+? The sum of 1 to 10 is 55, and 55 / 10 = 5.5.
+
+@ Number System | B
+Which of the following is a prime number?
+= 29
+- 21
+- 27
+- 51
+? 29 has no divisors other than 1 and itself. 21 = 3 x 7, 27 = 3 x 9 and 51 = 3 x 17.
+
+@ Number System | I
+What is the LCM of 12 and 18?
+= 36
+- 6
+- 72
+- 216
+? 12 = 2^2 x 3 and 18 = 2 x 3^2, so the LCM is 2^2 x 3^2 = 36.
+
+@ Number System | I
+What is the HCF of 24 and 36?
+= 12
+- 6
+- 72
+- 4
+? 24 = 2^3 x 3 and 36 = 2^2 x 3^2, so the HCF is 2^2 x 3 = 12.
+
+@ Number System | A
+What is the remainder when 2^10 is divided by 7?
+= 2
+- 1
+- 4
+- 3
+? 2^3 = 8 leaves remainder 1, so 2^9 leaves 1 and 2^10 leaves 2.
+
+@ Number System | I
+What is the sum of the first 20 natural numbers?
+= 210
+- 200
+- 220
+- 190
+? n(n + 1) / 2 = 20 x 21 / 2 = 210.
+
+@ Number System | A
+What is the unit digit of 7^45?
+= 7
+- 1
+- 3
+- 9
+? The unit digits of powers of 7 repeat every 4: 7, 9, 3, 1. Since 45 leaves remainder 1 when divided by 4, the digit is 7.
+
+@ Permutation and Probability | B
+What is the value of 5!?
+= 120
+- 24
+- 60
+- 25
+? 5! = 5 x 4 x 3 x 2 x 1 = 120.
+
+@ Permutation and Probability | I
+In how many distinct ways can the letters of the word LEVEL be arranged?
+= 30
+- 120
+- 60
+- 24
+? There are 5 letters with L repeated twice and E repeated twice: 5! / (2! x 2!) = 30.
+
+@ Permutation and Probability | I
+In how many ways can 2 people be chosen from a group of 6?
+= 15
+- 12
+- 30
+- 36
+? 6C2 = 6 x 5 / 2 = 15.
+
+@ Permutation and Probability | I
+What is the probability of drawing a red card from a standard deck of 52 cards?
+= 1/2
+- 1/4
+- 1/13
+- 1/26
+? There are 26 red cards among 52, so the probability is 1/2.
+
+@ Permutation and Probability | A
+A bag has 3 red and 5 blue balls. Two balls are drawn without replacement. What is the probability that both are red?
+= 3/28
+- 9/64
+- 3/8
+- 1/4
+? P = (3/8) x (2/7) = 6/56 = 3/28.
+
+@ Permutation and Probability | A
+How many 3-digit numbers can be formed using the digits 1 to 5 without repeating any digit?
+= 60
+- 125
+- 20
+- 10
+? 5 x 4 x 3 = 60.
+
+@ Geometry and Arithmetic | B
+What is the area of a rectangle that is 12 cm long and 7 cm wide?
+= 84 square cm
+- 38 square cm
+- 19 square cm
+- 96 square cm
+? Area = length x width = 12 x 7 = 84.
+
+@ Geometry and Arithmetic | I
+What is the circumference of a circle of radius 7 cm? (Use 22/7 for pi.)
+= 44 cm
+- 22 cm
+- 154 cm
+- 88 cm
+? Circumference = 2 x (22/7) x 7 = 44 cm.
+
+@ Geometry and Arithmetic | I
+What is the area of a triangle with base 10 cm and height 6 cm?
+= 30 square cm
+- 60 square cm
+- 16 square cm
+- 36 square cm
+? Area = 1/2 x base x height = 0.5 x 10 x 6 = 30.
+
+@ Geometry and Arithmetic | I
+What is the value of (15 + 5) x 3 - 10 / 2?
+= 55
+- 25
+- 60
+- 30
+? Brackets first: 20 x 3 = 60. Then 10 / 2 = 5, and 60 - 5 = 55.

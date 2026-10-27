@@ -1,0 +1,323 @@
+#!/usr/bin/env python3
+"""
+Generates the Flyway migrations for the career question bank.
+
+  python generate_migrations.py report
+        validate the bank and print the coverage report (no files written)
+  python generate_migrations.py build [--force]
+        write V6__career_mock_test_structure.sql and V7__career_question_bank.sql
+        (refuses to overwrite released migrations unless --force; never edit applied migrations)
+  python generate_migrations.py add --version 8 --files bank/new_topic.qb
+        write V8__question_bank_additions.sql containing ONLY the given files,
+        continuing the question/option ids after the highest ones already in the migrations
+
+Flyway applies each migration exactly once, so questions are never duplicated on restart.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+import zlib
+import random
+from collections import Counter, defaultdict
+from pathlib import Path
+
+import bank_config as cfg
+import bank_format as bf
+
+HERE = Path(__file__).resolve().parent
+MIGRATIONS = HERE.parent.parent / "src" / "main" / "resources" / "db" / "migration"
+FIRST_QUESTION_ID = 1001
+FIRST_OPTION_ID = 10001
+
+
+def sql(s: str) -> str:
+    return "'" + s.replace("'", "''") + "'"
+
+
+def load_bank(files: list[Path]) -> list[bf.Question]:
+    questions: list[bf.Question] = []
+    for f in files:
+        questions.extend(bf.parse_file(f))
+    return questions
+
+
+def existing_question_counts() -> Counter:
+    """Skill id -> number of questions seeded by V2 (parsed from the migration itself)."""
+    text = (MIGRATIONS / "V2__seed_sample_data.sql").read_text(encoding="utf-8")
+    counts: Counter = Counter()
+    for m in re.finditer(r"INSERT INTO questions \(id, skill_id,[^)]*\) VALUES \((\d+), (\d+),", text):
+        counts[int(m.group(2))] += 1
+    return counts
+
+
+def existing_options() -> dict[int, list[int]]:
+    text = (MIGRATIONS / "V2__seed_sample_data.sql").read_text(encoding="utf-8")
+    opts: dict[int, list[int]] = defaultdict(list)
+    for m in re.finditer(r"INSERT INTO question_options \(id, question_id,[^)]*\) VALUES \((\d+), (\d+),", text):
+        opts[int(m.group(2))].append(int(m.group(1)))
+    return opts
+
+
+def skill_ids() -> dict[str, int]:
+    ids = {name: sid for sid, name in cfg.EXISTING_SKILLS.items()}
+    ids.update({name: sid for sid, (name, _) in cfg.NEW_SKILLS.items()})
+    return ids
+
+
+def path_skill_sets() -> dict[int, set[int]]:
+    """career_path_skills as seeded by V2, plus the links added here."""
+    text = (MIGRATIONS / "V2__seed_sample_data.sql").read_text(encoding="utf-8")
+    links: dict[int, set[int]] = defaultdict(set)
+    for m in re.finditer(r"INSERT INTO career_path_skills \(career_path_id, skill_id\) VALUES \((\d+), (\d+)\)", text):
+        links[int(m.group(1))].add(int(m.group(2)))
+    for p, s in cfg.NEW_PATH_SKILL_LINKS:
+        links[p].add(s)
+    return links
+
+
+def analyse(questions: list[bf.Question]):
+    """Validates the configuration against the bank and returns the derived numbers."""
+    ids = skill_ids()
+    errors = bf.validate(questions, set(ids))
+    pool: Counter = Counter(existing_question_counts())
+    for q in questions:
+        pool[ids[q.skill]] += 1
+    links = path_skill_sets()
+    topics: dict[int, set[str]] = defaultdict(set)
+    for q in questions:
+        topics[ids[q.skill]].add(q.topic)
+
+    career = {}
+    for path_id, (skills, description) in cfg.CAREER_TESTS.items():
+        sids = [ids[s] for s in skills]
+        outside = [s for s in sids if s not in links[path_id]]
+        if outside:
+            errors.append(f"career test for path {path_id}: skills {outside} are not skills of that career path")
+        size = sum(pool[s] for s in sids)
+        count, minutes = cfg.career_test_size(size)
+        if size < 50:
+            errors.append(f"career path {path_id} ({cfg.EXISTING_PATHS[path_id]}) has only {size} eligible questions (< 50)")
+        if size < count:
+            errors.append(f"career path {path_id}: pool {size} smaller than question count {count}")
+        career[path_id] = dict(skills=skills, sids=sids, description=description, pool=size, count=count, minutes=minutes)
+
+    skill_tests = {}
+    for sid in sorted(set(cfg.EXISTING_SKILLS) | set(cfg.NEW_SKILLS)):
+        if pool[sid] == 0:
+            errors.append(f"skill {sid} has no questions")
+            continue
+        count, minutes = cfg.skill_test_size(pool[sid])
+        skill_tests[sid] = dict(pool=pool[sid], count=count, minutes=minutes)
+    return errors, pool, career, skill_tests, ids
+
+
+# ----------------------------------------------------------------------------------------- V6
+def build_structure(career, skill_tests, ids, questions) -> str:
+    out: list[str] = []
+    w = out.append
+    w("-- Career-based mock tests: structure (new skills, path links, test definitions).")
+    w("-- GENERATED by backend/tools/question-bank/generate_migrations.py - do not edit by hand once applied.")
+    w("")
+    w("-- 1. New skills")
+    for sid, (name, desc) in cfg.NEW_SKILLS.items():
+        w(f"INSERT INTO skills (id, name, description) VALUES ({sid}, {sql(name)}, {sql(desc)});")
+    w("")
+    w("-- 2. Extra required-skill links so each career path owns the question categories it needs")
+    for p, s in cfg.NEW_PATH_SKILL_LINKS:
+        w(f"INSERT INTO career_path_skills (career_path_id, skill_id) VALUES ({p}, {s});")
+    w("")
+    w("-- 3. Align the topic labels of the 23 seeded questions with the new topic vocabulary")
+    for qid, topic in cfg.EXISTING_TOPIC_RENAMES.items():
+        w(f"UPDATE questions SET topic = {sql(topic)} WHERE id = {qid};")
+    w("")
+    w("-- 4. The seeded questions always listed the correct option first. Re-order the options so the")
+    w("--    position of the right answer is not predictable (display order only; ids are unchanged).")
+    for qid, option_ids in sorted(existing_options().items()):
+        if len(option_ids) == 2:
+            continue   # True/False questions keep the conventional True, False order
+        order = list(range(1, len(option_ids) + 1))
+        random.Random(zlib.crc32(f"seed-{qid}".encode())).shuffle(order)
+        for oid, pos in zip(option_ids, order):
+            w(f"UPDATE question_options SET display_order = {pos} WHERE id = {oid};")
+    w("")
+
+    topics_by_skill: dict[str, list[str]] = defaultdict(list)
+    for q in questions:
+        if q.topic not in topics_by_skill[q.skill]:
+            topics_by_skill[q.skill].append(q.topic)
+    names = {sid: n for n, sid in ids.items()}
+
+    w("-- 5. Upgrade the three existing career tests (Java, Python, Full Stack) in place")
+    v2 = (MIGRATIONS / "V2__seed_sample_data.sql").read_text(encoding="utf-8")
+    already: dict[int, set[int]] = defaultdict(set)
+    for m in re.finditer(r"INSERT INTO mock_test_skills \(mock_test_id, skill_id\) VALUES \((\d+), (\d+)\)", v2):
+        already[int(m.group(1))].add(int(m.group(2)))
+    for path_id, test_id in cfg.EXISTING_CAREER_TEST_IDS.items():
+        c = career[path_id]
+        w(f"UPDATE mock_tests SET description = {sql(c['description'])}, duration_minutes = {c['minutes']}, "
+          f"question_count = {c['count']} WHERE id = {test_id};")
+        for s in c["sids"]:
+            if s not in already.get(test_id, set()):      # plain VALUES: portable across MySQL and H2
+                w(f"INSERT INTO mock_test_skills (mock_test_id, skill_id) VALUES ({test_id}, {s});")
+    w("")
+    w("-- 6. Career mock tests for the remaining career paths")
+    next_id = 9
+    for path_id in sorted(cfg.CAREER_TESTS):
+        if path_id in cfg.EXISTING_CAREER_TEST_IDS:
+            continue
+        c = career[path_id]
+        title = f"{cfg.EXISTING_PATHS[path_id]} Mock Test"
+        w(f"INSERT INTO mock_tests (id, title, description, test_mode, career_path_id, duration_minutes, question_count, "
+          f"marks_per_question, negative_marks, passing_percentage, max_attempts, active) VALUES "
+          f"({next_id}, {sql(title)}, {sql(c['description'])}, 'CAREER', {path_id}, {c['minutes']}, {c['count']}, "
+          f"{cfg.MARKS_PER_QUESTION}, {cfg.NEGATIVE_MARKS}, {cfg.CAREER_PASS_PERCENT}, NULL, TRUE);")
+        for s in c["sids"]:
+            w(f"INSERT INTO mock_test_skills (mock_test_id, skill_id) VALUES ({next_id}, {s});")
+        next_id += 1
+    w("")
+    w("-- 7. Individual skill tests: upgrade the five existing ones, add the rest")
+    for sid, t in skill_tests.items():
+        topic_text = ", ".join(topics_by_skill.get(names[sid], [])[:5])
+        desc = f"Questions on {names[sid]} only. Topics include {topic_text}." if topic_text else f"Questions on {names[sid]} only."
+        if sid in cfg.EXISTING_SKILL_TEST_IDS:
+            tid = cfg.EXISTING_SKILL_TEST_IDS[sid]
+            w(f"UPDATE mock_tests SET description = {sql(desc)}, duration_minutes = {t['minutes']}, "
+              f"question_count = {t['count']} WHERE id = {tid};")
+        else:
+            w(f"INSERT INTO mock_tests (id, title, description, test_mode, career_path_id, duration_minutes, question_count, "
+              f"marks_per_question, negative_marks, passing_percentage, max_attempts, active) VALUES "
+              f"({next_id}, {sql(names[sid] + ' Skill Test')}, {sql(desc)}, 'SKILL', NULL, {t['minutes']}, {t['count']}, "
+              f"{cfg.MARKS_PER_QUESTION}, {cfg.NEGATIVE_MARKS}, {cfg.SKILL_PASS_PERCENT}, NULL, TRUE);")
+            w(f"INSERT INTO mock_test_skills (mock_test_id, skill_id) VALUES ({next_id}, {sid});")
+            next_id += 1
+    w("")
+    return "\n".join(out)
+
+
+# ----------------------------------------------------------------------------------------- V7
+def build_questions(questions: list[bf.Question], ids, first_q: int, first_o: int, title: str) -> tuple[str, int, int]:
+    out = [f"-- {title}", "-- GENERATED by backend/tools/question-bank/generate_migrations.py from bank/*.qb.", ""]
+    qid, oid = first_q, first_o
+    for q in questions:
+        out.append(f"INSERT INTO questions (id, skill_id, topic, question_type, difficulty, question_text, explanation, active) "
+                   f"VALUES ({qid}, {ids[q.skill]}, {sql(q.topic)}, '{q.qtype}', '{q.difficulty}', {sql(q.text)}, {sql(q.explanation)}, TRUE);")
+        rows = []
+        for pos, (text, correct) in enumerate(q.ordered_options(), start=1):
+            rows.append(f"({oid}, {qid}, {sql(text)}, {'TRUE' if correct else 'FALSE'}, {pos})")
+            oid += 1
+        out.append("INSERT INTO question_options (id, question_id, option_text, is_correct, display_order) VALUES\n  "
+                   + ",\n  ".join(rows) + ";")
+        qid += 1
+    return "\n".join(out) + "\n", qid, oid
+
+
+QUESTION_INSERT = re.compile(
+    r"'(?:BEGINNER|INTERMEDIATE|ADVANCED)', '((?:[^']|'')*)', '(?:[^']|'')*', (?:TRUE|FALSE)\)")
+
+
+def migrated_question_texts() -> set[str]:
+    """Normalised text of every question inserted by any migration (V2 seed and the generated ones)."""
+    texts: set[str] = set()
+    for f in MIGRATIONS.glob("V*.sql"):
+        for m in QUESTION_INSERT.finditer(f.read_text(encoding="utf-8")):
+            texts.add(re.sub(r"\s+", " ", m.group(1).replace("''", "'").strip().lower()))
+    return texts
+
+
+def next_free_ids() -> tuple[int, int]:
+    qmax, omax = FIRST_QUESTION_ID - 1, FIRST_OPTION_ID - 1
+    for f in MIGRATIONS.glob("V*.sql"):
+        t = f.read_text(encoding="utf-8")
+        for m in re.finditer(r"INSERT INTO questions \(id,[^)]*\) VALUES \((\d+),", t):
+            qmax = max(qmax, int(m.group(1)))
+        for m in re.finditer(r"^\s*\((\d+), (\d+), '", t, re.M):
+            omax = max(omax, int(m.group(1)))
+    return qmax + 1, omax + 1
+
+
+# ----------------------------------------------------------------------------------------- report
+def report(questions, pool, career, skill_tests, ids) -> str:
+    names = {sid: n for n, sid in ids.items()}
+    lines = ["Questions per skill (existing + new) and the individual skill test:"]
+    for sid in sorted(pool):
+        t = skill_tests[sid]
+        lines.append(f"  {sid:>2} {names[sid]:<36} pool={pool[sid]:>3}  test={t['count']:>2} q / {t['minutes']} min")
+    lines += ["", "Career path -> mock test (eligible pool = unique questions that path's test can draw from):"]
+    for pid, c in sorted(career.items()):
+        lines.append(f"  {pid:>2} {cfg.EXISTING_PATHS[pid]:<32} pool={c['pool']:>3}  test={c['count']} q / {c['minutes']} min  "
+                     f"skills={', '.join(c['skills'])}")
+    diff = Counter(q.difficulty for q in questions)
+    qtypes = Counter(q.qtype for q in questions)
+    lines += ["", f"New questions: {len(questions)}  difficulty={dict(diff)}  types={dict(qtypes)}"]
+    pos = Counter()
+    for q in questions:
+        if q.qtype == "SINGLE_CHOICE":
+            for i, (_, ok) in enumerate(q.ordered_options(), 1):
+                if ok:
+                    pos[i] += 1
+    lines.append(f"Position of the correct option (single choice): {dict(sorted(pos.items()))}")
+    return "\n".join(lines)
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("command", choices=["report", "build", "add"])
+    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--version", type=int)
+    ap.add_argument("--files", nargs="*")
+    ap.add_argument("--export-json")
+    args = ap.parse_args()
+
+    if args.command == "add":
+        if not args.version or not args.files:
+            sys.exit("add needs --version N and --files bank/x.qb")
+        qs = load_bank([Path(f) for f in args.files])
+        errors = bf.validate(qs, set(skill_ids()))
+        # Uniqueness against what is ALREADY IN THE MIGRATIONS (released or not), not just other .qb files:
+        # re-adding a file that was already migrated would otherwise insert duplicate questions.
+        released = migrated_question_texts()
+        errors += [f"{q.source}:{q.line}: already in an existing migration" for q in qs
+                   if re.sub(r"\s+", " ", q.text.strip().lower()) in released]
+        if errors:
+            print("\n".join(errors)); return 1
+        fq, fo = next_free_ids()
+        body, _, _ = build_questions(qs, skill_ids(), fq, fo, f"Additional questions ({len(qs)})")
+        target = MIGRATIONS / f"V{args.version}__question_bank_additions.sql"
+        if target.exists() and not args.force:
+            sys.exit(f"{target.name} exists; refusing to overwrite")
+        target.write_text(body, encoding="utf-8")
+        print(f"wrote {target} ({len(qs)} questions, ids from {fq})")
+        return 0
+
+    files = sorted((HERE / "bank").glob("*.qb"))
+    questions = load_bank(files)
+    errors, pool, career, skill_tests, ids = analyse(questions)
+    if errors:
+        print("VALIDATION FAILED:\n  " + "\n  ".join(errors)); return 1
+    print(report(questions, pool, career, skill_tests, ids))
+
+    if args.export_json:
+        Path(args.export_json).write_text(json.dumps({
+            "questions": [dict(skill=ids[q.skill], skillName=q.skill, topic=q.topic, difficulty=q.difficulty,
+                               type=q.qtype, text=q.text, options=[dict(t=t, ok=ok) for t, ok in q.ordered_options()])
+                          for q in questions],
+            "careerTests": {str(p): dict(skills=c["sids"], count=c["count"]) for p, c in career.items()},
+            "pathSkills": {str(p): sorted(s) for p, s in path_skill_sets().items()},
+        }, indent=1), encoding="utf-8")
+
+    if args.command == "build":
+        v6, v7 = MIGRATIONS / "V6__career_mock_test_structure.sql", MIGRATIONS / "V7__career_question_bank.sql"
+        if (v6.exists() or v7.exists()) and not args.force:
+            sys.exit("V6/V7 already exist; they may have been applied. Use 'add' for new questions (or --force before first release).")
+        v6.write_text(build_structure(career, skill_tests, ids, questions), encoding="utf-8")
+        body, nq, no = build_questions(questions, ids, FIRST_QUESTION_ID, FIRST_OPTION_ID, f"Career question bank ({len(questions)} questions)")
+        v7.write_text(body, encoding="utf-8")
+        print(f"\nwrote {v6.name} and {v7.name}: questions {FIRST_QUESTION_ID}-{nq - 1}, options {FIRST_OPTION_ID}-{no - 1}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

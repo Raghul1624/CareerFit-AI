@@ -1,0 +1,125 @@
+round: TECHNICAL_INTERVIEW
+roles: JAVA
+# Concept line:  ~ Concept name | weight 1-3 | req or opt | keyword, keyword, ...   (keywords match as lower-case substrings, so stems work)
+
+@ Java Platform | E
+Explain the difference between the JDK, the JRE and the JVM.
+~ JVM executes bytecode | 2 | req | jvm, bytecode, virtual machine
+~ JRE supplies the runtime libraries | 1 | req | jre, runtime environment, class librar, libraries
+~ JDK adds development tools | 2 | req | jdk, compiler, javac, development kit, tools
+~ Platform independence | 1 | opt | platform independen, write once, portable, any os
+? The JVM runs compiled bytecode and makes Java platform independent. The JRE bundles the JVM with the standard libraries needed to run programs. The JDK contains the JRE plus development tools such as the javac compiler, so you need the JDK to write Java and only the JRE to run it.
+
+@ OOP | E
+What are the four pillars of object-oriented programming? Give a short example of each.
+~ Encapsulation | 2 | req | encapsulat, private field, getter, setter, data hiding
+~ Inheritance | 2 | req | inherit, extends, subclass, parent class
+~ Polymorphism | 2 | req | polymorph, overrid, overload, many forms
+~ Abstraction | 2 | req | abstract, interface, hide complexity, hides implementation
+~ Gives an example | 1 | opt | for example, e.g., such as, class animal, class dog
+? Encapsulation bundles data with methods and hides fields behind getters and setters. Inheritance lets a class reuse another class using extends. Polymorphism lets one interface have many forms through overriding and overloading. Abstraction exposes what an object does and hides how, using abstract classes and interfaces.
+
+@ Equality | E
+What is the difference between == and equals() in Java?
+~ == compares references for objects | 2 | req | reference, same object, memory address, identity
+~ equals compares logical content | 2 | req | equals, content, value, overrid
+~ String pool example | 1 | opt | string pool, literal, new string
+~ hashCode contract | 1 | opt | hashcode, hash code, contract, hashmap
+? For objects, == checks whether two references point to the same object, while equals() checks logical equality and is meant to be overridden. Two Strings with the same text created with new are not == but are equals. When equals() is overridden, hashCode() must be overridden consistently.
+
+@ Collections | E
+How do ArrayList and LinkedList differ, and when would you use each?
+~ ArrayList uses a resizable array | 2 | req | array, resiz, dynamic array, contiguous
+~ ArrayList has fast random access | 1 | req | random access, get(i), index, o(1)
+~ LinkedList uses nodes | 2 | req | node, doubly linked, pointer, linked
+~ Insertion and deletion cost | 1 | opt | insert, delet, middle, o(n), shift
+? ArrayList stores elements in an array, giving O(1) access by index but costly insertions in the middle because elements shift. LinkedList stores nodes with links, so insertion at a known node is cheap but access by index is O(n). ArrayList is the default choice for most cases.
+
+@ Exceptions | E
+Explain checked and unchecked exceptions in Java with examples.
+~ Checked exceptions are verified at compile time | 2 | req | checked, compile time, compile-time, must handle
+~ Handle or declare | 1 | req | try, catch, throws, declare
+~ Unchecked exceptions extend RuntimeException | 2 | req | unchecked, runtimeexception, runtime exception
+~ Examples | 1 | opt | ioexception, sqlexception, nullpointer, arithmetic, illegalargument
+? Checked exceptions such as IOException must be caught or declared with throws, and the compiler enforces this. Unchecked exceptions such as NullPointerException extend RuntimeException and need not be declared. Use checked exceptions for recoverable conditions and unchecked ones for programming errors.
+
+@ Collections Internals | M
+How does a HashMap work internally?
+~ Hash code selects a bucket | 2 | req | hashcode, hash code, bucket, hash function, index
+~ Collisions are handled in the bucket | 2 | req | collision, linked list, tree, treeif, chain
+~ equals finds the matching key | 1 | req | equals, same key, key match
+~ Resize at the load factor | 1 | opt | load factor, 0.75, resiz, rehash, capacity
+? HashMap computes the key's hash to choose a bucket. Keys that land in the same bucket form a linked list, which becomes a balanced tree when it grows long. equals() identifies the exact key. When the number of entries passes the load factor (0.75) the table is resized and entries are rehashed.
+
+@ OOP | M
+Explain method overloading and method overriding.
+~ Overloading: same name, different parameters | 2 | req | overload, same name, different parameter, different signature
+~ Overriding: subclass replaces a method | 2 | req | overrid, subclass, same signature, @override
+~ Compile-time versus runtime binding | 2 | req | compile time, compile-time, runtime, dynamic dispatch, static binding
+~ Static and private methods | 1 | opt | static, private, final, hidden
+? Overloading means several methods with the same name but different parameter lists in one class, resolved at compile time. Overriding means a subclass provides its own implementation of an inherited method with the same signature, resolved at runtime by the actual object type. Static, private and final methods cannot be overridden.
+
+@ OOP Design | M
+When would you choose an abstract class over an interface?
+~ Abstract class can hold state and constructors | 2 | req | state, field, constructor, instance variable
+~ Interface defines a contract | 2 | req | contract, implements, capabilit, behaviou
+~ Multiple inheritance of type | 1 | req | multiple, several interfaces, one class
+~ Default methods and shared code | 1 | opt | default method, shared code, common code, template
+? Use an abstract class when related classes share state or common code. Use an interface to define a capability that unrelated classes can implement, because a class can implement many interfaces but extend only one class. Since Java 8 interfaces can have default methods, but they still cannot hold instance state.
+
+@ JVM | M
+Explain the Java stack and heap and how garbage collection works.
+~ Stack stores frames and local variables | 2 | req | stack, frame, local variable, primitive
+~ Heap stores objects | 2 | req | heap, objects, new keyword, instances
+~ GC reclaims unreachable objects | 2 | req | garbage collect, unreachable, reachab, gc root, reclaim
+~ Generations | 1 | opt | young, old generation, eden, minor gc, major gc
+? Each thread has a stack with frames for method calls and local variables. Objects live on the shared heap. The garbage collector frees objects that are no longer reachable from GC roots. Most collectors use generations: new objects start in the young generation and survivors are promoted to the old generation.
+
+@ Spring | M
+What is dependency injection and why is it useful in Spring?
+~ The container creates and supplies dependencies | 2 | req | container, ioc, inversion of control, inject, bean
+~ Constructor injection | 1 | req | constructor, @autowired, field injection, setter
+~ Loose coupling | 2 | req | loose coupling, decoupl, interface, abstraction
+~ Easier testing | 1 | opt | test, mock, replace
+? With dependency injection an object receives the collaborators it needs from the Spring container instead of creating them. This is inversion of control. It gives loose coupling and makes classes easy to test, because dependencies can be replaced with mocks. Constructor injection is the recommended style.
+
+@ Immutability | H
+How do you design an immutable class in Java, and why would you?
+~ final class and final fields | 2 | req | final class, final field, final
+~ No setters | 1 | req | no setter, setter, cannot change, unmodifiable
+~ Defensive copies of mutable fields | 2 | req | defensive cop, copy, mutable field, clone
+~ Thread safety | 2 | req | thread safe, thread-safe, concurren, synchroniz
+~ Example such as String | 1 | opt | string, localdate, record
+? Declare the class final, make all fields private and final, provide no setters, and copy mutable inputs and outputs (defensive copies). Immutable objects are inherently thread safe, easy to reason about and safe as map keys. String and LocalDate are examples, and records make this easier.
+
+@ Concurrency | H
+Compare synchronized, volatile and atomic classes. When would you use each?
+~ synchronized gives mutual exclusion | 2 | req | synchronized, mutual exclusion, lock, monitor
+~ volatile gives visibility only | 2 | req | volatile, visibility, not atomic, happens-before
+~ Atomic classes use compare-and-swap | 2 | req | atomic, compare-and-swap, cas, atomicinteger
+~ Choosing by use case | 1 | opt | counter, flag, compound, race condition
+? synchronized provides mutual exclusion and visibility for a block. volatile guarantees visibility and ordering of a single variable but not atomicity of compound actions. AtomicInteger and similar classes use compare-and-swap for lock-free atomic updates. Use volatile for simple flags, atomics for counters and synchronized or locks for multi-step invariants.
+
+@ Spring Transactions | H
+How does @Transactional work in Spring and what are common pitfalls?
+~ Implemented with proxies and AOP | 2 | req | proxy, aop, aspect, intercept
+~ Rollback on runtime exceptions by default | 2 | req | rollback, runtime exception, unchecked, checked exception
+~ Self-invocation bypasses the proxy | 2 | req | self-invocation, self invocation, same class, bypass
+~ Propagation and isolation | 1 | opt | propagation, requires_new, isolation, readonly
+? Spring wraps the bean in a proxy that opens a transaction before the method and commits or rolls back afterwards. By default it rolls back only for unchecked exceptions. A call from another method of the same class bypasses the proxy, so the annotation is ignored. Also understand propagation, isolation and readOnly settings.
+
+@ Troubleshooting | H
+A Java service slowly runs out of memory. How would you diagnose and fix it?
+~ Capture a heap dump | 2 | req | heap dump, jmap, hprof, oom, outofmemory
+~ Analyse with a profiler | 2 | req | visualvm, mat, memory analyzer, profiler, yourkit
+~ Find what keeps objects reachable | 2 | req | gc root, static, cache, listener, threadlocal, leak
+~ Fix and monitor | 1 | opt | fix, monitor, gc log, metrics, limit, eviction
+? Enable GC logging and take a heap dump when memory is high, then analyse it with a tool such as Eclipse MAT or VisualVM. Look for objects that stay reachable through static collections, caches without eviction, listeners or ThreadLocals. Fix the retention, for example with bounded caches or removing listeners, then monitor heap usage to confirm.
+
+@ System Design | H
+How would you build a thread-safe in-memory cache in Java?
+~ Use a concurrent map | 2 | req | concurrenthashmap, concurrent map, thread-safe, thread safe
+~ Eviction policy | 2 | req | eviction, lru, linkedhashmap, size limit, caffeine
+~ Expiry or invalidation | 1 | req | ttl, expir, invalidat, stale
+~ Memory and concurrency trade-offs | 1 | opt | memory, trade-off, lock, contention, cache stampede
+? Use ConcurrentHashMap for thread-safe access, or a library such as Caffeine. Add an eviction policy such as LRU with a size limit, plus a time-to-live so stale entries expire. Consider cache stampedes, memory limits and how entries are invalidated when the source data changes.

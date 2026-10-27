@@ -1,0 +1,389 @@
+round: TECHNICAL_MCQ
+# Extra role-specific questions that fill the thin pools of the reused question bank.
+# Header: @ Topic | E/M/H | ROLE, ROLE   (roles: JAVA PYTHON FRONTEND FULLSTACK QA DATA_ANALYST)
+
+@ JVM and Memory | H | JAVA
+Which statement about the Java volatile keyword is correct?
+= It guarantees visibility of writes between threads and prevents reordering around the access, but compound actions such as i++ are still not atomic
+- It makes i++ atomic and thread safe
+- It locks the object so only one thread can use the variable
+- It can only be applied to local variables
+? volatile gives visibility and ordering guarantees only. Use synchronized, a lock or an AtomicInteger for atomic read-modify-write operations.
+
+@ Core Java Traps | H | JAVA
+What does this code print?
+  Integer a = 127, b = 127, c = 128, d = 128;
+  System.out.println((a == b) + " " + (c == d));
+= true false
+- true true
+- false false
+- false true
+? Integer.valueOf caches values from -128 to 127, so a and b are the same object. 128 is outside the cache, so c and d are different objects and == compares references.
+
+@ Concurrency | H | JAVA
+How does ConcurrentHashMap differ from Collections.synchronizedMap(new HashMap<>())?
+= ConcurrentHashMap uses fine-grained locking and compare-and-swap so many threads can read and write at once, while synchronizedMap locks the whole map for every call
+- ConcurrentHashMap allows null keys and synchronizedMap does not
+- They are identical in behaviour and speed
+- ConcurrentHashMap keeps keys sorted
+? A synchronized wrapper serialises all access through one lock. ConcurrentHashMap lets non-conflicting operations proceed in parallel. It does not allow null keys or values.
+
+@ Garbage Collection | H | JAVA
+When is a Java object eligible for garbage collection?
+= When it is no longer reachable from any GC root such as a live thread stack or static field
+- As soon as its reference count reaches zero
+- Only after System.gc() is called
+- When the variable that referred to it goes out of the source file
+? The JVM uses reachability, not reference counting. System.gc() is only a hint.
+
+@ Generics | H | JAVA
+Why is the statement new T[10] not allowed for a type parameter T?
+= Because of type erasure the runtime does not know T, so it cannot create or check an array of that type
+- Because arrays can only hold primitive types
+- Because T must always be an interface
+- Because generic classes cannot have methods
+? Generics are erased at compile time. Arrays need their element type at runtime, so generic array creation is rejected. Use a List<T> or cast an Object array.
+
+@ Spring Transactions | H | JAVA, FULLSTACK
+In Spring, what happens when a method calls another @Transactional method of the same class (self-invocation)?
+= The call goes directly to the method and bypasses the proxy, so the annotation on the called method is not applied
+- Spring always starts a new transaction for the inner method
+- Spring throws a compile error
+- The outer transaction is rolled back automatically
+? @Transactional works through a proxy. Calls made inside the same object do not pass through the proxy. Move the method to another bean to get the transaction behaviour.
+
+@ Concurrency | H | PYTHON
+What does the Global Interpreter Lock (GIL) in CPython imply for threads?
+= Only one thread executes Python bytecode at a time, so CPU-bound threads do not run in parallel, although I/O-bound threads still benefit
+- Python cannot create threads at all
+- Every thread gets its own interpreter and memory
+- Threads run in parallel on all CPU cores without limits
+? Use multiprocessing for CPU-bound work and threads or asyncio for I/O-bound work.
+
+@ Decorators | H | PYTHON
+What does functools.wraps do inside a decorator?
+= It copies metadata such as __name__ and __doc__ from the wrapped function to the wrapper
+- It makes the wrapped function run faster
+- It converts the function into a class
+- It caches the return value of the function
+? Without wraps the decorated function would report the wrapper's name and docstring, which breaks introspection and debugging.
+
+@ Generators | H | PYTHON
+What does this code print?
+  gen = (x * x for x in range(3))
+  print(list(gen))
+  print(list(gen))
+= [0, 1, 4] and then []
+- [0, 1, 4] and then [0, 1, 4]
+- [0, 1, 4] and then an error
+- [] and then [0, 1, 4]
+? A generator can be consumed only once. The second list() finds it already exhausted.
+
+@ Closures | H | PYTHON
+What does this code print?
+  funcs = [lambda: i for i in range(3)]
+  print([f() for f in funcs])
+= [2, 2, 2]
+- [0, 1, 2]
+- [0, 0, 0]
+- [3, 3, 3]
+? The lambdas capture the variable i, not its value at creation time (late binding). After the loop i is 2.
+
+@ OOP | H | PYTHON
+For class D(B, C) where B(A) and C(A), what is the method resolution order of D?
+= D, B, C, A, object
+- D, B, A, C, object
+- D, A, B, C, object
+- D, C, B, A, object
+? Python uses C3 linearisation: each class appears before its parents and the order of the base classes is preserved.
+
+@ Data Model | H | PYTHON
+After a = [[0] * 2] * 2 and a[0][0] = 1, what is a?
+= [[1, 0], [1, 0]]
+- [[1, 0], [0, 0]]
+- [[0, 0], [0, 0]]
+- [[1, 1], [1, 1]]
+? The outer multiplication repeats a reference to the same inner list, so both rows are one object.
+
+@ Async | H | PYTHON
+What does await asyncio.gather(a(), b()) do?
+= Runs both coroutines concurrently on the event loop and returns their results in order
+- Runs a() to completion and only then starts b()
+- Runs the coroutines in two separate processes
+- Cancels b() when a() finishes
+? gather schedules the coroutines together, which helps with I/O-bound work.
+
+@ Memory | H | PYTHON
+What is the purpose of __slots__ in a class?
+= It fixes the allowed attributes and avoids a per-instance __dict__, which saves memory
+- It makes all attributes private
+- It makes the class immutable
+- It enables multiple inheritance
+? Classes with many instances can save a lot of memory with __slots__, at the cost of flexibility.
+
+@ Context Managers | H | PYTHON
+Which methods must an object define to be used in a with statement?
+= __enter__ and __exit__
+- __open__ and __close__
+- __start__ and __stop__
+- __init__ and __del__
+? with calls __enter__ on entry and __exit__ on exit, even when an exception occurs.
+
+@ Data Model | H | PYTHON
+What is guaranteed about the iteration order of a dict in Python 3.7 and later?
+= Keys are iterated in the order in which they were inserted
+- Keys are always sorted alphabetically
+- The order is random on each run
+- Keys are ordered by their hash value
+? Insertion order became part of the language specification in Python 3.7.
+
+@ Copying | H | PYTHON
+Which statement about copy.deepcopy is correct?
+= It recursively copies nested objects, so changing a nested mutable item in the copy does not change the original
+- It only copies the top-level container
+- It is the same as assigning a new name to the object
+- It can only be used on lists
+? A shallow copy shares nested objects with the original. A deep copy does not.
+
+@ HTML | E | FRONTEND
+Which HTML attribute holds the destination of a hyperlink?
+= href
+- src
+- link
+- target-url
+? The href attribute of the <a> element holds the URL.
+
+@ HTML | E | FRONTEND
+Which HTML tag is used to display an image?
+= <img>
+- <picture-src>
+- <image-link>
+- <photo>
+? <img src="..." alt="..."> embeds an image.
+
+@ CSS | E | FRONTEND
+What does the C in CSS stand for?
+= Cascading
+- Computed
+- Creative
+- Compiled
+? CSS means Cascading Style Sheets. Rules cascade according to origin, specificity and order.
+
+@ CSS | E | FRONTEND
+Which CSS property controls the space between an element's content and its border?
+= padding
+- margin
+- spacing
+- outline
+? Padding is inside the border. Margin is the space outside it.
+
+@ CSS | E | FRONTEND
+Which CSS property changes the background colour of an element?
+= background-color
+- color
+- bgcolor
+- fill-color
+? color sets the text colour. background-color sets the background.
+
+@ CSS | E | FRONTEND
+How do you write a comment in CSS?
+= /* this is a comment */
+- // this is a comment
+- # this is a comment
+- <!-- this is a comment -->
+? CSS only supports /* ... */ comments.
+
+@ JavaScript | E | FRONTEND
+Which array method removes the last element of an array and returns it?
+= pop()
+- push()
+- shift()
+- slice()
+? pop removes and returns the last element. shift does the same for the first element and push adds to the end.
+
+@ JavaScript | E | FRONTEND
+Which operator compares both the value and the type of two operands in JavaScript?
+= ===
+- ==
+- =
+- !=
+? === is the strict equality operator. == converts types before comparing.
+
+@ CSS Specificity | H | FRONTEND
+What is the specificity of the selector #nav .item a, written as (ids, classes, elements)?
+= (1, 1, 1)
+- (0, 3, 0)
+- (1, 0, 2)
+- (0, 1, 2)
+? One id (#nav), one class (.item) and one element (a) give (1, 1, 1).
+
+@ Event Loop | H | FRONTEND
+After the current synchronous code finishes, which callback runs first?
+= A resolved Promise callback (microtask) before a setTimeout(fn, 0) callback (macrotask)
+- The setTimeout callback, because its delay is 0
+- They always run in the order they were written
+- Neither runs until the page is reloaded
+? The event loop drains the microtask queue (promises) before it takes the next macrotask (timers).
+
+@ React Hooks | H | FRONTEND
+What does React's useCallback hook return?
+= A memoised function that changes only when one of its dependencies changes
+- A new function on every render
+- The result of calling the function
+- A promise
+? useCallback keeps the function identity stable, which helps child components that rely on referential equality.
+
+@ React Rendering | H | FRONTEND
+Why is using the array index as a key problematic for lists that can be reordered or filtered?
+= React may reuse the wrong component state or DOM node because the key no longer identifies the same item
+- Keys must always be strings
+- Index keys make the list render slower than any other key
+- React throws an error when index keys are used
+? Stable unique ids let React match old and new items correctly. Index keys are fine only for static lists.
+
+@ Browser Security | H | FRONTEND, FULLSTACK
+What can cause a browser to send a CORS preflight (OPTIONS) request?
+= A cross-origin request that uses a non-simple method or header, for example PUT or an Authorization header
+- Any request to the same origin
+- Loading an image from a CDN
+- Using the GET method with no headers
+? Simple requests skip the preflight. Requests with custom headers, JSON content type or methods such as PUT and DELETE trigger it.
+
+@ Closures | H | FRONTEND
+What does this code print?
+  for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 0);
+  }
+= 3 3 3
+- 0 1 2
+- 2 2 2
+- undefined undefined undefined
+? var is function scoped, so all callbacks share one i, which is 3 when the timers run. With let each iteration gets its own i.
+
+@ Performance | H | FRONTEND
+Which Core Web Vital measures how long the largest visible content element takes to render?
+= Largest Contentful Paint (LCP)
+- Cumulative Layout Shift (CLS)
+- Interaction to Next Paint (INP)
+- Time to Live (TTL)
+? LCP tracks loading performance. CLS measures visual stability and INP measures responsiveness.
+
+@ Accessibility | H | FRONTEND
+What is the purpose of the aria-label attribute?
+= It gives an element an accessible name that assistive technologies can announce
+- It changes the visible text of the element
+- It adds a CSS class
+- It makes the element focusable
+? aria-label is useful for controls without visible text, such as an icon-only button.
+
+@ JavaScript Objects | H | FRONTEND
+What does Object.freeze(obj) do?
+= It prevents adding, removing or changing the object's own properties (shallowly)
+- It deep-freezes every nested object
+- It deletes all properties of the object
+- It only prevents the object from being garbage collected
+? freeze is shallow. Nested objects can still be modified unless they are frozen too.
+
+@ CSS Layout | H | FRONTEND
+How does position: sticky behave?
+= The element acts as relative until a scroll threshold is reached and then sticks like fixed within its container
+- It is always fixed to the viewport
+- It removes the element from the document flow
+- It behaves exactly like position: absolute
+? sticky needs a threshold such as top: 0 and works inside its scrolling container.
+
+@ Security | H | FULLSTACK
+Why should JWT access tokens have a short lifetime and be sent only over HTTPS?
+= A JWT is a bearer credential, so anyone who steals one can use it until it expires
+- JWTs stop working after one request
+- HTTPS makes the token smaller
+- Short tokens are encrypted automatically
+? Short expiry limits the damage of a stolen token and HTTPS protects it in transit. Use refresh tokens for longer sessions.
+
+@ ORM Performance | H | FULLSTACK, JAVA
+What is the N+1 query problem in an ORM such as Hibernate?
+= One query loads N parent rows and then N additional queries load the related data of each parent
+- A query that returns N+1 duplicate rows
+- A query with N+1 JOIN clauses
+- A database that has N+1 indexes
+? Lazy associations accessed in a loop cause one extra query per row. Fix it with join fetch, entity graphs or batch fetching.
+
+@ Web Security | H | FULLSTACK
+Which HTTP response header tells browsers to use only HTTPS for future visits to a site?
+= Strict-Transport-Security
+- Content-Security-Policy
+- X-Frame-Options
+- Access-Control-Allow-Origin
+? HSTS protects against protocol downgrade and cookie hijacking on plain HTTP.
+
+@ Advanced Testing | H | QA
+What is mutation testing?
+= Introducing small deliberate changes (mutants) into the code to check whether the test suite detects them
+- Testing the application with mutated user data only
+- Running the same test many times
+- Testing software after it has been deployed
+? If tests still pass after a mutation, they probably do not assert enough.
+
+@ Test Design | H | QA
+What is the goal of pairwise (all-pairs) testing?
+= Cover every pair of parameter values at least once with far fewer test cases than all combinations
+- Test two users at the same time
+- Run every test twice
+- Compare two versions of the software
+? Most defects are caused by one or two parameters interacting, so pairwise coverage finds many of them cheaply.
+
+@ Test Automation | H | QA
+What is a flaky test?
+= A test that sometimes passes and sometimes fails without any change in the code
+- A test that always fails
+- A test written without assertions
+- A test that runs very slowly
+? Flaky tests are often caused by timing, shared state or unstable environments, and they reduce trust in the suite.
+
+@ Test Strategy | H | QA
+What does the test automation pyramid recommend?
+= Many fast unit tests, fewer integration tests and the fewest UI end-to-end tests
+- Mostly UI tests with a few unit tests
+- The same number of tests at every level
+- Only manual tests at the top
+? Lower-level tests are faster, cheaper and more stable than UI tests.
+
+@ Performance Testing | H | QA
+How does stress testing differ from load testing?
+= Load testing checks behaviour at expected usage, while stress testing pushes beyond it to find the breaking point
+- Load testing finds security issues and stress testing finds UI bugs
+- They are two names for the same thing
+- Stress testing uses fewer users than load testing
+? Stress tests reveal how the system fails and recovers under extreme conditions.
+
+@ Quality Metrics | H | QA
+What is a risk of relying only on code coverage to judge test quality?
+= High coverage can still come from tests with weak or no assertions, so defects may go unnoticed
+- Coverage cannot be measured automatically
+- Coverage always slows down the application
+- Coverage lowers the number of tests
+? Coverage shows which code ran, not whether its behaviour was verified.
+
+@ Test Theory | H | QA
+What is a test oracle?
+= A mechanism or source of truth used to decide whether a test result is correct
+- A tool that writes test cases automatically
+- A database of past defects
+- A person who approves the release
+? Examples are requirements, a reference implementation or a previous version of the output.
+
+@ Statistics | H | DATA_ANALYST
+What is Simpson's paradox?
+= A trend that appears in several groups reverses or disappears when the groups are combined
+- Two variables always move in opposite directions
+- A sample that is too small to analyse
+- An error in a correlation formula
+? It occurs when a hidden variable affects group sizes, which is why you should check data by segment.
+
+@ SQL Window Functions | H | DATA_ANALYST
+Which problem does the SQL window function LAG() help to solve?
+= Comparing a row with a value from a previous row, for example month-over-month change
+- Removing duplicate rows
+- Joining two tables on a key
+- Encrypting a column
+? LAG(column, n) returns the value from n rows before the current row within the partition.

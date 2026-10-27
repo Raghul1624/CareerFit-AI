@@ -1,0 +1,249 @@
+skill: Manual Testing
+
+@ Testing Fundamentals | B
+What is the main purpose of software testing?
+= To find defects and check that the software meets its requirements
+- To prove that the software has no defects at all
+- To write the production code
+- To design the database
+? Testing provides information about quality. It cannot prove that no defects exist.
+
+@ Testing Fundamentals | B
+What is a defect?
+= A flaw where the actual behavior differs from the expected behavior
+- A requirement written in a document
+- A test case that passed
+- A feature request from a user
+? A defect (bug) is a deviation from the expected result.
+
+@ Testing Fundamentals | I
+What is the difference between verification and validation?
+= Verification checks that we are building the product right, validation checks that we are building the right product
+- Verification is done only by users, validation only by developers
+- They mean exactly the same thing
+- Verification runs the software, validation only reads emails
+? Verification includes reviews and inspections against specifications. Validation checks the product against user needs, usually by executing it.
+
+@ Testing Fundamentals | I
+Why is exhaustive testing considered impossible for most software?
+= The number of possible inputs and paths is practically infinite
+- Testers are not allowed to test everything
+- Software never changes
+- Test tools are too expensive
+? Because everything cannot be tested, teams use risk-based prioritization and test design techniques.
+
+@ Testing Fundamentals | I
+A developer makes a mistake while writing code. What is this mistake called, and what can it lead to?
+= An error, which can introduce a defect that may cause a failure
+- A failure, which always introduces an error
+- A test case, which causes a defect
+- A requirement, which causes a failure
+? Terminology chain: a human error leads to a defect in the code, which may cause a failure when executed.
+
+@ Test Cases and Scenarios | B
+Which set of elements best describes a complete test case?
+= ID, preconditions, steps, test data and expected result
+- Only a title
+- Only the bug id
+- Only the source code
+? A good test case lets anyone execute it and decide clearly whether it passed.
+
+@ Test Cases and Scenarios | I
+What is a test scenario?
+= A high-level description of a functionality to be tested, from which test cases are derived
+- A detailed script with exact click coordinates
+- A defect report
+- A project schedule
+? One scenario, such as verifying login, may produce many test cases.
+
+@ Test Cases and Scenarios | I
+Which practice makes test cases better?
+= Make them clear, repeatable and independent, each with an expected result
+- Combine as many checks as possible into one case
+- Leave out expected results to save time
+- Write them only after the release
+? Independent, well-defined cases are easier to run, maintain and debug.
+
+@ Test Cases and Scenarios | I
+What does a requirements traceability matrix show?
+= The mapping between requirements and test cases, to verify coverage
+- The list of employees on the project
+- The bug count per developer
+- The server configuration
+? Traceability helps confirm every requirement has at least one test and shows the impact of changes.
+
+@ Test Cases and Scenarios | I
+For a login page, which is a negative test case?
+= Enter a valid username with a wrong password and verify an error message is shown
+- Enter valid credentials and verify the dashboard opens
+- Verify the page title is correct
+- Verify the logo is visible
+? Negative tests check how the system handles invalid input or unexpected conditions.
+
+@ Test Design Techniques | I
+A field accepts ages from 18 to 60. Which values does boundary value analysis focus on?
+= 17, 18, 19 and 59, 60, 61
+- 1, 2, 3 only
+- 30 only
+- Random values between 0 and 100
+? Defects often occur at the edges, so tests target values just below, on and just above each boundary.
+
+@ Test Design Techniques | I
+What is equivalence partitioning?
+= Dividing inputs into groups expected to behave the same and testing one value from each group
+- Testing every possible input
+- Running the same test many times
+- Splitting the team into two groups
+? It reduces the number of test cases while keeping coverage of the different behaviors.
+
+@ Test Design Techniques | A
+A field accepts whole numbers from 1 to 100. How many partitions does equivalence partitioning identify at minimum?
+= 3 (below 1, 1 to 100, above 100)
+- 1
+- 100
+- 2
+? One valid partition and two invalid partitions (too low and too high) give three groups.
+
+@ Test Design Techniques | I
+Which technique represents combinations of conditions and their resulting actions in a table?
+= Decision table testing
+- Smoke testing
+- Load testing
+- Exploratory testing
+? Decision tables are useful for complex business rules with several conditions.
+
+@ Bug Life Cycle | B
+What is the usual first status of a newly reported bug?
+= New
+- Closed
+- Reopened
+- Deferred
+? A bug starts as New and is then assigned, fixed, retested and closed.
+
+@ Bug Life Cycle | I
+After a developer fixes a bug, which status normally comes before the tester retests it?
+= Fixed
+- New
+- Rejected
+- Duplicate
+? The developer marks the bug Fixed, and then the tester verifies the fix and moves it to Closed or Reopened.
+
+@ Bug Life Cycle | I
+What does the Reopened status mean?
+= The bug still reproduces after the fix and goes back to the developer
+- The bug was reported twice
+- The bug was postponed to a later release
+- The bug was rejected as invalid
+? If retesting shows the problem remains, the tester reopens the bug.
+
+@ Bug Life Cycle | I
+What is the difference between severity and priority?
+= Severity is the impact of the defect on the system, priority is the urgency of fixing it
+- Severity is how soon it will be fixed, priority is the technical impact
+- They are always the same
+- Severity is set by the customer, priority by the compiler
+? A crash in a rarely used feature may be high severity but low priority.
+
+@ Bug Life Cycle | A
+A spelling mistake appears in the company name on the home page. Which severity and priority are most likely?
+= Low severity and high priority
+- High severity and low priority
+- High severity and high priority
+- Low severity and low priority
+? The functionality is not affected, but the visible branding error needs a quick fix.
+
+@ Bug Life Cycle | I
+What does the Deferred status mean for a bug?
+= The fix is postponed to a later release
+- The bug is fixed and verified
+- The bug is a duplicate
+- The bug cannot be reproduced
+? Deferred bugs are valid but are scheduled for a future version.
+
+@ SDLC and STLC | B
+Which SDLC model is linear, with each phase completed before the next begins?
+= Waterfall
+- Agile
+- Spiral
+- Prototype
+? Waterfall moves through requirements, design, implementation, testing and maintenance in sequence.
+
+@ SDLC and STLC | B
+In which STLC phase are test cases usually written?
+= Test case development (design)
+- Test closure
+- Deployment
+- Requirement gathering by the customer
+? After requirement analysis and test planning, test cases and test data are prepared.
+
+@ SDLC and STLC | I
+What is the central idea of the V-model?
+= Every development phase has a corresponding testing phase
+- Testing starts only after release
+- Development and testing never overlap
+- Testing is optional
+? The left side of the V is development, the right side is verification, and each level is linked.
+
+@ SDLC and STLC | I
+Which is the correct order of the main STLC phases?
+= Requirement analysis, test planning, test case development, environment setup, test execution, test closure
+- Test execution, test planning, requirement analysis, test closure
+- Test closure, test planning, test execution, requirement analysis
+- Environment setup, test closure, test execution, test planning
+? STLC starts by understanding requirements and ends with reporting and closing the testing cycle.
+
+@ SDLC and STLC | I
+What is an entry criterion in testing?
+= A condition that must be met before a testing phase can begin
+- A bug that blocks the release
+- The last test case of a suite
+- A report written after release
+? Examples include a stable build, a ready test environment and approved test cases.
+
+@ SDLC and STLC | I
+How is testing performed in Agile teams?
+= Continuously and collaboratively within each sprint
+- Only at the end of the project
+- Only by a separate team after release
+- Only through automation
+? Testers work with developers and product owners throughout every iteration.
+
+@ Types of Testing | B
+Which testing checks that new changes have not broken existing functionality?
+= Regression testing
+- Smoke testing
+- Usability testing
+- Load testing
+? Regression tests are re-run after changes to confirm earlier behavior still works.
+
+@ Types of Testing | I
+What is smoke testing?
+= A quick check of critical functions to decide whether a build is stable enough for deeper testing
+- A detailed test of every feature
+- Testing only performance under load
+- Testing by the end user at the client site
+? If the smoke test fails, the build is returned to the developers.
+
+@ Types of Testing | I
+What is User Acceptance Testing (UAT)?
+= Testing by end users or clients to confirm the software meets their business needs
+- Testing a single method by a developer
+- Testing the performance of the network
+- Testing the installation scripts only
+? UAT is usually the final validation before the software is accepted for release.
+
+@ Types of Testing | B
+Which type of testing is performed without knowledge of the internal code?
+= Black-box testing
+- White-box testing
+- Unit testing with code coverage
+- Code review
+? Black-box testers validate inputs and outputs against requirements.
+
+@ Types of Testing | I
+What is exploratory testing?
+= Simultaneous learning, test design and execution without fully scripted test cases
+- Running only automated scripts
+- Testing after all bugs are fixed
+- Reviewing documents without using the software
+? The tester explores the application, using experience to find defects scripts might miss.

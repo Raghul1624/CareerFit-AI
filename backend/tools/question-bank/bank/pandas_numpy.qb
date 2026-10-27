@@ -1,0 +1,97 @@
+skill: Pandas and NumPy
+
+@ Pandas Basics | B
+Which pandas structure represents a table with labeled rows and columns?
+= DataFrame
+- Series
+- ndarray
+- Panel
+? A DataFrame is a two-dimensional labeled data structure. A Series is a single column.
+
+@ Pandas Basics | B
+Which method shows the first five rows of a DataFrame?
+= head()
+- top()
+- first()
+- start()
+? head(n) returns the first n rows and defaults to 5.
+
+@ Pandas Basics | I
+How do you select the column named price from a DataFrame df?
+= df["price"]
+- df.select("price")
+- df(price)
+- df.get_column("price")
+? Square brackets with the column name return that column as a Series.
+
+@ Pandas Basics | A
+What is the difference between loc and iloc?
+= loc selects by label while iloc selects by integer position
+- loc selects by position while iloc selects by label
+- They are identical
+- loc works only on columns
+? Use df.loc[row_label, col_label] for labels and df.iloc[row_pos, col_pos] for positions.
+
+@ Pandas Basics | A
+What does df.merge(other, on="id", how="left") do?
+= Keeps all rows of df and adds matching columns from other
+- Keeps only rows that match in both tables
+- Keeps all rows from both tables
+- Appends other below df
+? how="left" works like a SQL LEFT JOIN.
+
+@ Data Cleaning with Pandas | I
+Which expression counts the missing values in each column of df?
+= df.isnull().sum()
+- df.count_nulls()
+- df.missing()
+- df.nan()
+? isnull() returns a boolean DataFrame and sum() adds the True values per column.
+
+@ Data Cleaning with Pandas | I
+Which call removes rows that contain any missing value?
+= df.dropna()
+- df.fillna()
+- df.remove_na()
+- df.drop_nulls()
+? dropna() drops rows or columns with missing data. fillna() replaces missing values.
+
+@ Data Cleaning with Pandas | I
+Which call removes duplicate rows from a DataFrame?
+= df.drop_duplicates()
+- df.unique_rows()
+- df.distinct()
+- df.remove_dup()
+? drop_duplicates() keeps the first occurrence of each duplicated row by default.
+
+@ Data Cleaning with Pandas | I
+Which call converts a column of date strings into datetime values?
+= pd.to_datetime(df["date"])
+- df["date"].toDate()
+- pd.date(df["date"])
+- df["date"].parse_dates()
+? pd.to_datetime parses strings into datetime64 values so you can filter and group by date.
+
+@ Aggregation and Grouping | I
+Which expression gives the average salary for each department?
+= df.groupby("dept")["salary"].mean()
+- df.mean("dept")
+- df.avg(dept, salary)
+- df.aggregate(dept=mean)
+? groupby splits the rows by department and mean() averages the salary column in each group.
+
+@ NumPy Basics | B
+What does np.array([1, 2, 3]) * 2 return?
+= array([2, 4, 6])
+- [1, 2, 3, 1, 2, 3]
+- An error
+- array([1, 2, 3, 2])
+? NumPy arrays support element-wise arithmetic, unlike Python lists.
+
+@ NumPy Basics | I
+What is the shape of np.zeros((3, 4))?
+= (3, 4)
+- (4, 3)
+- (12,)
+- (3,)
+? The tuple passed to zeros gives rows and columns, so 3 rows and 4 columns.

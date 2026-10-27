@@ -1,0 +1,129 @@
+skill: Selenium
+
+@ WebDriver Basics | B
+What is Selenium WebDriver?
+= An API for automating interactions with a web browser
+- A database driver
+- A tool that writes requirements
+- A load-testing server
+? WebDriver sends commands to browsers such as Chrome and Firefox to simulate user actions.
+
+@ WebDriver Basics | I
+Which Java statement opens a web page in WebDriver?
+= driver.get("https://example.com");
+- driver.open("https://example.com");
+- driver.navigate("https://example.com");
+- driver.load("https://example.com");
+? driver.get(url) loads the page and waits for it to finish loading.
+
+@ WebDriver Basics | A
+What is the difference between driver.close() and driver.quit()?
+= close() closes the current window, quit() ends the whole session and closes all windows
+- close() ends the session, quit() closes the current tab only
+- They are identical
+- quit() only clears cookies
+? Use quit() at the end of a test to release the browser driver process.
+
+@ Locators | B
+Which locator is generally the fastest and most reliable when a unique id exists?
+= By.id
+- By.xpath with a long absolute path
+- By.tagName
+- By.linkText
+? Ids are meant to be unique, so By.id is quick and stable.
+
+@ Locators | I
+Which call finds a single element using a CSS selector?
+= driver.findElement(By.cssSelector("#login"))
+- driver.findElement(By.css("#login"))
+- driver.getElement("#login")
+- driver.select("#login")
+? By.cssSelector accepts any valid CSS selector.
+
+@ Locators | I
+Which exception is thrown when findElement cannot find any matching element?
+= NoSuchElementException
+- ElementNotFoundError
+- NullPointerException
+- InvalidSelectorException
+? findElements, in contrast, returns an empty list when nothing matches.
+
+@ Locators | A
+Which XPath finds a button whose visible text is Login?
+= //button[text()='Login']
+- /button.text = Login
+- //button(Login)
+- //text('Login')
+? Predicates in square brackets filter elements. text() returns the element's text.
+
+@ Waits | I
+Which wait applies globally to every findElement call?
+= Implicit wait
+- Explicit wait
+- Thread.sleep
+- Fluent logging
+? An implicit wait sets a default polling time for locating elements.
+
+@ Waits | I
+Which wait pauses until a specific condition is true, up to a timeout?
+= Explicit wait (WebDriverWait with ExpectedConditions)
+- Implicit wait
+- Thread.sleep
+- Page load strategy
+? Explicit waits poll for a condition, such as an element being clickable, and continue as soon as it is met.
+
+@ Waits | A
+Why is it discouraged to mix implicit and explicit waits?
+= They can combine in unpredictable ways and cause unexpectedly long waits
+- They are not allowed by the Java compiler
+- Explicit waits stop working completely
+- Implicit waits delete cookies
+? The Selenium documentation advises against mixing them because the resulting timeouts are hard to predict.
+
+@ Handling Elements | I
+How do you select a dropdown option by its visible text?
+= new Select(element).selectByVisibleText("India");
+- element.chooseOption("India");
+- driver.select("India");
+- element.setText("India");
+? The Select helper class works with HTML select elements.
+
+@ Handling Elements | I
+How do you switch the driver's focus to a JavaScript alert?
+= driver.switchTo().alert()
+- driver.alert()
+- driver.getAlert()
+- driver.focus("alert")
+? After switching you can accept(), dismiss() or read the alert text.
+
+@ Handling Elements | I
+How do you switch to an iframe in WebDriver?
+= driver.switchTo().frame(...)
+- driver.frame(...)
+- driver.enterFrame(...)
+- driver.findFrame(...)
+? Elements inside an iframe can be located only after switching to it.
+
+@ Frameworks and Best Practices | A
+What is the Page Object Model?
+= A design pattern where each page is a class that holds its locators and actions
+- A tool that records user clicks
+- A browser extension
+- A report format
+? POM separates test logic from page details, so a UI change requires an update in one place.
+
+@ Frameworks and Best Practices | I
+Which TestNG annotation marks a method as a test?
+= @Test
+- @Run
+- @Case
+- @Execute
+? TestNG discovers methods annotated with @Test.
+
+@ Frameworks and Best Practices | A
+What is the purpose of the TestNG annotation @BeforeMethod?
+= It runs before each test method
+- It runs once before the whole suite
+- It runs after every test method
+- It marks a test as skipped
+? @BeforeMethod is commonly used to start the browser or reset the state for every test.

@@ -1,0 +1,145 @@
+skill: Spring Boot
+
+@ Dependency Injection | B
+What is dependency injection?
+= A pattern where an object receives the objects it depends on from outside instead of creating them itself
+- A way of copying database rows between tables
+- A technique for compiling Java faster
+- A keyword used for inheritance
+? Spring creates and wires beans, so classes depend on abstractions and are easier to test and change.
+
+@ Dependency Injection | B
+Which annotation marks a class as a Spring-managed bean that is found by component scanning?
+= @Component
+- @Entity
+- @Table
+- @Override
+? @Component (and stereotypes such as @Service and @Repository) tell Spring to create and manage an instance.
+
+@ Dependency Injection | I
+Which injection style does Spring generally recommend?
+= Constructor injection
+- Field injection
+- Injection through static fields
+- Injection by reflection on private methods
+? Constructor injection makes dependencies explicit, allows final fields and keeps classes easy to unit test.
+
+@ Dependency Injection | I
+What does the @Autowired annotation do?
+= Asks Spring to inject a matching bean as a dependency
+- Creates the database tables
+- Maps a method to a URL
+- Secures an endpoint
+? Spring looks up a bean of the required type in the application context and supplies it.
+
+@ Dependency Injection | I
+What is the default scope of a Spring bean?
+= Singleton
+- Prototype
+- Request
+- Session
+? By default Spring creates one shared instance of each bean per application context.
+
+@ Spring Boot Basics | B
+Which annotation combines @Configuration, @EnableAutoConfiguration and @ComponentScan?
+= @SpringBootApplication
+- @EnableWebMvc
+- @SpringBootTest
+- @ComponentApplication
+? @SpringBootApplication is placed on the main class and enables auto-configuration and scanning.
+
+@ Spring Boot Basics | B
+What is the purpose of a Spring Boot starter dependency?
+= It brings in a curated set of libraries for a feature, such as web or JPA
+- It starts the application server in the background
+- It generates the database
+- It encrypts the application properties
+? Starters such as spring-boot-starter-web reduce manual dependency management.
+
+@ Spring Boot Basics | I
+Which annotation turns a class into a controller whose methods return JSON responses?
+= @RestController
+- @Service
+- @Repository
+- @Configuration
+? @RestController combines @Controller and @ResponseBody so return values are written to the response body.
+
+@ Spring Boot Basics | I
+Which annotation binds the variable in a URL such as /users/{id} to a method parameter?
+= @PathVariable
+- @RequestParam
+- @RequestBody
+- @ModelAttribute
+? @PathVariable reads a value from the URI template. @RequestParam reads query parameters.
+
+@ Spring Boot Basics | I
+Which annotation reads the JSON in a request body into a Java object?
+= @RequestBody
+- @PathVariable
+- @Autowired
+- @Qualifier
+? @RequestBody uses an HttpMessageConverter (Jackson) to deserialize the request body.
+
+@ Spring Boot Basics | I
+What does Spring Boot Actuator provide?
+= Production-ready endpoints such as health and metrics
+- A graphical user interface framework
+- A database migration tool
+- An object-relational mapper
+? Actuator exposes operational information, for example /actuator/health.
+
+@ Configuration | I
+Where does Spring Boot read settings such as server.port by default?
+= application.properties or application.yml
+- pom.xml only
+- web.xml only
+- The main class only
+? External configuration files are loaded from the classpath and can be overridden by environment variables.
+
+@ Configuration | I
+What does @Profile("dev") on a bean definition do?
+= Registers the bean only when the dev profile is active
+- Gives the bean a fixed name
+- Makes the bean a prototype
+- Disables the bean in all environments
+? Profiles let you provide different beans or settings for environments such as dev and prod.
+
+@ Spring Data JPA | I
+Which interface do you extend to get ready-made CRUD methods for an entity?
+= JpaRepository
+- EntityManager
+- DataSource
+- RestTemplate
+? Extending JpaRepository gives methods such as save, findById and findAll without writing implementations.
+
+@ Spring Data JPA | I
+What does a repository method named findByEmail(String email) do in Spring Data JPA?
+= Spring derives a query that finds entities by the email field
+- It must always be annotated with @Query
+- It is not allowed
+- It returns every row regardless of the email
+? Spring Data parses the method name and generates the query automatically.
+
+@ Spring Data JPA | A
+What does @Transactional do on a service method?
+= Runs the method in a transaction that commits on success and rolls back on a runtime exception by default
+- Makes the method run asynchronously
+- Caches the result in memory
+- Secures the method with a password
+? Spring opens a transaction before the method and commits or rolls it back when it finishes.
+
+@ Spring Security | I
+What does BCryptPasswordEncoder do?
+= Hashes passwords using a salted, adaptive algorithm
+- Encrypts passwords so they can be decrypted later
+- Generates JWT tokens
+- Stores user sessions
+? Passwords should be hashed, not encrypted. BCrypt adds a salt and is intentionally slow to resist brute force.
+
+@ Testing | I
+Which annotation starts the full Spring application context for an integration test?
+= @SpringBootTest
+- @Test
+- @Mock
+- @Autowired
+? @SpringBootTest loads the complete context. @Test only marks a test method.

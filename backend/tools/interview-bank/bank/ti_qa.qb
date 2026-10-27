@@ -1,0 +1,123 @@
+round: TECHNICAL_INTERVIEW
+roles: QA
+
+@ Software Process | E
+What is the difference between SDLC and STLC?
+~ SDLC covers the whole software development process | 2 | req | sdlc, development life cycle, development lifecycle, whole process
+~ STLC covers the testing activities | 2 | req | stlc, test life cycle, testing life cycle, testing activit
+~ Phases of each | 2 | req | requirement, design, planning, execution, closure, test case
+~ Testing runs alongside development | 1 | opt | parallel, alongside, early, shift left
+? SDLC describes every phase of building software: requirements, design, development, testing, deployment and maintenance. STLC is the testing-specific process inside it: requirement analysis, test planning, test case design, environment setup, execution and closure. Testing should start early, in parallel with development.
+
+@ Test Design | E
+What is a test case and what makes a good one?
+~ Contains ID, steps, data and expected result | 2 | req | steps, expected result, precondition, test data, test id
+~ Clear and unambiguous | 2 | req | clear, simple, unambiguous, understand
+~ Independent and repeatable | 2 | req | independent, repeatable, reproduc
+~ Covers positive and negative paths | 1 | opt | negative, positive, edge, boundary
+? A test case describes how to verify one behaviour: ID, preconditions, steps, test data and expected result. Good test cases are clear, independent, repeatable, traceable to a requirement and cover both positive and negative situations, including boundaries.
+
+@ Defects | E
+What is the difference between severity and priority? Give an example.
+~ Severity is technical impact | 2 | req | severity, impact, how serious, system
+~ Priority is urgency of the fix | 2 | req | priority, urgency, how soon, business
+~ Different decision makers | 1 | req | tester, product owner, business, manager
+~ Example | 2 | req | for example, e.g., logo, typo, crash, rarely used
+? Severity describes how badly a defect affects the system and is usually set by the tester. Priority describes how soon it should be fixed and is set by the business. A typo in the company name on the home page has low severity but high priority, while a crash in a rarely used feature may be high severity but low priority.
+
+@ Types of Testing | E
+What is regression testing and when do you run it?
+~ Verifies existing features still work | 2 | req | existing, still work, not broken, previous
+~ Run after changes | 2 | req | after, change, bug fix, new feature, release, code change
+~ Good candidate for automation | 2 | req | automat, repeat, suite
+~ Select tests by risk | 1 | opt | risk, critical, prioriti, impact
+? Regression testing confirms that new changes such as features or bug fixes did not break existing functionality. It runs after every significant change and before releases. Because it is repeated often it is a prime candidate for automation, and tests are chosen by risk and impact.
+
+@ Defects | E
+Describe the bug life cycle.
+~ New and Assigned | 2 | req | new, open, assigned
+~ Fixed by the developer | 1 | req | fixed, resolved, developer
+~ Retest and Verified or Closed | 2 | req | retest, verified, closed, close
+~ Reopened, Rejected or Deferred | 2 | req | reopen, reject, defer, duplicate
+? A bug starts as New, is assigned to a developer, gets Fixed and is then retested. If the fix works it is Verified and Closed, if not it is Reopened. A bug can also be Rejected (not a bug), Duplicate or Deferred to a later release.
+
+@ Test Techniques | M
+Explain black-box, white-box and grey-box testing.
+~ Black-box tests behaviour without code knowledge | 2 | req | black-box, black box, without knowledge, requirements, inputs and outputs
+~ White-box uses internal code knowledge | 2 | req | white-box, white box, internal, code, statement coverage, branch
+~ Grey-box is a combination | 2 | req | grey-box, grey box, gray, partial knowledge, combination
+~ Typical examples | 1 | opt | unit test, functional test, api, database
+? Black-box testing checks behaviour against requirements without looking at the code. White-box testing uses knowledge of the code, for example to cover statements and branches. Grey-box testing combines both, with partial knowledge such as the database schema or API design.
+
+@ Test Design | M
+Explain boundary value analysis and equivalence partitioning with an example.
+~ Equivalence partitioning groups similar inputs | 2 | req | equivalence, partition, group
+~ Test one value per partition | 1 | req | one value, representative, each partition
+~ Boundary values around limits | 2 | req | boundar, edge, minimum, maximum, just below
+~ Worked example | 2 | req | for example, e.g., age, 18, 60, 1 to 100
+? Equivalence partitioning divides inputs into groups that should behave the same and tests one value from each. Boundary value analysis tests at the edges, because defects cluster there. For an age field that accepts 18 to 60, test 17, 18, 19, 59, 60 and 61 plus a typical value like 30.
+
+@ Test Types | M
+What is the difference between smoke testing and sanity testing?
+~ Smoke checks the stability of a new build | 2 | req | smoke, build, stable, critical function
+~ Sanity checks a specific change | 2 | req | sanity, specific, bug fix, small change, narrow
+~ Smoke is broad and shallow | 1 | req | broad, shallow, wide
+~ Decision after the result | 1 | opt | reject, proceed, further testing
+? Smoke testing is a quick, broad check of the critical functions to decide whether a new build is stable enough for deeper testing. Sanity testing is narrow and focused on verifying that a particular change or bug fix works and did not break related behaviour.
+
+@ Test Automation | M
+How do you decide which test cases to automate?
+~ Repetitive and stable tests | 2 | req | repetitive, repeat, stable, regression
+~ High-risk and critical flows | 2 | req | critical, high risk, high-risk, business
+~ Poor candidates are exploratory or changing tests | 2 | req | exploratory, usability, frequently changing, one-time, one time
+~ Return on investment | 1 | opt | roi, cost, effort, maintenance
+? Automate tests that run often, are stable and deterministic, such as regression and smoke suites, and cover critical business flows or data-driven cases. Do not automate exploratory, one-off or constantly changing tests. Weigh the effort and maintenance cost against the time saved.
+
+@ Selenium | M
+How does Selenium WebDriver work and how do you make scripts reliable?
+~ Controls the browser through drivers | 2 | req | driver, browser, chromedriver, webdriver
+~ Locators | 2 | req | locator, id, xpath, css selector, by.
+~ Explicit waits instead of sleeps | 2 | req | explicit wait, webdriverwait, expectedconditions, implicit, avoid thread.sleep
+~ Page Object Model | 1 | opt | page object, pom
+? WebDriver sends commands to the browser through a browser driver. Locate elements with stable locators such as ids or CSS selectors, use explicit waits (WebDriverWait with ExpectedConditions) instead of fixed sleeps, and organise code with the Page Object Model to keep tests maintainable.
+
+@ Automation Framework | H
+How would you design a test automation framework?
+~ Layered structure with Page Objects | 2 | req | page object, pom, layer, structure, modular
+~ Data-driven and reusable utilities | 2 | req | data-driven, data driven, test data, utility, reusable
+~ Reporting and logging | 1 | req | report, log, screenshot, allure, extent
+~ CI integration and parallel runs | 2 | req | ci, jenkins, github actions, pipeline, parallel
+~ Test runner such as TestNG or JUnit | 1 | opt | testng, junit, pytest, runner
+? Build a layered framework: page objects for UI, reusable utilities, externalised test data and configuration, a test runner such as TestNG or JUnit, rich reporting with screenshots on failure, and integration with a CI pipeline that can run tests in parallel.
+
+@ Test Automation | H
+How do you handle flaky automated tests?
+~ Find the root cause | 2 | req | root cause, investigat, analy, reproduce
+~ Fix waits and synchronisation | 2 | req | wait, synchroni, timing, sleep
+~ Isolate test data and environments | 2 | req | isolat, test data, shared state, independent, environment
+~ Quarantine and retry sparingly | 1 | opt | quarantine, retry, rerun, track
+? Investigate why the test is unstable: usually timing and synchronisation, shared test data or unstable environments. Replace fixed sleeps with explicit waits, make each test independent with its own data, and use retries or quarantine only as a temporary measure while tracking the fix.
+
+@ Performance Testing | H
+How would you approach performance testing a web application?
+~ Define goals and workload | 2 | req | goal, requirement, workload, user load, sla, scenario
+~ Load, stress and endurance tests | 2 | req | load, stress, spike, endurance, soak
+~ Metrics | 2 | req | response time, throughput, error rate, cpu, memory, percentile
+~ Tools and analysis | 1 | opt | jmeter, gatling, k6, bottleneck
+? Start with goals and a realistic workload. Run load, stress, spike and endurance tests with a tool such as JMeter, Gatling or k6, and monitor response time percentiles, throughput, error rate and resource usage. Analyse bottlenecks, fix them and re-test.
+
+@ API Testing | H
+How do you test a REST API thoroughly?
+~ Functional and negative tests | 2 | req | status code, positive, negative, invalid, validation
+~ Validate response body, schema and headers | 2 | req | body, schema, header, json
+~ Authentication and authorisation | 2 | req | authentication, authorization, authorisation, token, 401, 403
+~ Tools and automation | 1 | opt | postman, rest assured, restassured, newman, automat
+? Test each endpoint with valid and invalid input and check status codes, response bodies, schema and headers. Test authentication and authorisation, including 401 and 403 cases, plus boundaries and error handling. Use Postman for exploration and automate regression checks with Newman or REST Assured in the pipeline.
+
+@ Test Strategy | H
+How do you decide whether a release is ready, and how does risk-based testing help?
+~ Risk-based prioritisation | 2 | req | risk, prioriti, critical, impact
+~ Exit criteria and metrics | 2 | req | exit criteria, pass rate, coverage, defect
+~ Open defects judged by severity | 2 | req | severity, blocker, critical defect, known issue
+~ Communicate to stakeholders | 1 | opt | stakeholder, report, sign-off, go/no-go, go no-go
+? Test the highest-risk and highest-impact areas first. Release readiness is judged against agreed exit criteria such as pass rate, coverage and no open blocker or critical defects. Present the results and the residual risk clearly so stakeholders can make the go or no-go decision.

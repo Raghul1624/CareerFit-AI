@@ -1,0 +1,130 @@
+skill: SQL Basics
+
+@ Queries and Filtering | B
+Which statement retrieves all columns from a table named employees?
+= SELECT * FROM employees;
+- GET ALL FROM employees;
+- SELECT employees;
+- FETCH * employees;
+? SELECT * FROM table_name returns every column of every row.
+
+@ Queries and Filtering | B
+Which clause sorts the rows in a result set?
+= ORDER BY
+- SORT BY
+- GROUP BY
+- ARRANGE BY
+? ORDER BY sorts ascending by default. Add DESC for descending order.
+
+@ Queries and Filtering | B
+Which operator tests whether a value lies within an inclusive range?
+= BETWEEN
+- RANGE
+- WITHIN
+- LIKE
+? x BETWEEN 10 AND 20 is true when x is greater than or equal to 10 and less than or equal to 20.
+
+@ Queries and Filtering | I
+Which condition correctly finds rows where the email column has no value?
+= WHERE email IS NULL
+- WHERE email = NULL
+- WHERE email == NULL
+- WHERE email EQUALS NULL
+? NULL means unknown, so comparisons with = never match. You must use IS NULL.
+
+@ Queries and Filtering | I
+Which LIKE pattern matches every name that starts with Ra?
+= 'Ra%'
+- '%Ra'
+- 'Ra_'
+- '*Ra*'
+? % matches any number of characters. '%Ra' would match names that end with Ra, and _ matches exactly one character.
+
+@ Queries and Filtering | I
+What does SELECT DISTINCT city FROM customers return?
+= Each different city value once
+- Every city including duplicates
+- Only the first row of the table
+- The number of cities
+? DISTINCT removes duplicate rows from the result.
+
+@ DDL and DML | B
+Which statement changes the values of existing rows?
+= UPDATE
+- INSERT
+- ALTER
+- MODIFY
+? UPDATE ... SET changes data in existing rows. INSERT adds rows and ALTER changes table structure.
+
+@ DDL and DML | I
+What is the difference between DELETE and TRUNCATE?
+= DELETE can remove selected rows with WHERE, while TRUNCATE removes all rows
+- TRUNCATE can use a WHERE clause but DELETE cannot
+- They are identical in every way
+- DELETE drops the table structure
+? DELETE supports a WHERE clause. TRUNCATE quickly empties the whole table and keeps its structure.
+
+@ Aggregation | B
+Which function returns the average of a numeric column?
+= AVG
+- MEAN
+- AVERAGE
+- MID
+? AVG(column) calculates the arithmetic mean of the non-NULL values.
+
+@ Aggregation | I
+What does COUNT(column_name) count?
+= The rows where that column is not NULL
+- All rows including those with NULL
+- Only the distinct values
+- The number of columns in the table
+? COUNT(*) counts rows, while COUNT(column) ignores NULLs in that column.
+
+@ Aggregation | I
+What does this query return?
+  SELECT department, COUNT(*) FROM employees GROUP BY department HAVING COUNT(*) > 5;
+= Departments that have more than 5 employees, with their counts
+- Every department with its count
+- Employees whose department number is above 5
+- A syntax error
+? GROUP BY forms one group per department and HAVING keeps only the groups with more than 5 rows.
+
+@ Keys and Constraints | B
+Which constraint guarantees that all values in a column are different?
+= UNIQUE
+- CHECK
+- DEFAULT
+- NOT NULL
+? UNIQUE prevents duplicate values. NOT NULL only prevents missing values.
+
+@ Keys and Constraints | I
+What does a FOREIGN KEY enforce?
+= A value must match an existing key in the referenced table
+- Every value in the column must be unique
+- The column can never be NULL
+- The column value is generated automatically
+? Foreign keys maintain referential integrity between related tables.
+
+@ Subqueries | I
+Which query returns employees whose salary is above the company average?
+= SELECT * FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);
+- SELECT * FROM employees WHERE salary > AVG(salary);
+- SELECT * FROM employees HAVING salary > AVG(salary);
+- SELECT * FROM employees WHERE AVG(salary) < salary;
+? Aggregate functions cannot be used directly in WHERE. A scalar subquery computes the average first.
+
+@ Sorting and Limiting | A
+Which query returns the second highest distinct salary?
+= SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);
+- SELECT salary FROM employees ORDER BY salary LIMIT 2;
+- SELECT SECOND(salary) FROM employees;
+- SELECT MAX(salary) - 1 FROM employees;
+? The inner query finds the highest salary and the outer query takes the maximum among the smaller values.
+
+@ Query Execution | A
+In which logical order does SQL evaluate the main clauses of a SELECT statement?
+= FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY
+- SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY
+- FROM, SELECT, WHERE, GROUP BY, ORDER BY, HAVING
+- WHERE, FROM, GROUP BY, SELECT, HAVING, ORDER BY
+? Rows are read (FROM), filtered (WHERE), grouped, filtered by group (HAVING), projected (SELECT) and finally sorted.

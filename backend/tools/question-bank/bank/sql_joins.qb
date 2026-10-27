@@ -1,0 +1,117 @@
+skill: SQL Joins and Aggregations
+
+@ Inner and Outer Joins | B
+Which join returns only the rows that have matching values in both tables?
+= INNER JOIN
+- LEFT JOIN
+- CROSS JOIN
+- FULL OUTER JOIN
+? An INNER JOIN keeps a row only when the join condition matches in both tables.
+
+@ Inner and Outer Joins | B
+What does a RIGHT JOIN return?
+= All rows from the right table and the matching rows from the left table
+- All rows from the left table and the matching rows from the right table
+- Only the rows that match in both tables
+- Every combination of rows from both tables
+? Rows of the right table with no match get NULL in the left table columns.
+
+@ Inner and Outer Joins | I
+What does this query return?
+  SELECT c.name, o.id FROM customers c
+  LEFT JOIN orders o ON c.id = o.customer_id
+  WHERE o.id IS NULL;
+= Customers who have never placed an order
+- All orders with their customers
+- Customers who have placed at least one order
+- A syntax error
+? The LEFT JOIN keeps all customers. Rows where o.id IS NULL are customers with no matching order.
+
+@ Inner and Outer Joins | I
+Which join type returns all rows from both tables, with NULLs where there is no match?
+= FULL OUTER JOIN
+- INNER JOIN
+- CROSS JOIN
+- NATURAL JOIN
+? FULL OUTER JOIN combines LEFT and RIGHT JOIN results. MySQL has no FULL JOIN keyword, so it is emulated with UNION.
+
+@ Inner and Outer Joins | I
+In a JOIN query, what does the ON clause define?
+= The condition used to match rows between the two tables
+- The sort order of the result
+- Which columns appear in the result
+- How rows are grouped
+? ON specifies how a row of one table relates to a row of the other, usually key equality.
+
+@ Self and Cross Joins | I
+Table A has 3 rows and table B has 4 rows. How many rows does A CROSS JOIN B return?
+= 12
+- 7
+- 4
+- 3
+? A cross join produces the Cartesian product: 3 x 4 = 12 rows.
+
+@ Self and Cross Joins | I
+Which join helps you list each employee together with their manager when both are rows of the same employees table?
+= Self join
+- Cross join
+- Natural join
+- Full outer join
+? A self join joins a table to itself using two aliases, for example employees e JOIN employees m ON e.manager_id = m.id.
+
+@ Aggregation and Grouping | I
+What does this query do?
+  SELECT dept, AVG(salary) FROM emp GROUP BY dept ORDER BY AVG(salary) DESC;
+= Lists departments sorted from highest to lowest average salary
+- Returns one row with the overall average salary
+- Sorts departments alphabetically
+- Raises an error because ORDER BY cannot use aggregates
+? ORDER BY may use aggregate expressions when the query is grouped.
+
+@ Aggregation and Grouping | I
+Why does SELECT dept, name, COUNT(*) FROM emp GROUP BY dept; fail in strict SQL mode?
+= name is neither in the GROUP BY clause nor inside an aggregate function
+- COUNT(*) cannot be combined with GROUP BY
+- dept is a reserved word
+- GROUP BY requires a HAVING clause
+? Every selected column must be grouped or aggregated, otherwise the value for each group is ambiguous.
+
+@ Aggregation and Grouping | I
+What does COUNT(DISTINCT customer_id) return?
+= The number of different customers
+- The total number of rows
+- The number of NULL values
+- The sum of all customer ids
+? DISTINCT inside COUNT counts each different non-NULL value once.
+
+@ Aggregation and Grouping | A
+Which query finds email addresses that appear more than once in a users table?
+= SELECT email, COUNT(*) FROM users GROUP BY email HAVING COUNT(*) > 1;
+- SELECT email, COUNT(*) FROM users WHERE COUNT(*) > 1 GROUP BY email;
+- SELECT DISTINCT email FROM users;
+- SELECT email FROM users ORDER BY COUNT(*) > 1;
+? Group by email and use HAVING to keep only groups with more than one row. WHERE cannot filter on aggregates.
+
+@ Set Operations | I
+Which statement about UNION and UNION ALL is correct?
+= UNION removes duplicate rows while UNION ALL keeps them
+- UNION keeps duplicates while UNION ALL removes them
+- They always return identical results
+- UNION ALL sorts the combined result
+? UNION performs an extra duplicate-elimination step, so UNION ALL is faster when duplicates do not matter.
+
+@ Window Functions | A
+Which function numbers rows 1, 2, 3 ... within each partition, giving every row a unique number?
+= ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)
+- RANK() OVER (...)
+- COUNT(*) GROUP BY ...
+- SUM() OVER ()
+? ROW_NUMBER always gives distinct sequential numbers. RANK gives tied rows the same number.
+
+@ Window Functions | A
+Salaries 100, 100 and 90 are ranked with RANK() OVER (ORDER BY salary DESC). Which ranks result?
+= 1, 1, 3
+- 1, 1, 2
+- 1, 2, 3
+- 1, 2, 2
+? RANK gives ties the same rank and then skips the following rank. DENSE_RANK would return 1, 1, 2.

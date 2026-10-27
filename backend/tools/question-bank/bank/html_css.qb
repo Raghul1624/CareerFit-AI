@@ -1,0 +1,137 @@
+skill: HTML and CSS
+
+@ HTML Structure | B
+Which tag defines the main, largest heading of a page?
+= <h1>
+- <h6>
+- <head>
+- <title>
+? <h1> is the top-level heading. <title> sets the browser tab text and <head> holds metadata.
+
+@ HTML Structure | B
+Which attribute provides alternative text for an image?
+= alt
+- title
+- src
+- caption
+? alt text is read by screen readers and shown when the image cannot load.
+
+@ HTML Structure | B
+Which tag creates an unordered (bulleted) list?
+= <ul>
+- <ol>
+- <li>
+- <dl>
+? <ul> holds bullet items and <ol> holds numbered items. <li> is a list item.
+
+@ HTML Structure | I
+Which HTML5 element represents a section of navigation links?
+= <nav>
+- <menu-links>
+- <links>
+- <navigate>
+? <nav> is a semantic element that helps accessibility and search engines understand the page.
+
+@ Forms and Semantics | I
+Which input type shows typed characters as dots?
+= password
+- hidden
+- secret
+- text-mask
+? <input type="password"> masks the characters the user types.
+
+@ Forms and Semantics | I
+Which attribute makes a form field mandatory?
+= required
+- mandatory
+- validate
+- needed
+? The required attribute lets the browser block submission when the field is empty.
+
+@ CSS Selectors | B
+Which selector targets the element with the id main?
+= #main
+- .main
+- main
+- *main
+? # selects by id and . selects by class.
+
+@ CSS Selectors | I
+Which selector targets all p elements that are descendants of a div?
+= div p
+- div + p
+- p div
+- div, p
+? A space is the descendant combinator. div > p would match only direct children.
+
+@ CSS Selectors | I
+Which has the higher specificity in CSS?
+= An id selector
+- A class selector
+- An element selector
+- They have equal specificity
+? Specificity order from highest to lowest is inline style, id, class, element.
+
+@ Box Model and Layout | I
+With box-sizing: border-box, the width property includes:
+= Content, padding and border
+- Content only
+- Content and margin
+- Margin only
+? border-box makes sizing more predictable because padding and border do not add to the declared width.
+
+@ Box Model and Layout | I
+Which declaration positions an element relative to its nearest positioned ancestor?
+= position: absolute
+- position: static
+- float: none
+- display: block
+? Absolutely positioned elements are placed using top, right, bottom and left relative to the nearest ancestor that is not static.
+
+@ Box Model and Layout | A
+What does z-index control?
+= The stacking order of positioned elements
+- The zoom level of a page
+- The transparency of an element
+- The font size
+? Higher z-index values appear in front of lower values for positioned elements.
+
+@ Flexbox and Grid | I
+Which property aligns flex items along the main axis?
+= justify-content
+- align-items
+- align-content
+- flex-wrap
+? justify-content works on the main axis. align-items works on the cross axis.
+
+@ Flexbox and Grid | I
+Which declaration turns an element into a flex container?
+= display: flex
+- flex: container
+- layout: flex
+- position: flex
+? display: flex makes the direct children flex items.
+
+@ Flexbox and Grid | A
+Which declaration creates three equal-width columns in CSS Grid?
+= grid-template-columns: repeat(3, 1fr)
+- grid-columns: 3
+- columns: 3fr
+- grid-template: 3
+? repeat(3, 1fr) creates three columns that share the available space equally.
+
+@ Responsive Design | I
+Which meta tag is essential for responsive pages on mobile devices?
+= <meta name="viewport" content="width=device-width, initial-scale=1">
+- <meta name="mobile" content="true">
+- <meta charset="responsive">
+- <meta name="layout" content="fluid">
+? The viewport meta tag tells mobile browsers to use the device width instead of a zoomed-out desktop layout.
+
+@ Responsive Design | I
+Which CSS feature applies styles depending on the screen width?
+= Media queries
+- Pseudo-elements
+- CSS variables
+- Keyframes
+? @media (max-width: 600px) { ... } applies rules only on small screens.

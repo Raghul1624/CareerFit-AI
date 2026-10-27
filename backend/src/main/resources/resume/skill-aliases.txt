@@ -1,0 +1,26 @@
+# Configurable resume keyword rules. Format:  Skill Name: alias1, alias2, ...
+# Skill names must match rows in the skills table. A skill without a line here is matched by its own name.
+# Matching is case-insensitive and whole-word, so "java" does not match "javascript".
+Java Basics: java, core java, jdk, jvm
+Core Java and OOP: oop, oops, object oriented, object-oriented, multithreading, exception handling
+Advanced Java: jdbc, servlet, servlets, jsp
+Python Basics: python
+Python Data Structures: data structures, dsa
+Pandas and NumPy: pandas, numpy
+SQL Basics: sql, mysql, postgresql, oracle, sql server
+SQL Joins and Aggregations: joins, group by, aggregate functions, aggregation
+Excel: excel, pivot table, pivot tables, vlookup, spreadsheets
+Statistics: statistics, statistical analysis, regression, hypothesis testing
+Power BI: power bi, powerbi
+Qlik Sense: qlik, qlik sense
+HTML and CSS: html, html5, css, css3
+JavaScript: javascript, es6
+React: react, reactjs, react.js
+Spring Boot: spring boot, springboot, spring framework, spring mvc
+REST APIs: rest api, rest apis, restful, rest services
+Manual Testing: manual testing, test cases, test case, quality assurance
+Selenium: selenium, webdriver
+API Testing: api testing, postman
+Quantitative Aptitude: quantitative aptitude, aptitude
+Logical Reasoning: logical reasoning
+Verbal Ability: verbal ability

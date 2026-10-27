@@ -1,0 +1,134 @@
+skill: Python Basics
+
+@ Syntax and Variables | B
+Which of the following is a valid variable name in Python?
+= _total
+- 2total
+- total-amount
+- class
+? Names may contain letters, digits and underscores but cannot start with a digit, contain hyphens or be a reserved keyword.
+
+@ Syntax and Variables | B
+How do you write a single-line comment in Python?
+= # this is a comment
+- // this is a comment
+- /* this is a comment */
+- <!-- this is a comment -->
+? Python comments start with a hash sign and continue to the end of the line.
+
+@ Syntax and Variables | I
+What is the output of print(type(None))?
+= <class 'NoneType'>
+- <class 'None'>
+- null
+- <class 'object'>
+? None is the single value of the type NoneType.
+
+@ Data Types | B
+What is the data type of the value 3.14 in Python?
+= float
+- int
+- str
+- decimal
+? Numbers with a fractional part are floats.
+
+@ Data Types | I
+What does type(5 / 2) return in Python 3?
+= <class 'float'>
+- <class 'int'>
+- <class 'decimal'>
+- <class 'number'>
+? The / operator always performs true division and returns a float, so 5 / 2 is 2.5.
+
+@ Data Types | I
+What does bool([]) evaluate to?
+= False
+- True
+- None
+- An error
+? Empty containers, zero, None and empty strings are falsy in Python.
+
+@ Operators | I
+What is the value of 2 ** 3 in Python?
+= 8
+- 6
+- 5
+- 9
+? The ** operator raises a number to a power, so 2 ** 3 is 8.
+
+@ Operators | A
+What does print(7 // -2) output?
+= -4
+- -3
+- 3
+- -3.5
+? Floor division rounds toward negative infinity. 7 / -2 is -3.5 and its floor is -4.
+
+@ Control Flow | B
+Which keyword skips the rest of the current loop iteration and moves to the next one?
+= continue
+- break
+- pass
+- skip
+? continue jumps to the next iteration. break exits the loop entirely.
+
+@ Control Flow | B
+What does this code print?
+  for i in range(3):
+      print(i, end=" ")
+= 0 1 2
+- 1 2 3
+- 0 1 2 3
+- 1 2
+? range(3) produces 0, 1 and 2, because the end value is excluded.
+
+@ Control Flow | I
+What does this code print?
+  for i in range(1, 10, 3):
+      print(i, end=" ")
+= 1 4 7
+- 1 4 7 10
+- 1 3 6 9
+- 4 7 10
+? The step is 3, giving 1, 4 and 7. The next value 10 is not below the stop value 10.
+
+@ Strings | I
+What does "Python"[1:4] return?
+= yth
+- Pyt
+- ytho
+- yt
+? Slicing from index 1 up to but not including index 4 gives the characters at positions 1, 2 and 3.
+
+@ Strings | I
+What does "hello world".title() return?
+= Hello World
+- HELLO WORLD
+- Hello world
+- hello world
+? title() capitalizes the first letter of each word.
+
+@ Basic Coding | I
+What does this code print?
+  x = [1, 2, 3]
+  y = x
+  y.append(4)
+  print(x)
+= [1, 2, 3, 4]
+- [1, 2, 3]
+- [4]
+- An error
+? y = x does not copy the list. Both names refer to the same object, so the change is visible through x.
+
+@ Basic Coding | A
+What does this code print?
+  def f(a, b=[]):
+      b.append(a)
+      return b
+  print(f(1))
+  print(f(2))
+= [1] and then [1, 2]
+- [1] and then [2]
+- [1, 2] and then [1, 2]
+- An error
+? The default list is created once when the function is defined and is shared by all calls that omit b.

@@ -1,0 +1,81 @@
+skill: Power BI
+
+@ Power BI Basics | B
+What is Power BI Desktop mainly used for?
+= Building data models and reports
+- Hosting websites
+- Writing mobile apps
+- Running a database server
+? Power BI Desktop is the authoring tool where you connect to data, model it and design reports.
+
+@ Power BI Basics | I
+Which tool in Power BI is used to clean and transform data before loading it?
+= Power Query Editor
+- The report canvas
+- Q&A visual
+- The Format pane
+? Power Query lets you remove columns, change types, merge tables and filter rows before the data is loaded.
+
+@ Power BI Basics | I
+Which Power BI service feature refreshes a dataset automatically at set times?
+= Scheduled refresh
+- Bookmarks
+- Drill-through
+- Export to PDF
+? Scheduled refresh keeps published reports current without manual action.
+
+@ DAX | B
+Which language is used to write measures and calculated columns in Power BI?
+= DAX
+- VBA
+- HTML
+- Java
+? DAX (Data Analysis Expressions) is the formula language for Power BI data models.
+
+@ DAX | I
+Which DAX expression defines a measure for total sales?
+= Total Sales = SUM(Sales[Amount])
+- Total Sales = ADD(Sales.Amount)
+- SELECT SUM(Amount) FROM Sales
+- Total Sales := TOTAL Sales[Amount]
+? SUM takes a column reference in the form Table[Column].
+
+@ DAX | A
+What does the CALCULATE function do in DAX?
+= Evaluates an expression in a modified filter context
+- Creates a new table from a file
+- Deletes rows from a table
+- Formats a number as currency
+? CALCULATE changes the filters applied to an expression, which is the basis of most advanced measures.
+
+@ DAX | A
+What is the main difference between a calculated column and a measure?
+= A calculated column is computed per row and stored, while a measure is computed at query time using the filter context
+- A measure is stored per row and a column is computed at query time
+- They are the same thing
+- Measures can only be used in Power Query
+? Measures respond to slicers and filters in the report, while calculated columns are fixed at refresh.
+
+@ Data Modeling | I
+Which relationship is the most common between a dimension table and a fact table?
+= One-to-many
+- Many-to-many
+- One-to-one
+- No relationship
+? One row in the dimension table (for example one product) relates to many rows in the fact table (many sales).
+
+@ Visuals | I
+Which visual is best for showing parts of a whole when there are only a few categories?
+= Donut chart
+- Scatter plot
+- Line chart
+- Matrix with no totals
+? Pie and donut charts show proportions and work best with a small number of slices.
+
+@ Visuals | B
+What does a slicer do in a Power BI report?
+= Lets users filter the other visuals on the page
+- Splits a table into files
+- Deletes selected rows
+- Creates a new measure
+? A slicer is an on-canvas filter that users can click to change what other visuals show.

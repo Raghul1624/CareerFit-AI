@@ -1,0 +1,213 @@
+round: HR_INTERVIEW
+roles: ALL
+# HR answers are scored on Relevance (the concepts below), Structure, Specificity and Communication.
+# '!' lines are the guidance shown to the candidate while answering.
+
+@ Self Introduction | E
+Tell me about yourself.
+! Cover your background, key skills, a project or achievement, and what you are looking for. Aim for 80 to 150 words.
+~ Education or background | 2 | req | studied, degree, graduat, college, university, background, experience, completed
+~ Key skills | 2 | req | skill, proficient, technolog, java, python, sql, react, tools, knowledge
+~ A project or achievement | 2 | req | project, built, develop, internship, achieved, award, created
+~ What you are looking for | 1 | opt | looking for, seeking, goal, opportunity, want to, role, contribute
+? A strong introduction is short and structured: who you are (education or experience), your main skills, one relevant project or achievement with a result, and why you want this role. Avoid reading your resume line by line and avoid personal details that are not relevant.
+^ I recently completed my Bachelor's degree in Computer Science, where I focused on Java, SQL and web development. During my final year I built a full stack inventory system with Spring Boot and React that my department used to track lab equipment, and I completed a one-month internship where I worked with a team of five. I enjoy solving problems and learning quickly, and I am looking for a developer role where I can contribute to real products and keep growing.
+
+@ Strengths | E
+What are your greatest strengths?
+! Name two or three strengths that fit the role and back at least one with a real example.
+~ Names specific strengths | 2 | req | strength, good at, strong, skilled, quick learner, problem solving, adaptab, disciplin, communicat
+~ Gives an example | 3 | req | for example, for instance, when i, in my project, once, i built, i led, example
+~ Links to the job | 2 | req | role, job, team, company, helps me, useful, contribute, work
+~ Shows impact | 1 | opt | result, improv, success, delivered, saved, increased, helped
+? Choose strengths that matter for the job, such as problem solving, learning quickly or teamwork, and prove them with a short example: what you did and what happened. A claim without an example sounds generic.
+^ My main strengths are problem solving and learning quickly. For example, in my final year project I had to use Spring Security without any prior experience. I read the documentation, built a small prototype in two days and then added login and roles to the project, which let us finish a week early. These strengths help me adapt to new tools and contribute to the team quickly in this role.
+
+@ Weaknesses | E
+What is your biggest weakness?
+! Be honest, choose a real but manageable weakness and explain what you are doing to improve.
+~ Names a real weakness | 2 | req | weakness, struggle, difficult for me, used to, tend to, find it hard, improve on
+~ Shows self-awareness | 2 | req | realised, realized, aware, noticed, learned that, understand that
+~ Describes actions to improve | 3 | req | working on, improv, practi, course, learning, started, plan, habit, steps
+~ Shows progress | 1 | opt | now, progress, better, since then, result, already
+? A good answer names a real weakness that is not essential for the job, shows that you understand its effect and describes concrete steps you are taking, with some progress. Avoid fake weaknesses such as 'I work too hard' and avoid weaknesses that rule you out.
+^ My biggest weakness used to be that I spent too long perfecting small details, which sometimes slowed my team down. I realised this when a college project deadline almost slipped because I kept polishing one page. Since then I have been working on it by setting time limits for each task and asking a teammate for a quick review. On my last project I delivered all my tasks on time, and I still keep improving this habit.
+
+@ Motivation | E
+Why should we hire you?
+! Match your skills and attitude to what the role needs and give evidence.
+~ Skills that match the role | 3 | req | skill, experience, knowledge, technolog, qualif, match, fit
+~ Evidence or example | 2 | req | project, built, example, internship, achieved, result, certificat
+~ Learning attitude and teamwork | 1 | req | learn, team, adapt, quick, willing, collaborat, passion
+~ What you will contribute | 2 | req | contribute, add value, help the team, bring, deliver, company, growth
+? Show that you understand what the company needs and connect it to your skills, backed by a project or result. Mention your willingness to learn and to work in a team, and say what you will contribute. Do not criticise other candidates.
+^ You should hire me because my skills match this role and I learn quickly. I have strong knowledge of Java, SQL and React, and I built a project with these tools that handled over 200 records in daily use. I also work well in a team and I am willing to learn whatever the project needs. I will contribute by delivering clean, tested code and by helping the team meet its goals.
+
+@ Career Goals | E
+Where do you see yourself in five years?
+! Show realistic ambition that fits the role and the company. Mention skills you want to build.
+~ Realistic short-term goals | 2 | req | first year, short term, short-term, next few years, learn, master, grow as
+~ Longer-term direction | 2 | req | five years, long term, long-term, senior, lead, architect, expert, responsib
+~ Link to the company or role | 2 | req | company, organi, role, team, contribute, here
+~ Plan to develop skills | 1 | opt | skills, certificat, learn, mentor, course, improve
+? Describe a realistic path: first learn the role and deliver well, then take on more responsibility such as becoming a senior developer or lead. Tie your goals to growth inside the company and to the skills you plan to build.
+^ In the first 12 months I want to learn the company's technology, such as Java and Spring Boot, and deliver reliable work as part of the team. Over the next 3 to 5 years I want to grow into a senior developer who can design features and mentor new joiners. For example, I plan to earn an AWS certification and lead a small module. I hope to grow with a company like this one where I can take on more responsibility over time.
+
+@ Motivation | E
+Why do you want to work in this role and for our company?
+! Show that you researched the company and explain your genuine interest in the role.
+~ Interest in the role | 2 | req | interest, passion, enjoy, excited, fascinat, love
+~ Knowledge of the company | 3 | req | company, product, mission, values, culture, technology, clients, known for, researched
+~ How you fit | 2 | req | skills, fit, contribute, strengths, experience, align
+~ Growth and learning | 1 | opt | learn, grow, opportunit, challeng
+? Show you did your homework: mention something specific about the company, such as its products, values or technology, and explain why the role matches your interests and skills. Generic answers about salary or location make a weak impression.
+^ I enjoy building software that people actually use, which is why this role interests me. I researched your company and I am excited by your products and your focus on quality and learning. My skills in Java and React fit the work, and I believe I can contribute quickly. I also see a great opportunity to learn from experienced engineers here and grow my career.
+
+@ Motivation | E
+Why did you choose a career in this field?
+! Tell a short, honest story about what attracted you and what you have done since.
+~ What attracted you | 2 | req | interest, fascinat, curious, enjoy, inspired, passion, started
+~ Steps you have taken | 3 | req | course, project, learn, practic, certificat, internship, built, studied
+~ Future in the field | 2 | req | future, grow, career, goal, demand, opportunit
+? Explain what first interested you, what you have done to build your skills (courses, projects, internships) and where you want to go. A specific story is more convincing than a general statement such as 'the field is in demand'.
+^ I became curious about programming in my second year when I built a small quiz application and enjoyed seeing people use it. Since then I have completed online courses, built three projects and finished an internship to build my skills. I want a career in software because the field keeps growing, there is always something new to learn and I can use technology to solve real problems.
+
+@ Teamwork | M
+Describe a time you worked in a team and faced a challenge. How did you handle it?
+! Use the STAR method: Situation, Task, Action, Result. Say what YOU did.
+~ Situation and task | 2 | req | team, project, situation, task, assignment, group, goal
+~ Your actions | 3 | req | i decided, i organised, i organized, i suggested, i talked, i helped, i took, i created, my role, i proposed
+~ Communication and collaboration | 2 | req | communicat, discuss, collaborat, listen, meeting, shared, agreed
+~ Result and lesson | 2 | req | result, outcome, finished, delivered, completed, learned, successful, improved
+? Use the STAR structure: describe the team and the challenge, your specific actions (how you communicated and helped), the outcome and what you learned. Use I for your own contribution and we for the team's result.
+^ In my final year project our team of four had a conflict about the database design a month before the deadline. My role was to coordinate the backend. I organised a meeting, listened to each person's reasoning and suggested we compare both designs with a small test. We chose the simpler one, which reduced our query time by about 30 percent. We delivered on time and I learned to resolve disagreements with data.
+
+@ Project Explanation | M
+Explain a project you have worked on.
+! Cover the problem, your role, the technologies, one challenge you solved and the result.
+~ The problem and purpose | 2 | req | problem, purpose, objective, aim, goal, solves, built to
+~ Your role and technologies | 3 | req | my role, i was responsible, i implemented, i developed, java, python, react, sql, spring, technolog, tools
+~ A challenge and your solution | 3 | req | challenge, difficult, issue, bug, solved, fixed, overcame, optimi
+~ Outcome | 2 | req | result, outcome, users, improved, deployed, completed, learned, feature
+? Describe what the project does and why, your own responsibilities, the technologies and design choices, one real challenge and how you solved it, and the outcome or what you learned. Be ready for follow-up questions about any detail you mention.
+^ My main project was an inventory management system built to solve the problem of tracking lab equipment on paper. I was responsible for the backend, which I developed with Java, Spring Boot and MySQL, and I also helped with the React front end. The biggest challenge was slow search, which I solved by adding database indexes and pagination. As a result searches became about three times faster, and I learned a lot about performance and teamwork.
+
+@ Pressure | M
+How do you handle tight deadlines and pressure?
+! Describe a real situation and the steps you follow, such as prioritising and communicating early.
+~ Prioritise tasks | 3 | req | prioriti, important first, urgent, plan, schedule, break down, breaking
+~ Communicate early | 2 | req | communicat, inform, update, ask for help, tell the team, manager, stakeholder
+~ Stay focused and calm | 1 | req | calm, focus, stay organised, stay organized, positive, avoid panic
+~ Example and result | 2 | req | for example, deadline, once, when i, delivered, completed, on time
+? Explain a method: break the work into tasks, prioritise by importance, communicate early about risks, ask for help when needed and stay calm. Back it up with a real example in which you met a deadline, and mention what you learned.
+^ I prioritise tasks by importance, break the work into smaller steps and communicate early if there is a risk. For example, during my internship we had two days to finish a reporting feature. I listed the must-have parts, told my mentor which part might slip and focused on the core first. We delivered the main feature on time, and I stayed calm by taking one task at a time.
+
+@ Feedback | M
+Tell me about a time you received critical feedback. How did you react?
+! Show that you listen, act on feedback and learn from it. Use a real example.
+~ A specific situation | 2 | req | feedback, review, manager, mentor, teacher, told me, pointed out, code review
+~ Positive reaction | 2 | req | listened, thanked, accepted, understood, did not take it personally, open
+~ Action taken | 3 | req | improved, changed, worked on, practiced, practised, fixed, applied, started
+~ Result and lesson | 2 | req | result, better, learned, since then, improved, now
+? Choose a real example. Show that you listened without getting defensive, asked questions if needed, took concrete action and improved. End with what you learned and how it helped later.
+^ During a code review on my college project, my mentor told me my methods were too long and hard to read. I listened carefully, thanked him and asked for examples. I then improved my code by splitting it into smaller methods and adding clear names. My next review had far fewer comments, and since then I always review my own code before submitting it.
+
+@ Learning | M
+Tell me about a time you had to learn a new technology quickly.
+! Explain why, how you learned and what you achieved.
+~ The need or situation | 2 | req | needed, required, project, deadline, new technology, new tool, assigned
+~ How you learned | 3 | req | documentation, tutorial, course, practised, practiced, asked, mentor, youtube, built, experiment
+~ What you achieved | 2 | req | built, completed, delivered, implemented, result, working, deployed
+~ Lesson for the future | 1 | opt | learned, approach, now i, confident, next time
+? Describe the reason you had to learn something new, your learning plan (documentation, tutorials, a small practice project, asking others), what you built with it and what the experience taught you about learning fast.
+^ In my internship I needed to learn React in one week to help build a dashboard. I followed the official tutorial, practised by building a small to-do application and asked my mentor questions when I was stuck. By the end of the week I built two working components for the dashboard, and the result was that the team could demo on schedule. I learned that building something small is the fastest way to learn.
+
+@ Conflict | M
+Tell me about a disagreement with a teammate and how you resolved it.
+! Stay professional: focus on the issue, not the person. Use STAR.
+~ The situation | 2 | req | disagree, conflict, different opinion, misunderstanding, teammate, colleague
+~ Listening and communicating respectfully | 3 | req | listened, discussed, understand, perspective, respectful, calmly, talked
+~ Finding a solution | 2 | req | compromise, agreed, solution, decided, data, tried both, common ground
+~ Outcome and relationship | 2 | req | result, worked together, outcome, learned, relationship, moved forward
+? Describe the disagreement neutrally, show that you listened to the other view, explain how you reached a compromise or a decision based on facts, and say how the relationship and the result benefited. Never blame the other person.
+^ In a group project a teammate and I disagreed about using a framework for the front end. I listened to his perspective, explained my concern about the learning time and suggested we try both for 1 hour. For example, we built the same login page in React and Angular. We agreed on a compromise, using the framework he preferred with a simple structure I proposed. As a result we delivered on time with a score of 90 percent from our faculty, and I learned to focus on the problem, not the person.
+
+@ Time Management | M
+How do you prioritise when you have several tasks at once?
+! Explain your method with an example.
+~ A clear method | 3 | req | urgent, important, priority, deadline, list, plan, matrix, impact
+~ Communication with stakeholders | 2 | req | communicat, discuss, clarify, manager, team, expectations
+~ Tools and organisation | 1 | req | todo, to-do, calendar, trello, jira, kanban, tracker, notes
+~ Example | 2 | req | for example, once, when i, last semester, project, handled
+? Use a clear method such as listing tasks, ranking by urgency and impact, and clarifying priorities with your manager. Use a tool to track work and give a real example in which this helped you deliver on time.
+^ I list all tasks, rank them by urgency and impact and clarify priorities with my manager when needed. For example, in my last semester I had a project deadline, two exams and a lab report within the same week. I used a simple to-do list in Trello, started with the project and scheduled the exams around it. I completed everything on time and kept my results above 80 percent.
+
+@ Failure | H
+Describe a significant failure or mistake. What did you learn?
+! Choose a real mistake, take responsibility, and show what you changed afterwards.
+~ A real mistake with context | 2 | req | mistake, failed, failure, went wrong, missed, error, did not work
+~ Takes responsibility | 3 | req | my responsibility, i should have, i took, my mistake, i own, i accept, i realised, i realized
+~ Corrective action | 3 | req | fixed, corrected, apologis, apologiz, recover, solved, informed, took steps
+~ Lessons and changes | 3 | req | learned, lesson, now i, since then, changed, process, checklist, prevent
+? Pick a genuine failure, explain the context, accept responsibility without excuses, describe how you fixed the situation and, most importantly, what you changed afterwards so it would not happen again.
+^ In my internship I once deployed a change without testing it on the staging server, and it broke the login page for about twenty minutes. It was my mistake and I took responsibility by informing my mentor immediately and rolling back the change. I then fixed the bug and wrote a deployment checklist. Since then I always test on staging first, and I learned that careful process prevents most problems.
+
+@ Disagreement | H
+Describe a time you disagreed with your manager or a senior colleague on a technical decision. What did you do?
+! Show respect, evidence and flexibility. Say what happened in the end.
+~ The disagreement and your position | 2 | req | disagree, concern, different approach, my view, my opinion, suggested
+~ Evidence and respectful communication | 3 | req | data, evidence, example, prototype, benchmark, respectful, politely, explained, asked questions
+~ Willingness to commit to the decision | 2 | req | accepted, committed, supported, decision, agreed, final call, disagree and commit
+~ Outcome and learning | 2 | req | result, outcome, learned, proved, later, worked out
+? Explain your concern calmly with evidence such as data or a small prototype, listen to the other side and accept the final decision even if it differs from yours. Close with the result and what you learned about influencing decisions respectfully.
+^ On my internship project my senior colleague wanted to store reports in a file system, but I was concerned about search performance. I explained my view politely with a small benchmark that showed MySQL was 5 times faster for search. He appreciated the data but chose the file system for now because of the deadline. I accepted the decision and supported it. As a result the release was on time, and after 2 months we moved to the database, which taught me to persuade with evidence.
+
+@ Ethics | H
+You discover a serious bug in production just before a release deadline and your manager wants to ship anyway. What would you do?
+! Explain your reasoning: impact, communication, options and your decision.
+~ Assess severity and impact | 3 | req | severity, impact, risk, users affected, data loss, security, critical
+~ Escalate and communicate transparently | 3 | req | inform, escalat, communicate, raise, tell, stakeholder, manager, transparent
+~ Offer options | 2 | req | option, workaround, hotfix, rollback, delay, feature flag, fix quickly, mitigat
+~ Integrity and quality | 2 | req | quality, honest, integrity, responsib, ethic, trust, customers
+? First assess how severe the bug is and who it affects. Raise it immediately with evidence, and propose options such as a hotfix, a feature flag, a rollback or a short delay. Let the decision makers choose with full information, document it, and do not hide serious problems that could harm users.
+^ I would first assess the severity and who is affected, for example whether it could cause data loss or a security issue. Then I would inform my manager immediately with clear evidence and suggest options such as a quick hotfix, a feature flag or a short delay. If the risk to users is serious I would recommend not releasing, because quality and honesty matter more than one deadline. The final decision should be made with full information.
+
+@ Project Depth | H
+Describe the most challenging project you have worked on: your role, key decisions, trade-offs and impact.
+! Go deeper than a summary: explain decisions, alternatives you rejected and measurable results.
+~ Context and your role | 2 | req | my role, i was responsible, team of, project, owned, led
+~ Key technical decisions | 3 | req | decided, chose, because, design, architecture, approach, technolog
+~ Trade-offs and alternatives | 3 | req | trade-off, tradeoff, alternative, instead of, considered, pros and cons, compared
+~ Impact and learning | 2 | req | impact, result, improved, reduced, increased, users, %, learned
+? A deep answer explains your responsibilities, the main design decisions and why you made them, the alternatives you considered and their trade-offs, and the measurable impact. Finish with what you would do differently.
+^ My most challenging project was a booking system for our college, where I was responsible for the backend design in a team of four. I decided to use Spring Boot with MySQL instead of a NoSQL database because the data was relational, and the trade-off was more schema planning. I also considered caching but chose indexes first to keep the system simple. As a result searches took under 200 ms for 5000 records, and next time I would add automated tests earlier.
+
+@ Leadership | H
+Describe a time you led or influenced others without formal authority.
+! Show initiative, communication and results. Use STAR.
+~ Taking initiative | 2 | req | initiative, volunteered, noticed, took the lead, proposed, started
+~ Influencing with communication | 3 | req | convinc, persuad, explained, motivat, listened, aligned, encouraged
+~ Delivering a result | 2 | req | result, delivered, completed, success, achieved, improved
+~ Reflection | 1 | opt | learned, next time, feedback, leadership
+? Describe a situation where you saw a need and took the lead without being the manager: how you convinced and motivated others, what actions you took and the result. Reflect on what you learned about leadership.
+^ In my third year our group had no clear plan for a hackathon project, so I took the initiative and proposed splitting the work into four parts. I explained the benefits, listened to concerns and encouraged each person to choose a task. As a result we delivered a working prototype in 24 hours and won second place. I learned that listening and clear communication matter more than titles when leading.
+
+@ Teamwork | H
+How would you handle a teammate who repeatedly misses deadlines and affects your work?
+! Show empathy first, then clear communication, support and escalation only if needed.
+~ Talk to the teammate privately first | 3 | req | talk to, speak with, private, one-on-one, conversation, ask
+~ Understand the reason and offer help | 3 | req | reason, understand, listen, offer help, support, workload, blocker, pair
+~ Agree on a plan and follow up | 2 | req | plan, agree, checkpoint, follow up, break down, smaller
+~ Escalate only if needed | 2 | req | escalat, manager, lead, if it continues, if nothing changes
+? Start with a private, respectful conversation to understand the cause, such as workload or blockers, and offer help. Agree on a plan with checkpoints and follow up. If the problem continues and affects the team, involve the manager with facts, not blame.
+^ I would first talk to the teammate privately to understand the reason, for example a heavy workload or a blocker, and offer help such as pair programming. Then we would agree on a plan with smaller tasks and regular checkpoints, and I would follow up each day. If the problem continued and affected the team, I would involve our manager with facts, not blame, and ask for support to reach a fair solution.
+
+@ Integrity | H
+Your manager asks you to take a shortcut that would reduce quality or break company rules. How do you respond?
+! Show professionalism, honesty and a constructive alternative.
+~ Understand the pressure and the reason | 2 | req | understand, reason, deadline, pressure, business need, why
+~ Explain risks respectfully | 3 | req | risk, consequence, quality, security, policy, rule, compliance, long term, long-term
+~ Offer alternatives | 3 | req | alternative, option, compromise, phase, reduce scope, prioriti, suggest
+~ Stand by ethical standards | 2 | req | ethic, integrity, honest, refuse, not comfortable, escalat, responsib
+? Acknowledge the business pressure, explain the risks to quality, security or compliance calmly, and propose alternatives such as reducing scope or phasing the work. If the request is clearly unethical or against policy, politely refuse and escalate through proper channels.
+^ I would first understand the pressure and the reason behind the request, such as a deadline. Then I would explain the risks calmly, for example to security, quality or compliance, and suggest alternatives like reducing the scope or releasing in phases. If the request were clearly unethical or against company policy, I would politely refuse and escalate through the proper channel, because honesty and integrity matter to me and to the company.

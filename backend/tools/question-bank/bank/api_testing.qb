@@ -1,0 +1,113 @@
+skill: API Testing
+
+@ API Testing Basics | B
+What does API testing primarily validate?
+= The business logic, data and responses at the service layer without using the UI
+- Only the colors of the web page
+- Only the database indexes
+- Only the browser compatibility
+? API tests send requests directly to endpoints and check the responses.
+
+@ API Testing Basics | B
+Which tool is widely used for manual API testing?
+= Postman
+- Photoshop
+- Notepad only
+- Figma
+? Postman lets you build requests, send them and inspect responses.
+
+@ API Testing Basics | I
+Besides the response body, what else should an API test normally check?
+= The status code and the headers
+- The window size of the browser
+- The color of the response
+- The font of the documentation
+? A complete test verifies status, headers, body and sometimes response time.
+
+@ Status Codes and Validation | I
+A GET request for /users/999 where no such user exists should usually return:
+= 404
+- 200
+- 201
+- 500
+? 404 Not Found tells the client that the resource does not exist.
+
+@ Status Codes and Validation | I
+What does a 400 Bad Request response indicate?
+= The client sent a malformed or invalid request
+- The server crashed
+- The resource was created
+- The user is not logged in
+? A 4xx code means the problem is with the request.
+
+@ Status Codes and Validation | I
+What does a 500 status code indicate?
+= An internal server error
+- A successful response
+- A redirect
+- A missing resource
+? 5xx codes indicate that the server failed to handle a valid request.
+
+@ Status Codes and Validation | A
+Which is a good negative test for POST /users when email is a required field?
+= Send a body without email and expect 400 with a clear error message
+- Send a valid body and expect 201
+- Send the same valid body twice and ignore the result
+- Call GET /users
+? Negative tests confirm that the API rejects invalid input properly.
+
+@ Status Codes and Validation | A
+What is schema validation in API testing?
+= Verifying that the response structure and data types match the agreed contract
+- Checking the file size of the response
+- Validating the HTML of a web page
+- Counting the number of requests
+? Schema checks catch missing fields or wrong types that value checks might miss.
+
+@ Postman | I
+What is a Postman collection?
+= A group of saved requests that can be organized and run together
+- A list of browsers
+- A database backup
+- A type of API key
+? Collections can be shared and run with the collection runner.
+
+@ Postman | I
+Which Postman feature lets you write JavaScript assertions on the response?
+= The Tests tab
+- The Console only
+- The Params tab
+- The Authorization tab
+? The Tests tab runs scripts after the response arrives, for example pm.test checks.
+
+@ Postman | I
+What are environments and variables in Postman used for?
+= Reusing values such as base URL or tokens across requests and environments
+- Changing the color theme
+- Compressing responses
+- Writing documentation only
+? Variables avoid hard-coded values and make it easy to switch between dev, test and production.
+
+@ Authentication and Security | A
+Which header typically carries a bearer token?
+= Authorization
+- Content-Length
+- Accept-Language
+- User-Agent
+? The format is Authorization: Bearer followed by the token.
+
+@ Authentication and Security | A
+Which test verifies authorization on a restricted endpoint?
+= Calling it as a user without the required role and expecting 403
+- Calling it with a valid admin token and expecting 200 only
+- Calling it with a very long URL
+- Calling it with an empty body
+? Authorization tests confirm that users cannot access resources they are not permitted to use.
+
+@ Authentication and Security | I
+A request is sent without any token to a protected endpoint. What should the API return?
+= 401 Unauthorized
+- 200 OK
+- 201 Created
+- 204 No Content
+? Missing credentials should be rejected with 401.

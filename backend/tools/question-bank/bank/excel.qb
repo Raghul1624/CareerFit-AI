@@ -1,0 +1,113 @@
+skill: Excel
+
+@ Formulas and Functions | B
+Which function adds the numbers in a range of cells?
+= SUM
+- ADD
+- TOTAL
+- PLUS
+? =SUM(A1:A10) adds all numbers in the range.
+
+@ Formulas and Functions | B
+Which character must every Excel formula start with?
+= =
+- #
+- @
+- $
+? Typing an equals sign tells Excel that the cell contains a formula.
+
+@ Formulas and Functions | I
+What does =COUNTIF(A1:A10, ">50") return?
+= The number of cells in A1:A10 that are greater than 50
+- The sum of values greater than 50
+- The average of values greater than 50
+- An error
+? COUNTIF counts cells that meet a single condition.
+
+@ Formulas and Functions | I
+What does the $ sign do in the reference $A$1?
+= Makes the reference absolute so it does not change when the formula is copied
+- Formats the cell as currency
+- Locks the worksheet
+- Converts the value to text
+? $A$1 keeps both the column and the row fixed. $A1 fixes only the column.
+
+@ Formulas and Functions | I
+What does =IFERROR(A1/B1, 0) do?
+= Returns 0 when the division produces an error
+- Always returns 0
+- Highlights errors in red
+- Deletes the cell when B1 is empty
+? IFERROR returns the second argument if the first one evaluates to an error such as #DIV/0!.
+
+@ Formulas and Functions | I
+Which function returns the number of non-empty cells in a range?
+= COUNTA
+- COUNT
+- COUNTBLANK
+- LEN
+? COUNT counts only numeric cells. COUNTA counts every cell that is not empty.
+
+@ Lookup Functions | I
+Which function searches the first column of a table and returns a value from another column in the same row?
+= VLOOKUP
+- HLOOKUP
+- SUMIF
+- COUNTA
+? VLOOKUP looks down the first column. HLOOKUP searches across the first row.
+
+@ Lookup Functions | I
+In =VLOOKUP(A2, D:F, 3, FALSE), what does FALSE mean?
+= Look for an exact match
+- Return the result as text
+- Sort the table first
+- Ignore blank cells
+? The last argument FALSE (or 0) requests an exact match. TRUE allows an approximate match on sorted data.
+
+@ Lookup Functions | A
+Which function is often combined with MATCH as a more flexible alternative to VLOOKUP?
+= INDEX
+- CHOOSE
+- ROUND
+- TRIM
+? INDEX returns the value at a position and MATCH finds that position, so you can look up in any direction.
+
+@ Data Cleaning in Excel | I
+Which function removes extra spaces from text, including leading, trailing and repeated spaces?
+= TRIM
+- CLEAN
+- LEN
+- FIND
+? TRIM leaves single spaces between words. CLEAN removes non-printable characters.
+
+@ Data Cleaning in Excel | I
+Which Excel feature quickly removes duplicate rows from a data range?
+= Data > Remove Duplicates
+- Conditional Formatting
+- Freeze Panes
+- Goal Seek
+? Remove Duplicates keeps the first row for each unique combination of the selected columns.
+
+@ Data Cleaning in Excel | I
+Which function joins text from several cells using a delimiter?
+= TEXTJOIN
+- LEN
+- FIND
+- TRIMMEAN
+? TEXTJOIN(delimiter, ignore_empty, range) combines text with a separator.
+
+@ PivotTables | B
+What is a PivotTable used for?
+= Summarizing and analyzing large data sets interactively
+- Checking spelling in a sheet
+- Writing macros
+- Formatting fonts
+? PivotTables let you group, filter and aggregate data without writing formulas.
+
+@ Charts | B
+Which chart type is best for showing how a value changes over time?
+= Line chart
+- Pie chart
+- Radar chart
+- Bubble chart
+? Line charts connect data points in time order, which makes trends easy to see.

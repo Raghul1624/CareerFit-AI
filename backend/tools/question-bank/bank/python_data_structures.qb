@@ -1,0 +1,108 @@
+skill: Python Data Structures
+
+@ Lists and Tuples | B
+Which list method adds a single element to the end of a list?
+= append()
+- add()
+- push()
+- extend_one()
+? append(x) adds x at the end. insert(i, x) adds at a given index.
+
+@ Lists and Tuples | B
+How do you read the last element of a list a?
+= a[-1]
+- a[len(a)]
+- a.last()
+- a[last]
+? Negative indexes count from the end. a[len(a)] would be out of range.
+
+@ Lists and Tuples | I
+What does the sort() method of a list return?
+= None, because it sorts the list in place
+- A new sorted list
+- The original list
+- True
+? list.sort() modifies the list and returns None. sorted(a) returns a new list.
+
+@ Lists and Tuples | I
+What does [1, 2] * 2 evaluate to?
+= [1, 2, 1, 2]
+- [2, 4]
+- [1, 2, 2]
+- An error
+? Multiplying a list by an integer repeats its elements.
+
+@ Lists and Tuples | B
+Which statement about tuples is true?
+= Tuples are immutable sequences
+- Tuples can be changed with append()
+- Tuples cannot be indexed
+- Tuples must contain only numbers
+? Once created, the items of a tuple cannot be reassigned, added or removed.
+
+@ Lists and Tuples | A
+Which expressions create a new list that is a shallow copy of list a? (Select all that apply)
+= a.copy()
+= a[:]
+= list(a)
+- b = a
+? Assignment only creates another reference to the same list. The other three create a new list object.
+
+@ Sets | I
+What does len({1, 2, 2, 3}) return?
+= 3
+- 4
+- 2
+- An error
+? A set stores unique elements, so the duplicate 2 is dropped.
+
+@ Sets | I
+Which operator returns the elements common to two sets a and b?
+= a & b
+- a | b
+- a + b
+- a ^ b
+? & is intersection, | is union and ^ is symmetric difference.
+
+@ Sets | I
+What is the average time complexity of checking x in s when s is a set?
+= O(1)
+- O(n)
+- O(log n)
+- O(n log n)
+? Sets are hash based, so membership tests take constant time on average.
+
+@ Dictionaries | B
+How do you read the key "age" from a dictionary d and get None if it is missing?
+= d.get("age")
+- d["age"]
+- d.age
+- d.find("age")
+? d["age"] raises KeyError for a missing key, while get returns None or a default.
+
+@ Dictionaries | I
+What does d.items() return?
+= A view of the (key, value) pairs
+- A list of keys only
+- A list of values only
+- A string
+? items() is commonly used to loop with for key, value in d.items().
+
+@ Dictionaries | A
+What does this code print?
+  d = {"a": 1, "b": 2}
+  d["c"] = d.get("c", 0) + 5
+  print(d)
+= {'a': 1, 'b': 2, 'c': 5}
+- {'a': 1, 'b': 2}
+- {'a': 1, 'b': 2, 'c': 0}
+- A KeyError
+? get returns the default 0 for the missing key, so the new value is 0 + 5 = 5.
+
+@ Comprehensions | I
+What does [x * x for x in range(4)] produce?
+= [0, 1, 4, 9]
+- [1, 4, 9, 16]
+- [0, 1, 2, 3]
+- [0, 2, 4, 6]
+? range(4) gives 0 to 3 and each value is squared.

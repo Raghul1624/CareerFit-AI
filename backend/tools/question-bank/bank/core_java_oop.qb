@@ -1,0 +1,226 @@
+skill: Core Java and OOP
+
+@ OOP Concepts | B
+Which OOP principle hides an object's internal data and exposes it only through methods?
+= Encapsulation
+- Polymorphism
+- Inheritance
+- Overloading
+? Encapsulation bundles data with methods and restricts direct access, typically using private fields and public getters and setters.
+
+@ OOP Concepts | B
+Which keyword prevents a class from being extended by another class?
+= final
+- static
+- abstract
+- private
+? A final class cannot be subclassed. An abstract class, in contrast, is designed to be extended.
+
+@ OOP Concepts | I
+Method overloading is an example of which kind of polymorphism?
+= Compile-time polymorphism
+- Runtime polymorphism
+- Multiple inheritance
+- Encapsulation
+? Overloaded methods are resolved by the compiler using the argument types, so it is compile-time (static) polymorphism. Overriding is runtime polymorphism.
+
+@ OOP Concepts | I
+Which statement about abstract classes is true?
+= They can contain both abstract and concrete methods
+- They can be instantiated directly with new
+- Every method in them must be abstract
+- They cannot have constructors
+? An abstract class may mix implemented and abstract methods and can have constructors, but it cannot be instantiated on its own.
+
+@ OOP Concepts | I
+Which statement about interfaces in Java 8 and later is correct?
+= Interfaces can contain default and static methods with a body
+- Interfaces can declare constructors
+- Interfaces can hold non-static, non-final instance variables
+- A class uses the extends keyword to inherit from an interface
+? Java 8 added default and static methods to interfaces. Fields in interfaces are implicitly public static final, and classes use implements.
+
+@ OOP Concepts | I
+What does this code print?
+  class A { void show() { System.out.println("A"); } }
+  class B extends A { void show() { System.out.println("B"); } }
+  A obj = new B();
+  obj.show();
+= B
+- A
+- AB
+- A compile-time error
+? The overridden method is chosen at runtime from the actual object type (B), not from the reference type (A). This is runtime polymorphism.
+
+@ OOP Concepts | A
+What does this code print?
+  class P { static void f() { System.out.println("P"); } }
+  class C extends P { static void f() { System.out.println("C"); } }
+  P p = new C();
+  p.f();
+= P
+- C
+- PC
+- A runtime exception
+? Static methods are hidden, not overridden. The call is bound at compile time using the reference type P.
+
+@ OOP Concepts | I
+Which is the most restrictive access modifier that still lets a subclass in a different package access a member?
+= protected
+- private
+- default (package-private)
+- A subclass in a different package can never access it
+? protected members are accessible in the same package and in subclasses, even in other packages. private and default do not allow that.
+
+@ OOP Concepts | A
+What happens if a subclass constructor does not explicitly call super(...)?
+= The compiler inserts a call to the superclass no-argument constructor
+- The superclass constructor is never called
+- The code fails to compile in every case
+- super() is called after the subclass constructor body finishes
+? Every constructor begins with an implicit super() call unless it calls this(...) or super(...) explicitly. If the superclass has no no-arg constructor the code will not compile.
+
+@ OOP Concepts | A
+Which statement about the equals() and hashCode() contract is correct?
+= If two objects are equal according to equals(), they must return the same hashCode()
+- If two objects have the same hashCode(), equals() must return true
+- hashCode() must return a different value for every object
+- Overriding equals() alone is always enough for objects used as HashMap keys
+? Equal objects must have equal hash codes. The reverse is not required, because different objects may collide.
+
+@ OOP Concepts | B
+Can a Java class extend more than one class directly?
+= No, Java allows a class to extend only one class
+- Yes, by listing classes separated by commas after extends
+- Yes, but only if all of them are abstract
+- Yes, but only inside the same package
+? Java does not support multiple inheritance of classes. A class may implement multiple interfaces instead.
+
+@ Collections | B
+Which of these collections does NOT allow duplicate elements?
+= HashSet
+- ArrayList
+- LinkedList
+- Vector
+? A Set stores unique elements only. Lists allow duplicates.
+
+@ Collections | I
+Which Map implementation preserves the insertion order of its keys?
+= LinkedHashMap
+- HashMap
+- TreeMap
+- None of them preserves any order
+? LinkedHashMap keeps entries in insertion order. HashMap has no guaranteed order and TreeMap keeps keys sorted.
+
+@ Collections | I
+What is the average-case time complexity of get(key) in a HashMap?
+= O(1)
+- O(n)
+- O(log n)
+- O(n log n)
+? A HashMap computes a hash to find the bucket directly, so lookups are constant time on average.
+
+@ Collections | I
+What does this code print?
+  List<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4));
+  list.remove(1);
+  System.out.println(list);
+= [1, 3, 4]
+- [2, 3, 4]
+- [1, 2, 4]
+- [1, 2, 3, 4]
+? remove(int index) is chosen for an int argument, so the element at index 1 (the value 2) is removed.
+
+@ Collections | A
+What typically happens if you remove elements from an ArrayList inside an enhanced for loop over that same list?
+= A ConcurrentModificationException is thrown
+- The removal works safely every time
+- The code does not compile
+- The loop silently skips the removal
+? The iterator detects a structural modification made outside of itself and fails fast. Use Iterator.remove() or removeIf instead.
+
+@ Collections | I
+Which statement about HashMap is correct?
+= It allows one null key and multiple null values
+- It allows no null keys or values
+- It is thread-safe by default
+- It keeps its keys sorted
+? HashMap permits a single null key and any number of null values. It is not synchronized.
+
+@ Exception Handling | B
+Which block executes whether or not an exception occurs (unless the JVM exits)?
+= finally
+- catch
+- try
+- throws
+? The finally block is intended for cleanup code and runs after try and catch.
+
+@ Exception Handling | B
+Which of these is a checked exception?
+= IOException
+- NullPointerException
+- ArithmeticException
+- ArrayIndexOutOfBoundsException
+? Checked exceptions such as IOException must be caught or declared. The others are unchecked (RuntimeException subclasses).
+
+@ Exception Handling | I
+What does this code print?
+  try {
+    int x = 10 / 0;
+  } catch (ArithmeticException e) {
+    System.out.print("A");
+  } finally {
+    System.out.print("F");
+  }
+= AF
+- A
+- F
+- FA
+? Division by zero throws ArithmeticException, so the catch block prints A, then finally prints F.
+
+@ Exception Handling | I
+Which keyword is used to explicitly throw an exception object?
+= throw
+- throws
+- raise
+- try
+? throw raises an exception instance. throws only declares that a method may throw one.
+
+@ Exception Handling | A
+What does this code print?
+  static int f() {
+    try { return 1; }
+    finally { System.out.print("F"); }
+  }
+  System.out.println(f());
+= F1
+- 1F
+- 1
+- F
+? The finally block runs before the method actually returns, printing F first. Then println prints the returned value 1.
+
+@ Exception Handling | A
+Which rule applies to a multi-catch block such as catch (IOException | SQLException e)?
+= The listed exception types must not be subclasses of each other
+- The variable e can be reassigned inside the block
+- Only unchecked exceptions are allowed
+- It requires at least three alternatives
+? In a multi-catch the alternatives cannot be related by inheritance, and the parameter is implicitly final.
+
+@ Java 8 Features | I
+Which functional interface takes one argument and returns a boolean?
+= Predicate
+- Consumer
+- Supplier
+- Runnable
+? Predicate<T> has a test(T) method that returns boolean. Consumer returns nothing and Supplier takes no argument.
+
+@ Java 8 Features | I
+What does this code compute?
+  List<Integer> n = List.of(1, 2, 3, 4, 5, 6);
+  int r = n.stream().filter(x -> x % 2 == 0).mapToInt(x -> x * x).sum();
+= 56
+- 91
+- 12
+- 21
+? The even numbers are 2, 4 and 6, and their squares sum to 4 + 16 + 36 = 56.

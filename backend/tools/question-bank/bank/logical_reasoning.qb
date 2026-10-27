@@ -1,0 +1,417 @@
+skill: Logical Reasoning
+
+@ Number Series | B
+What comes next in the series 2, 4, 6, 8, ?
+= 10
+- 9
+- 12
+- 14
+? The series increases by 2 each time.
+
+@ Number Series | B
+What comes next in the series 3, 6, 12, 24, ?
+= 48
+- 36
+- 30
+- 60
+? Each number is double the previous one.
+
+@ Number Series | I
+What comes next in the series 1, 4, 9, 16, 25, ?
+= 36
+- 30
+- 49
+- 35
+? These are square numbers: 1, 2, 3, 4, 5 squared, so the next is 6 squared = 36.
+
+@ Number Series | I
+What comes next in the series 2, 3, 5, 7, 11, ?
+= 13
+- 12
+- 14
+- 15
+? These are consecutive prime numbers, and the next prime after 11 is 13.
+
+@ Number Series | I
+What comes next in the series 1, 1, 2, 3, 5, 8, ?
+= 13
+- 11
+- 12
+- 16
+? Each term is the sum of the previous two (Fibonacci): 5 + 8 = 13.
+
+@ Number Series | A
+What comes next in the series 2, 6, 12, 20, 30, ?
+= 42
+- 40
+- 36
+- 44
+? The differences are 4, 6, 8, 10, so the next difference is 12 and 30 + 12 = 42.
+
+@ Number Series | A
+What comes next in the series 1, 2, 6, 24, 120, ?
+= 720
+- 240
+- 600
+- 480
+? Each term is multiplied by 2, 3, 4, 5 and then 6: 120 x 6 = 720.
+
+@ Coding-Decoding | B
+If CAT is coded as DBU by moving each letter one step forward, how is DOG coded?
+= EPH
+- CNF
+- DPH
+- EOH
+? Each letter moves one place forward: D to E, O to P, G to H.
+
+@ Coding-Decoding | B
+If A = 1, B = 2, C = 3 and so on, what is the sum of the letter values of ACE?
+= 9
+- 8
+- 10
+- 15
+? A = 1, C = 3, E = 5, and 1 + 3 + 5 = 9.
+
+@ Coding-Decoding | I
+If PENCIL is coded as QFODJM, how is BOOK coded?
+= CPPL
+- CPOL
+- APPL
+- BPPL
+? Each letter moves one step forward: B to C, O to P, O to P, K to L.
+
+@ Coding-Decoding | I
+If MONDAY is written as NPOEBZ, how is FRIDAY written in the same code?
+= GSJEBZ
+- GSJEBY
+- ESHCZX
+- GRJEBZ
+? Each letter moves one step forward: F to G, R to S, I to J, D to E, A to B, Y to Z.
+
+@ Coding-Decoding | I
+If A = 1, B = 2 and so on, what is the sum of the values of the letters in BAD?
+= 7
+- 6
+- 8
+- 9
+? B = 2, A = 1, D = 4, and the sum is 7.
+
+@ Coding-Decoding | A
+In a certain code, + means - and - means +. What is the value of 15 + 5 - 3?
+= 13
+- 17
+- 23
+- 7
+? With the symbols swapped, the expression is 15 - 5 + 3 = 13.
+
+@ Blood Relations | B
+A is the brother of B. B is the mother of C. How is A related to C?
+= Maternal uncle
+- Father
+- Paternal uncle
+- Grandfather
+? A is the brother of C's mother, so A is C's maternal uncle.
+
+@ Blood Relations | I
+Pointing to a man, Rita says, "He is the son of my mother's only son." How is the man related to Rita?
+= Nephew
+- Brother
+- Son
+- Cousin
+? Rita's mother's only son is Rita's brother, so the man is her brother's son, which is her nephew.
+
+@ Blood Relations | I
+X is the father of Y. Y is the sister of Z. Z is the son of W. How is W related to X?
+= Wife
+- Sister
+- Mother
+- Daughter
+? Y and Z are siblings, so W is a parent of Y. X is Y's father, so W is X's wife.
+
+@ Blood Relations | I
+Introducing a woman, Arun says, "Her mother is the only daughter of my mother." How is the woman related to Arun?
+= Niece
+- Sister
+- Daughter
+- Cousin
+? The only daughter of Arun's mother is Arun's sister, so the woman is the daughter of his sister: his niece.
+
+@ Blood Relations | B
+A is the mother of B. B is the sister of C. D is the father of C. How is D related to B?
+= Father
+- Brother
+- Uncle
+- Grandfather
+? B and C are siblings, so D is the father of both.
+
+@ Direction Sense | B
+A man walks 5 km north and then 5 km south. How far is he from the starting point?
+= 0 km
+- 5 km
+- 10 km
+- 2.5 km
+? The two movements cancel out.
+
+@ Direction Sense | I
+A man walks 3 km east and then 4 km north. What is his straight-line distance from the start?
+= 5 km
+- 7 km
+- 6 km
+- 1 km
+? The two legs form a right triangle, and sqrt(3^2 + 4^2) = 5.
+
+@ Direction Sense | I
+A person faces east and turns right twice. Which direction does he face now?
+= West
+- North
+- South
+- East
+? Facing east, the first right turn gives south and the second gives west.
+
+@ Direction Sense | I
+A man faces south and turns 90 degrees anticlockwise. Which direction does he face now?
+= East
+- West
+- North
+- South-West
+? When facing south, turning anticlockwise (to the left) points to the east.
+
+@ Direction Sense | A
+A walks 10 m east, turns left and walks 5 m, then turns left again and walks 10 m. How far and in which direction is he from the start?
+= 5 m north
+- 5 m south
+- 10 m west
+- 15 m north
+? East 10 then north 5 then west 10 brings him back to the starting column, 5 m north of the start.
+
+@ Syllogisms | B
+All cats are animals. All animals are living beings. Conclusion: All cats are living beings.
+= Definitely follows
+- Does not follow
+- Only some cats are living beings
+- Cannot be determined
+? Both premises chain together, so every cat is a living being.
+
+@ Syllogisms | I
+Some pens are books. All books are tables. Conclusion: Some pens are tables.
+= Definitely follows
+- Does not follow
+- All pens are tables
+- No pen is a table
+? The pens that are books are also tables, so some pens are tables.
+
+@ Syllogisms | I
+All A are B. Some B are C. Conclusion: Some A are C.
+= Does not necessarily follow
+- Definitely follows
+- No A is C
+- All A are C
+? The B that are C might not be the B that are A, so the conclusion is not guaranteed.
+
+@ Syllogisms | I
+No dog is a cat. Some cats are pets. Conclusion: Some pets are not dogs.
+= Definitely follows
+- Does not follow
+- All pets are dogs
+- No pet is a cat
+? The pets that are cats cannot be dogs, so some pets are not dogs.
+
+@ Syllogisms | A
+All roses are flowers. Some flowers fade quickly. Conclusions: I. Some roses fade quickly. II. Some flowers are roses. Which follows?
+= Only conclusion II follows
+- Only conclusion I follows
+- Both follow
+- Neither follows
+? Some flowers are roses follows from all roses being flowers. The fading flowers need not be roses.
+
+@ Ordering and Ranking | B
+In a row of 10 people, Ravi is 4th from the left. What is his position from the right?
+= 7th
+- 6th
+- 5th
+- 4th
+? Position from the right = 10 - 4 + 1 = 7.
+
+@ Ordering and Ranking | I
+Asha is 7th from the front and 9th from the back in a queue. How many people are in the queue?
+= 15
+- 16
+- 17
+- 14
+? Total = 7 + 9 - 1 = 15.
+
+@ Ordering and Ranking | I
+Four people A, B, C and D sit in a row. D is at the left end, A is to the left of B, and C is to the right of B. Who is third from the left?
+= B
+- A
+- C
+- D
+? The order from the left is D, A, B, C, so B is third.
+
+@ Ordering and Ranking | I
+A is taller than B, B is taller than C, D is taller than A, and E is shorter than C. Who is the shortest?
+= E
+- C
+- B
+- D
+? The order from tallest to shortest is D, A, B, C, E.
+
+@ Ordering and Ranking | A
+Rani ranks 12th from the top and 28th from the bottom in a class. How many students are in the class?
+= 39
+- 40
+- 38
+- 41
+? Total = 12 + 28 - 1 = 39.
+
+@ Analogies and Odd One Out | B
+Hand : Glove :: Foot : ?
+= Sock
+- Shoe lace
+- Knee
+- Toe
+? A glove is worn on the hand and a sock is worn on the foot.
+
+@ Analogies and Odd One Out | B
+Which one is the odd one out: Apple, Banana, Carrot, Mango?
+= Carrot
+- Apple
+- Banana
+- Mango
+? Carrot is a vegetable while the others are fruits.
+
+@ Analogies and Odd One Out | I
+Doctor : Hospital :: Teacher : ?
+= School
+- Book
+- Student
+- Exam
+? A doctor works in a hospital and a teacher works in a school.
+
+@ Analogies and Odd One Out | I
+Pen : Write :: Knife : ?
+= Cut
+- Sharp
+- Steel
+- Kitchen
+? The relationship is a tool and its function.
+
+@ Analogies and Odd One Out | I
+Which number is the odd one out: 8, 27, 64, 100, 125?
+= 100
+- 8
+- 64
+- 125
+? The others are perfect cubes: 2^3, 3^3, 4^3 and 5^3.
+
+@ Analogies and Odd One Out | A
+Which one is the odd one out: Python, Java, Linux, C++?
+= Linux
+- Python
+- Java
+- C++
+? Linux is an operating system while the others are programming languages.
+
+@ Calendar and Clock | B
+Today is Monday. What day will it be after 10 days?
+= Thursday
+- Wednesday
+- Friday
+- Sunday
+? 10 days is 1 week and 3 days, so Monday plus 3 days is Thursday.
+
+@ Calendar and Clock | I
+5 March 2024 is a Tuesday. What day is 5 April 2024?
+= Friday
+- Thursday
+- Saturday
+- Wednesday
+? March has 31 days, which is 4 weeks and 3 days, so Tuesday plus 3 days is Friday.
+
+@ Calendar and Clock | I
+How many times do the hands of a clock overlap in 12 hours?
+= 11
+- 12
+- 10
+- 24
+? The hands overlap 11 times in 12 hours, because the 12 o'clock overlap at the end coincides with the start of the next cycle.
+
+@ Calendar and Clock | I
+What is the angle between the hour hand and the minute hand at 3:00?
+= 90 degrees
+- 60 degrees
+- 120 degrees
+- 180 degrees
+? Each hour mark is 30 degrees apart, and 3 hours is 90 degrees.
+
+@ Calendar and Clock | A
+What is the angle between the hands of a clock at 3:15?
+= 7.5 degrees
+- 0 degrees
+- 15 degrees
+- 22.5 degrees
+? The hour hand is at 3 x 30 + 15 x 0.5 = 97.5 degrees and the minute hand is at 90 degrees, so the angle is 7.5 degrees.
+
+@ Puzzles and Reasoning | A
+A father is 4 times as old as his son. After 6 years he will be 3 times as old as his son. What is the son's present age?
+= 12 years
+- 6 years
+- 10 years
+- 15 years
+? Let the son be x. Then 4x + 6 = 3(x + 6), so x = 12.
+
+@ Puzzles and Reasoning | I
+The sum of two numbers is 40 and their difference is 10. What is the larger number?
+= 25
+- 30
+- 20
+- 15
+? The numbers are (40 + 10) / 2 = 25 and (40 - 10) / 2 = 15.
+
+@ Puzzles and Reasoning | B
+If 6 pencils cost 18 rupees, how much do 15 pencils cost?
+= 45 rupees
+- 30 rupees
+- 40 rupees
+- 54 rupees
+? One pencil costs 3 rupees, so 15 pencils cost 45 rupees.
+
+@ Puzzles and Reasoning | I
+All students who study regularly pass the exam. Ravi studies regularly. What can be concluded?
+= Ravi passes the exam
+- Ravi may fail
+- Ravi is the topper
+- Nothing can be concluded
+? The rule applies to everyone who studies regularly, so Ravi passes.
+
+@ Puzzles and Reasoning | A
+Which statement is the contrapositive of "If it rains, the ground is wet"?
+= If the ground is not wet, it did not rain
+- If the ground is wet, it rained
+- If it does not rain, the ground is not wet
+- If the ground is wet, it did not rain
+? The contrapositive swaps and negates both parts, and it is always logically equivalent to the original statement.
+
+@ Number Series | I
+In a code, 2 becomes 4, 3 becomes 9, 4 becomes 16. What does 7 become?
+= 49
+- 14
+- 21
+- 28
+? Each number is squared, so 7 becomes 49.
+
+@ Number Series | I
+Which letter completes the series A, C, E, G, ?
+= I
+- H
+- J
+- K
+? The letters skip one letter each time.
+
+@ Number Series | I
+What comes next in the series AZ, BY, CX, ?
+= DW
+- DV
+- EW
+- CW
+? The first letter moves forward and the second moves backward each time.

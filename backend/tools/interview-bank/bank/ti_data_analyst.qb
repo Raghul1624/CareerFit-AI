@@ -1,0 +1,123 @@
+round: TECHNICAL_INTERVIEW
+roles: DATA_ANALYST
+
+@ Statistics | E
+Explain mean, median and mode. When is the median better than the mean?
+~ Mean is the average | 2 | req | mean, average, sum divided
+~ Median is the middle value | 2 | req | median, middle
+~ Mode is the most frequent value | 1 | req | mode, most frequent, most common
+~ Median resists outliers | 2 | req | outlier, skew, extreme, salary, income
+? The mean is the sum divided by the count, the median is the middle value of the sorted data and the mode is the most frequent value. The median is better when the data is skewed or has outliers, such as salaries, because extreme values pull the mean but barely change the median.
+
+@ Data Preparation | E
+What steps do you take to clean a data set?
+~ Remove duplicates | 2 | req | duplicate
+~ Handle missing values | 2 | req | missing, null, impute, fill, drop
+~ Fix types, formats and inconsistencies | 2 | req | format, data type, inconsisten, standardi, typo
+~ Detect outliers and validate | 1 | opt | outlier, validat, range, check
+? Inspect the data first, then remove duplicates, handle missing values by dropping or imputing them, fix data types and inconsistent formats (dates, text case, units), investigate outliers and validate against business rules. Document every change so the analysis is reproducible.
+
+@ SQL | E
+Explain the different types of SQL joins.
+~ INNER JOIN returns matching rows | 2 | req | inner join, matching, both tables
+~ LEFT JOIN keeps all left rows | 2 | req | left join, left outer, all rows from the left
+~ RIGHT and FULL joins | 2 | req | right join, full join, full outer
+~ Example use | 1 | opt | for example, customers, orders, no orders, null
+? INNER JOIN returns only rows with matches in both tables. LEFT JOIN returns all rows from the left table and matches from the right (NULL where there is none), RIGHT JOIN is the mirror image and FULL OUTER JOIN returns all rows from both. For example, a LEFT JOIN from customers to orders finds customers without orders.
+
+@ Tools | E
+What is a pivot table and when would you use one?
+~ Summarises data by categories | 2 | req | summar, aggregate, group, categor
+~ Rows, columns, values and filters | 2 | req | rows, columns, values, filter
+~ Quick analysis without formulas | 1 | req | quick, interactive, without formula, drag
+~ Example | 1 | opt | sales by region, per month, total, count
+? A pivot table summarises large data sets by grouping fields into rows and columns and aggregating values (sum, count, average), with filters and slicers. It gives quick interactive analysis without writing formulas, for example sales by region and month.
+
+@ Visualisation | E
+How do you choose the right chart for your data?
+~ Line charts for trends over time | 2 | req | line, trend, over time
+~ Bar charts for comparisons | 2 | req | bar, column, compar
+~ Pie charts for few parts of a whole | 1 | req | pie, part of a whole, proportion, share
+~ Scatter plots and histograms | 2 | opt | scatter, relationship, histogram, distribution
+? Match the chart to the question: line charts for trends over time, bar charts to compare categories, pie charts only for a few parts of a whole, scatter plots for relationships between two numbers and histograms for distributions. Keep it simple, label clearly and avoid misleading scales.
+
+@ SQL | M
+What is the difference between WHERE and HAVING, and how does GROUP BY work?
+~ WHERE filters rows before grouping | 2 | req | where, before group, filters rows
+~ HAVING filters groups after aggregation | 2 | req | having, after group, aggregate
+~ GROUP BY forms groups for aggregates | 2 | req | group by, sum, count, avg, aggregate
+~ Example | 1 | opt | for example, department, more than, > 
+? WHERE filters individual rows before they are grouped, while HAVING filters the groups produced by GROUP BY using aggregate conditions. For example, SELECT department, COUNT(*) FROM employees GROUP BY department HAVING COUNT(*) > 5 lists departments with more than five employees.
+
+@ Data Quality | M
+How do you handle missing values and outliers?
+~ Understand why data is missing | 2 | req | why, reason, missing at random, mcar, cause
+~ Impute or drop | 2 | req | impute, mean, median, drop, remove, fill
+~ Detect outliers | 2 | req | iqr, z-score, z score, box plot, standard deviation
+~ Decide using context | 1 | req | context, domain, error, genuine, business
+? First understand why values are missing. Then drop, impute with the median or mean, or use a model depending on the amount and pattern. Detect outliers with the IQR rule, z-scores or box plots, and decide using domain knowledge whether they are errors to fix or genuine events to keep.
+
+@ Analytical Thinking | M
+What is the difference between correlation and causation? Give an example.
+~ Correlation is a statistical relationship | 2 | req | correlation, relationship, move together, associat
+~ Causation means one causes the other | 2 | req | causation, cause, effect, because
+~ Confounding variables | 2 | req | confound, third variable, third factor, hidden variable, coincidence
+~ Example | 2 | req | ice cream, summer, for example, e.g.
+? Correlation means two variables move together. Causation means a change in one produces a change in the other. A third factor can explain a correlation: ice cream sales and drowning both rise in summer because of the temperature. Experiments such as A/B tests help show causation.
+
+@ Reporting | M
+How do you choose KPIs and design a dashboard for business users?
+~ Start from business goals | 2 | req | goal, objective, business question, stakeholder
+~ Choose a few meaningful KPIs | 2 | req | kpi, metric, few, key
+~ Clear layout and visuals | 2 | req | layout, chart, simple, filter, drill
+~ Data freshness and definitions | 1 | opt | refresh, definition, source, accura
+? Start with the decisions users need to make and pick a small set of KPIs tied to business goals. Place the most important numbers at the top, use simple charts with filters, define each metric clearly and make sure the data is accurate and refreshed on a schedule.
+
+@ Experimentation | M
+Explain the basics of A/B testing.
+~ Two variants, random assignment | 2 | req | variant, control, random, two groups, group a
+~ Hypothesis and one metric | 2 | req | hypothesis, metric, null
+~ Sample size and duration | 2 | req | sample size, duration, enough users, power
+~ Statistical significance | 2 | req | significan, p-value, confidence
+? In an A/B test users are randomly assigned to a control (A) and a variant (B). Define a hypothesis and a success metric in advance, run the test long enough with an adequate sample size, and use a significance test (p-value or confidence interval) to decide whether the difference is real.
+
+@ SQL | H
+Explain SQL window functions and give practical examples.
+~ Calculate across related rows without collapsing them | 2 | req | window, over, without collaps, partition
+~ ROW_NUMBER, RANK and DENSE_RANK | 2 | req | row_number, rank, dense_rank
+~ LAG and LEAD for comparisons | 1 | req | lag, lead, previous row, next row
+~ Running totals and top-N per group | 2 | req | running total, cumulative, top n, per group, sum() over
+? Window functions use OVER (PARTITION BY ... ORDER BY ...) to calculate values across related rows while keeping every row. Examples: ROW_NUMBER or RANK for top-N per group, LAG for month-over-month change and SUM() OVER for running totals.
+
+@ Process | H
+Walk me through an end-to-end analysis project you would run, from question to recommendation.
+~ Define the business question | 2 | req | question, objective, goal, problem
+~ Collect and clean the data | 2 | req | collect, source, clean, prepare
+~ Analyse and visualise | 2 | req | analy, explor, visuali, model
+~ Communicate recommendations | 2 | req | recommend, insight, stakeholder, present, action
+~ Validate and iterate | 1 | opt | validat, check, assumption, iterate
+? Define the business question and success measure, collect data from reliable sources, clean and explore it, analyse and visualise to find patterns, validate assumptions, and finally present clear recommendations to stakeholders. Close the loop by tracking the outcome.
+
+@ Statistics | H
+Explain p-values, confidence intervals and Type I and Type II errors.
+~ p-value measures how surprising the data is under the null | 2 | req | p-value, null hypothesis, probability
+~ Confidence interval gives a range of plausible values | 2 | req | confidence interval, range, plausible
+~ Type I error is a false positive | 2 | req | type i, false positive, reject a true
+~ Type II error is a false negative | 2 | req | type ii, false negative, miss, fail to reject
+? A p-value is the probability of seeing data at least this extreme if the null hypothesis were true. A confidence interval gives a range of plausible values for the parameter. A Type I error is a false positive (rejecting a true null) and a Type II error is a false negative (missing a real effect).
+
+@ SQL Performance | H
+How do you optimise a slow SQL query?
+~ Look at the execution plan | 2 | req | explain, execution plan, query plan
+~ Add suitable indexes | 2 | req | index
+~ Select only what you need and filter early | 2 | req | select *, only needed, filter early, limit, where
+~ Avoid expensive patterns | 1 | opt | function on column, subquer, join order, temp table, aggregate
+? Check the execution plan with EXPLAIN, add indexes on the columns used in filters and joins, avoid SELECT *, filter early, avoid functions on indexed columns and rewrite expensive subqueries or aggregate in stages. Re-measure after each change.
+
+@ Analytical Thinking | H
+How do you make sure your analysis is correct and not misleading? Mention biases such as Simpson's paradox.
+~ Validate data and calculations | 2 | req | validat, reconcil, cross-check, sanity check, source
+~ Segment the data | 2 | req | segment, subgroup, breakdown, simpson
+~ Beware biases and small samples | 2 | req | bias, sample size, survivor, selection
+~ Document assumptions | 1 | req | assumption, document, limitation, reproduc
+? Cross-check numbers against the source, sanity check totals and look at the data by segment, because a trend can reverse when groups are combined (Simpson's paradox). Watch for selection bias and small samples, and document assumptions and limitations so others can reproduce and challenge the result.

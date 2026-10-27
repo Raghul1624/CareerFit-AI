@@ -1,0 +1,65 @@
+skill: Qlik Sense
+
+@ Associative Model | B
+What mainly differentiates the Qlik engine from query-based BI tools?
+= Its associative model that shows related and unrelated data after every selection
+- It stores data only in Excel files
+- It does not support visualizations
+- It requires SQL for every click
+? Qlik keeps all data associated in memory, so selections highlight related values and show excluded ones.
+
+@ Associative Model | A
+In Qlik Sense selections, what do the green, white and gray colors mean?
+= Selected, associated (possible) and excluded values
+- Errors, warnings and success
+- Numbers, text and dates
+- Primary, foreign and unique keys
+? Green values are selected, white values are still possible and gray values are excluded by the current selections.
+
+@ Data Load Script | B
+Which file format is Qlik's optimized, fast-loading storage format?
+= QVD
+- CSV
+- XLSX
+- JSON
+? QVD files are read very quickly and are commonly used for incremental loads and data layers.
+
+@ Data Load Script | I
+Which statement loads data from a file or table in the Qlik data load script?
+= LOAD
+- IMPORT
+- READ
+- FETCH
+? LOAD is the main script statement. SQL SELECT is used to read from databases.
+
+@ Data Load Script | I
+What usually causes a synthetic key in a Qlik data model?
+= Two tables sharing more than one field with the same name
+- A table with no rows
+- A field with null values
+- Using a QVD file
+? Qlik creates a synthetic key to link tables that have multiple fields in common. It is often a sign of a modeling problem.
+
+@ Set Analysis | I
+What does Sum({<Year={2024}>} Sales) calculate?
+= Total sales for 2024, regardless of the current selection in Year
+- Total sales for every year
+- The number of sales rows in 2024
+- The average sales of 2024
+? The set modifier replaces the selection on Year, so the sum covers only 2024.
+
+@ Visualization | B
+Which chart is best for comparing values across categories?
+= Bar chart
+- Gauge
+- Map layer
+- Text box
+? Bar charts make it easy to compare lengths across categories.
+
+@ Visualization | I
+What is a master item in Qlik Sense?
+= A reusable dimension, measure or visualization defined once and used across sheets
+- The first sheet of an app
+- A user with administrator rights
+- A backup of the data model
+? Master items keep definitions consistent and are easy to update in one place.

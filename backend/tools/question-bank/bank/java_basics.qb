@@ -1,0 +1,174 @@
+skill: Java Basics
+
+@ Core Java Fundamentals | B
+Which tool compiles Java source code (.java files) into bytecode (.class files)?
+= javac
+- java
+- javadoc
+- jar
+? javac is the Java compiler. The java command launches the JVM to run compiled bytecode.
+
+@ Core Java Fundamentals | B
+Why is Java described as platform independent?
+= Compiled bytecode can run on any machine that has a compatible JVM
+- The source code is recompiled by hand for every operating system
+- The JVM is written in Java so it needs no operating system
+- Java programs run without any runtime environment
+? The compiler produces bytecode, and each platform provides its own JVM that executes that same bytecode.
+
+@ Core Java Fundamentals | I
+Which statement correctly describes the difference between the JDK and the JRE?
+= The JDK contains development tools such as the compiler in addition to the runtime
+- The JRE contains the compiler but the JDK does not
+- The JDK can only run on Windows while the JRE runs anywhere
+- They are identical packages with different names
+? The JRE is enough to run Java programs. The JDK adds tools like javac and javadoc for developing them.
+
+@ Data Types and Operators | B
+What is the result of 7 / 2 in Java when both operands are of type int?
+= 3
+- 3.5
+- 4
+- 3.0
+? Dividing two ints performs integer division and discards the fractional part, so 7 / 2 is 3.
+
+@ Data Types and Operators | I
+What is the value of x after these statements run?
+  int x = 5;
+  x += 3 * 2;
+= 11
+- 16
+- 13
+- 10
+? Multiplication happens first: 3 * 2 = 6, then x = 5 + 6 = 11.
+
+@ Data Types and Operators | I
+What does -7 % 3 evaluate to in Java?
+= -1
+- 1
+- 2
+- -2
+? In Java the result of % takes the sign of the dividend. -7 = (-2 * 3) + (-1).
+
+@ Data Types and Operators | I
+What does this statement print?
+  System.out.println(0.1 + 0.2 == 0.3);
+= false
+- true
+- 0.3
+- A compile-time error
+? 0.1 and 0.2 cannot be represented exactly in binary floating point, so the sum is 0.30000000000000004, not 0.3.
+
+@ Data Types and Operators | A
+What does this code print?
+  int i = 5;
+  int j = i++ + ++i;
+  System.out.println(i + " " + j);
+= 7 12
+- 6 11
+- 7 11
+- 6 12
+? i++ yields 5 and then i becomes 6. ++i makes i 7 and yields 7. So j = 5 + 7 = 12 and i = 7.
+
+@ Strings | B
+Which statement about the String class in Java is true?
+= String objects are immutable
+- A String can be modified in place with setCharAt
+- String is a primitive data type
+- String is mutable just like StringBuilder
+? Once created, a String cannot change. Methods such as toUpperCase return a new String.
+
+@ Strings | I
+What does this code print?
+  String a = "hello";
+  String b = "hello";
+  String c = new String("hello");
+  System.out.println((a == b) + " " + (a == c));
+= true false
+- true true
+- false false
+- false true
+? Identical literals share one object in the string pool, so a == b is true. new String creates a separate object, so a == c is false.
+
+@ Strings | I
+Which method compares two strings for equal content while ignoring letter case?
+= equalsIgnoreCase
+- compareTo
+- The == operator
+- isEqual
+? equalsIgnoreCase compares characters ignoring case. == compares object references, not content.
+
+@ Strings | I
+Which class is the best choice for building a long string by appending inside a loop?
+= StringBuilder
+- Repeated String concatenation with the + operator
+- Scanner
+- Character
+? Concatenating Strings in a loop creates many temporary objects. StringBuilder appends to one mutable buffer.
+
+@ Arrays | B
+What is the index of the last element of an array whose length is n?
+= n - 1
+- n
+- n + 1
+- 0
+? Array indexes start at 0, so the last valid index is length - 1.
+
+@ Arrays | I
+What happens at runtime when you read arr[arr.length] for a non-empty array?
+= An ArrayIndexOutOfBoundsException is thrown
+- The compiler reports an error
+- The value 0 is returned
+- The value null is returned
+? The compiler cannot know the index is invalid, but at runtime the access is out of bounds and the JVM throws the exception.
+
+@ Control Flow | B
+Which loop is guaranteed to execute its body at least once?
+= do-while
+- for
+- while
+- enhanced for
+? A do-while loop checks its condition after executing the body.
+
+@ Basic Coding | I
+What does this code print?
+  int sum = 0;
+  for (int i = 1; i <= 5; i++) {
+    if (i % 2 == 0) continue;
+    sum += i;
+  }
+  System.out.println(sum);
+= 9
+- 15
+- 6
+- 12
+? Even numbers are skipped, so sum = 1 + 3 + 5 = 9.
+
+@ Basic Coding | I
+What does this code print?
+  String s = "java";
+  String r = "";
+  for (int i = s.length() - 1; i >= 0; i--) {
+    r += s.charAt(i);
+  }
+  System.out.println(r);
+= avaj
+- java
+- ajav
+- vaja
+? The loop walks the string from the last character to the first, which reverses it.
+
+@ Basic Coding | A
+What does this code print?
+  int n = 2;
+  switch (n) {
+    case 1: System.out.print("one ");
+    case 2: System.out.print("two ");
+    case 3: System.out.print("three ");
+    default: System.out.print("other");
+  }
+= two three other
+- two
+- two three
+- other
+? Without break statements execution falls through from the matching case into every following case, including default.

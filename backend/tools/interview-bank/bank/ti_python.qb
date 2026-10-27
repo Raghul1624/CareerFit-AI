@@ -1,0 +1,123 @@
+round: TECHNICAL_INTERVIEW
+roles: PYTHON
+
+@ Data Structures | E
+Explain the difference between a list, tuple, set and dictionary in Python.
+~ List is ordered and mutable | 2 | req | list, ordered, mutable, append
+~ Tuple is immutable | 2 | req | tuple, immutable, cannot change, fixed
+~ Set holds unique items | 2 | req | set, unique, no duplicate, unordered
+~ Dictionary stores key-value pairs | 2 | req | dict, key-value, key value, mapping, key
+~ When to use each | 1 | opt | for example, use when, lookup, membership
+? A list is an ordered mutable sequence. A tuple is an ordered immutable sequence, useful for fixed records and as dictionary keys. A set stores unique unordered items and gives fast membership tests. A dictionary maps keys to values and gives fast lookup by key.
+
+@ Language Basics | E
+What are mutable and immutable types in Python? Give examples and explain why it matters.
+~ Mutable objects can change in place | 2 | req | mutable, change in place, modified in place, list, dict
+~ Immutable objects cannot change | 2 | req | immutable, int, str, tuple, cannot be changed
+~ Effect on function arguments and aliasing | 2 | req | reference, alias, same object, function argument, side effect
+~ Hashability | 1 | opt | hashable, dictionary key, hash
+? Lists, dictionaries and sets are mutable: they can be changed in place. Integers, strings and tuples are immutable. Because variables hold references, changing a mutable object through one name is visible through every other name, which can surprise you when passing lists to functions.
+
+@ Functions | E
+What are *args and **kwargs and when do you use them?
+~ *args collects extra positional arguments | 2 | req | *args, positional, tuple
+~ **kwargs collects keyword arguments | 2 | req | **kwargs, keyword, dictionary, dict
+~ Flexible function signatures | 1 | req | flexible, any number, variable number, wrapper, pass through
+~ Unpacking when calling | 1 | opt | unpack, *list, **dict
+? *args gathers any extra positional arguments into a tuple and **kwargs gathers extra keyword arguments into a dictionary. They are used for functions that accept a variable number of arguments, and for wrappers or decorators that pass arguments through.
+
+@ Comprehensions | E
+What is a list comprehension and how is it different from a normal for loop?
+~ Compact syntax for building a list | 2 | req | list comprehension, one line, concise, compact, build a list
+~ Expression, loop and optional condition | 2 | req | for, in, if, condition, expression
+~ Readability and performance | 1 | req | readab, faster, performance, clear
+~ Example | 1 | opt | for example, x*x, squares, [x
+? A list comprehension builds a list in one expression, for example [x * x for x in range(5) if x % 2 == 0]. It is usually shorter and slightly faster than appending in a loop. Use a normal loop when the logic is complex so the code stays readable.
+
+@ Errors | E
+How does exception handling work in Python? Explain try, except, else and finally.
+~ try contains risky code | 1 | req | try, risky, may fail
+~ except handles specific errors | 2 | req | except, catch, valueerror, specific, handle
+~ else runs when no error occurred | 1 | req | else, no exception, no error
+~ finally always runs | 2 | req | finally, always, cleanup, clean up, close
+? Put code that can fail in try. except catches specific exceptions. else runs only if no exception occurred, and finally always runs, so it is the right place for cleanup such as closing files. Catch specific exceptions instead of using a bare except.
+
+@ Decorators | M
+What is a decorator in Python and how do you write one?
+~ A function that wraps another function | 2 | req | wraps, wrapper, takes a function, higher-order, function that
+~ Uses the @ syntax | 1 | req | @, syntax, applied
+~ Preserves metadata with functools.wraps | 1 | req | functools.wraps, wraps, metadata, __name__
+~ Typical uses | 2 | opt | logging, timing, authentication, caching, retry
+? A decorator takes a function and returns a new function that adds behaviour before or after the original. You apply it with the @name syntax. Inside, define a wrapper that accepts *args and **kwargs and use functools.wraps to keep the original name and docstring. Common uses are logging, timing, caching and access control.
+
+@ Iterators | M
+What is the difference between a generator and a list? When would you use a generator?
+~ Generators produce values lazily | 2 | req | lazy, lazily, one at a time, on demand, yield
+~ Lists store everything in memory | 2 | req | memory, stores all, in memory, whole list
+~ Generators can be consumed once | 1 | req | once, exhaust, single pass, consumed
+~ Use for large or infinite data | 2 | opt | large, big file, stream, infinite, pipeline
+? A list holds all items in memory at once, while a generator yields one item at a time and keeps only its state. Generators are ideal for large or streaming data, such as reading a big file line by line. A generator can be iterated only once.
+
+@ OOP | M
+Explain classes, objects, __init__ and inheritance in Python with a short example.
+~ A class is a blueprint, an object is an instance | 2 | req | blueprint, instance, object, class
+~ __init__ initialises the object | 2 | req | __init__, constructor, initial, self
+~ Inheritance and super() | 2 | req | inherit, super(), subclass, parent, base class
+~ Method overriding or dunder methods | 1 | opt | overrid, __str__, __repr__, dunder, polymorph
+? A class defines attributes and methods. Creating an instance calls __init__, which sets up the object using self. A subclass inherits from a parent class, can override its methods and calls super().__init__() to reuse the parent's setup.
+
+@ Copying | M
+What is the difference between a shallow copy and a deep copy?
+~ Shallow copy copies only the outer container | 2 | req | shallow, outer, top-level, top level, copy.copy
+~ Nested objects are shared | 2 | req | share, same nested, reference, inner
+~ Deep copy copies everything recursively | 2 | req | deep, deepcopy, recursive, independent
+~ Example with nested lists | 1 | opt | nested list, list of lists, example, [[
+? A shallow copy creates a new container but the elements still refer to the same nested objects. A deep copy (copy.deepcopy) recursively copies nested objects, so the copy is fully independent. This matters for lists of lists and objects that contain other mutable objects.
+
+@ Tooling | M
+How do you manage project dependencies in Python?
+~ Virtual environments | 2 | req | venv, virtualenv, virtual environment, isolat
+~ pip installs packages | 1 | req | pip, install, pypi, package
+~ requirements file or lock file | 2 | req | requirements.txt, pyproject, poetry, lock, pin, version
+~ Reproducible setup | 1 | opt | reproduc, same versions, team, deploy
+? Create an isolated virtual environment for each project with venv, install packages with pip and record exact versions in requirements.txt or a lock file (for example with Poetry or pip-tools). This keeps projects from conflicting and makes the setup reproducible for teammates and deployments.
+
+@ Concurrency | H
+Explain the GIL and how you would choose between threading, multiprocessing and asyncio.
+~ GIL allows one thread to run bytecode at a time | 2 | req | gil, global interpreter lock, one thread
+~ Threads suit I/O-bound work | 2 | req | i/o, io-bound, network, waiting, threading
+~ Multiprocessing for CPU-bound work | 2 | req | multiprocessing, cpu-bound, cpu bound, processes, cores
+~ asyncio for many concurrent I/O tasks | 1 | req | asyncio, event loop, async, await, coroutine
+? In CPython the GIL lets only one thread execute Python bytecode at a time, so threads do not speed up CPU-bound work. Use threads or asyncio for I/O-bound work such as network calls, where waiting dominates. Use multiprocessing for CPU-bound tasks so each process has its own interpreter and can use another core.
+
+@ Memory Management | H
+How does Python manage memory?
+~ Reference counting | 2 | req | reference count, refcount, count of references
+~ Cyclic garbage collector | 2 | req | cycl, circular, garbage collector, gc module
+~ Private heap and allocator | 1 | req | private heap, allocator, pymalloc, memory manager
+~ Leaks and tools | 1 | opt | leak, tracemalloc, weakref, __del__
+? CPython keeps a reference count for every object and frees it when the count reaches zero. Because reference counting cannot free cycles, a cyclic garbage collector also runs periodically. Memory comes from a private heap managed by the interpreter. Tools such as tracemalloc help find leaks.
+
+@ Context Managers | H
+What is a context manager and how would you create your own?
+~ Manages setup and cleanup with the with statement | 2 | req | with statement, with, setup, cleanup, resource
+~ __enter__ and __exit__ methods | 2 | req | __enter__, __exit__
+~ contextlib.contextmanager decorator | 1 | req | contextlib, @contextmanager, yield
+~ Examples | 1 | opt | file, lock, database, connection, transaction
+? A context manager guarantees cleanup even if an error occurs. Implement __enter__ and __exit__ in a class, or write a generator with a single yield and decorate it with contextlib.contextmanager. Typical uses are files, locks and database connections.
+
+@ Performance | H
+A Python function is too slow. How would you find and fix the problem?
+~ Measure first with a profiler | 2 | req | profil, cprofile, timeit, measure, benchmark
+~ Improve the algorithm or data structure | 2 | req | algorithm, complexity, data structure, set, dict, big o
+~ Caching or vectorisation | 1 | req | lru_cache, cache, memoiz, numpy, vectoriz
+~ Use parallelism where appropriate | 1 | opt | multiprocessing, async, parallel, cython
+? Measure with cProfile or timeit to find the real hotspot. Then improve the algorithm or data structure, for example replacing list lookups with a set or dictionary. Add caching with functools.lru_cache, use NumPy for numeric work, and only then consider parallelism or compiled extensions.
+
+@ OOP | H
+Explain Python's method resolution order and how super() behaves with multiple inheritance.
+~ MRO decides the lookup order | 2 | req | mro, method resolution order, lookup order
+~ C3 linearisation | 2 | req | c3, linearization, linearisation
+~ super() follows the MRO | 2 | req | super(), next class, follows the mro, cooperative
+~ Diamond problem | 1 | opt | diamond, multiple inheritance, __mro__
+? Python computes a method resolution order with the C3 linearisation algorithm, which keeps the order of base classes and puts each class before its parents. super() does not simply mean the parent: it delegates to the next class in the MRO, which makes cooperative multiple inheritance and the diamond problem work. You can inspect it with ClassName.__mro__.

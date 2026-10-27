@@ -1,0 +1,113 @@
+skill: Statistics
+
+@ Descriptive Statistics | B
+Which measure of central tendency is least affected by extreme outliers?
+= Median
+- Mean
+- Range
+- Variance
+? The median is the middle value, so a few extreme values barely move it.
+
+@ Descriptive Statistics | B
+What is the mean of 2, 4, 6 and 8?
+= 5
+- 4
+- 6
+- 20
+? The sum is 20 and there are 4 values, so the mean is 5.
+
+@ Descriptive Statistics | I
+What is the median of 3, 9, 1, 7 and 10?
+= 7
+- 6
+- 9
+- 3
+? Sorted values are 1, 3, 7, 9, 10 and the middle value is 7. The mean is 6.
+
+@ Descriptive Statistics | I
+What is the mode of 2, 3, 3, 5, 7, 7, 7, 9?
+= 7
+- 3
+- 5
+- 9
+? The mode is the most frequent value. 7 appears three times.
+
+@ Descriptive Statistics | I
+What does the standard deviation measure?
+= How spread out the values are around the mean
+- The middle value of the data
+- The number of observations
+- The probability of an event
+? A small standard deviation means the values are close to the mean.
+
+@ Probability | I
+A fair six-sided die is rolled once. What is the probability of getting a number greater than 4?
+= 1/3
+- 1/6
+- 1/2
+- 2/3
+? The favorable outcomes are 5 and 6, so the probability is 2/6 = 1/3.
+
+@ Probability | I
+Two fair coins are tossed. What is the probability of getting exactly one head?
+= 1/2
+- 1/4
+- 3/4
+- 1/3
+? The outcomes are HH, HT, TH and TT. Two of the four have exactly one head.
+
+@ Probability | A
+If events A and B are independent, what is P(A and B)?
+= P(A) x P(B)
+- P(A) + P(B)
+- P(A) / P(B)
+- P(A) - P(B)
+? For independent events the probability of both occurring is the product of their probabilities.
+
+@ Distributions | I
+Which distribution is symmetric and bell-shaped?
+= Normal distribution
+- Poisson distribution
+- Exponential distribution
+- Uniform distribution
+? The normal distribution is described by its mean and standard deviation.
+
+@ Distributions | A
+In a normal distribution, about what percentage of values fall within one standard deviation of the mean?
+= 68%
+- 50%
+- 95%
+- 99.7%
+? The empirical rule says roughly 68%, 95% and 99.7% fall within 1, 2 and 3 standard deviations.
+
+@ Inference | A
+In hypothesis testing, what usually happens when the p-value is below the chosen significance level, such as 0.05?
+= The null hypothesis is rejected
+- The null hypothesis is proven true
+- The sample is discarded
+- The alternative hypothesis is proven with certainty
+? A small p-value means the observed data would be unlikely if the null hypothesis were true.
+
+@ Inference | I
+What does a correlation coefficient of -0.9 indicate?
+= A strong negative linear relationship
+- No relationship
+- A strong positive linear relationship
+- Proof that one variable causes the other
+? Values near -1 mean that as one variable rises the other tends to fall.
+
+@ Inference | I
+Which statement is correct?
+= Correlation alone does not prove causation
+- A correlation of 0 proves the variables are independent in every way
+- A high correlation proves one variable causes the other
+- Causation requires a correlation of exactly 1
+? Two variables can move together because of a third factor or by coincidence.
+
+@ Inference | A
+Why does the sample variance formula divide by n - 1 instead of n?
+= To correct the bias of estimating the population variance from a sample
+- To make the calculation faster
+- Because one value is always removed as an outlier
+- To make the variance negative
+? Using n - 1 (Bessel's correction) gives an unbiased estimate of the population variance.

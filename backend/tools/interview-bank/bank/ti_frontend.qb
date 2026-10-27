@@ -1,0 +1,121 @@
+round: TECHNICAL_INTERVIEW
+roles: FRONTEND
+
+@ CSS | E
+Explain the CSS box model.
+~ Content, padding, border and margin | 3 | req | content, padding, border, margin
+~ Layers from inside to outside | 1 | req | inside, outside, around, layers, outer
+~ box-sizing | 2 | req | box-sizing, border-box, content-box
+~ Effect on element size | 1 | opt | width, height, total size, calculate
+? Every element is a box made of content, padding, border and margin, from the inside out. With the default content-box, width applies to the content only and padding and border add to it. With box-sizing: border-box the width includes padding and border, which makes layouts easier to predict.
+
+@ HTML | E
+What is semantic HTML and why does it matter?
+~ Elements describe meaning | 2 | req | semantic, meaning, describe, purpose
+~ Examples of semantic elements | 2 | req | header, nav, main, article, section, footer
+~ Accessibility benefits | 2 | req | accessib, screen reader, assistive
+~ SEO and maintainability | 1 | opt | seo, search engine, maintain, readab
+? Semantic elements such as header, nav, main, article and footer describe the role of content instead of just styling it. They help screen readers and keyboard users, improve search engine understanding and make the code easier to maintain than a page built from generic div elements.
+
+@ JavaScript | E
+What is the difference between var, let and const?
+~ var is function scoped | 2 | req | var, function scope, function-scoped, hoist
+~ let and const are block scoped | 2 | req | let, const, block scope, block-scoped
+~ const cannot be reassigned | 2 | req | const, reassign, constant, cannot change
+~ Temporal dead zone | 1 | opt | temporal dead zone, tdz, before declaration
+? var is function scoped and hoisted, so it can be used before its declaration and leaks out of blocks. let and const are block scoped and cannot be accessed before declaration (temporal dead zone). const prevents reassignment of the binding, although an object stored in it can still be changed. Prefer const by default and let when you must reassign.
+
+@ Responsive Design | E
+What is responsive design and how do you implement it?
+~ Layout adapts to screen size | 2 | req | adapt, screen size, different devices, mobile, viewport
+~ Media queries | 2 | req | media quer, @media, breakpoint
+~ Flexible units and layouts | 2 | req | flexbox, grid, percentage, rem, relative unit, fluid
+~ Viewport meta tag and mobile-first | 1 | opt | viewport, meta, mobile-first, mobile first
+? Responsive design makes one codebase work well on phones, tablets and desktops. Add the viewport meta tag, use flexible layouts such as flexbox and grid with relative units, and apply media queries at breakpoints. A mobile-first approach starts with the smallest screen and adds rules for larger ones.
+
+@ Web Basics | E
+What happens when you type a URL into the browser and press Enter?
+~ DNS lookup | 2 | req | dns, domain name, ip address
+~ HTTP request to the server | 2 | req | http, request, server, get request, tcp, tls, https
+~ Server returns HTML, CSS and JavaScript | 1 | req | response, html, css, javascript
+~ Browser parses and renders | 2 | req | pars, dom, render, paint, layout
+? The browser resolves the domain to an IP address through DNS, opens a connection (TCP and TLS for HTTPS) and sends an HTTP request. The server responds with HTML, and the browser parses it into the DOM, fetches CSS and JavaScript, builds the render tree, lays out the page and paints it.
+
+@ JavaScript | M
+What is event bubbling and how does event delegation use it?
+~ Events travel up from the target to ancestors | 2 | req | bubbl, propagate, ancestor, parent, up the dom
+~ Delegation attaches one listener to a parent | 2 | req | delegat, parent, single listener, one listener
+~ event.target identifies the source | 1 | req | event.target, target, currenttarget
+~ Benefits for dynamic lists | 1 | opt | dynamic, performance, memory, many elements
+? When an event fires on an element it bubbles up through its ancestors. With event delegation you attach one listener to a common parent and use event.target to see which child triggered it. This uses less memory and also works for elements added later, such as items in a dynamic list.
+
+@ JavaScript | M
+What is a closure in JavaScript? Give a practical use.
+~ Function remembers its outer scope | 3 | req | remember, outer scope, lexical, enclos, outer function
+~ Works after the outer function returned | 2 | req | after, returned, still access, persist
+~ Practical use | 2 | req | counter, private, data hiding, callback, memoiz, module
+? A closure is a function together with the variables of the scope where it was created. It keeps access to those variables even after the outer function has finished. Typical uses are private state such as a counter, callbacks and event handlers, memoisation and the module pattern.
+
+@ React | M
+What is the difference between props and state in React?
+~ Props are inputs from a parent | 2 | req | props, parent, passed, input
+~ State is owned by the component | 2 | req | state, usestate, internal, local, owned
+~ Props are read only | 2 | req | read-only, read only, immutable, cannot modify, not be modified, must not be modified, should not modify
+~ Changing state re-renders | 1 | opt | re-render, rerender, setstate, update
+? Props are values passed down from a parent and must not be modified by the child. State is data owned and updated by the component itself, usually with useState. Updating state schedules a re-render, while data that changes over time but is needed by children is passed down as props.
+
+@ JavaScript | M
+Explain Promises and async/await. How do they handle errors?
+~ A Promise represents a future value | 2 | req | promise, future, eventual, pending, resolved
+~ async/await is syntax over promises | 2 | req | async, await, syntactic, sequential, readab
+~ Errors with catch or try/catch | 2 | req | catch, try, reject, error handling
+~ Parallel work with Promise.all | 1 | opt | promise.all, parallel, concurrent
+? A Promise represents the eventual result of an asynchronous operation and is pending, fulfilled or rejected. async functions return promises and await pauses the function until the promise settles, so asynchronous code reads like synchronous code. Handle errors with .catch() or try/catch around await. Promise.all runs several promises concurrently.
+
+@ CSS Layout | M
+When would you use Flexbox and when would you use CSS Grid?
+~ Flexbox is one-dimensional | 2 | req | one-dimensional, one dimensional, row or column, single axis, one axis, along one
+~ Grid is two-dimensional | 2 | req | two-dimensional, two dimensional, rows and columns, grid
+~ Typical use cases | 2 | req | navbar, toolbar, card, page layout, align, center
+~ They can be combined | 1 | opt | combine, together, nested
+? Flexbox lays out items along one axis, which suits navigation bars, toolbars and centring content. CSS Grid controls rows and columns at the same time, which suits page layouts and card galleries. They work well together, for example a grid for the page and flexbox inside each card.
+
+@ React Performance | H
+How does React re-render components, and how would you optimise a slow React app?
+~ Virtual DOM and reconciliation | 2 | req | virtual dom, reconcil, diff
+~ Avoid unnecessary re-renders | 2 | req | react.memo, memo, usememo, usecallback, unnecessary
+~ Stable keys in lists | 1 | req | key, keys, list
+~ Measure and split code | 2 | req | profiler, measure, lazy, code splitting, virtuali
+? React compares the new virtual DOM with the previous one (reconciliation) and updates only what changed. To optimise, first measure with the React Profiler. Then avoid unnecessary renders with React.memo, useMemo and useCallback, use stable keys, virtualise long lists and split code with lazy loading.
+
+@ JavaScript | H
+Explain the JavaScript event loop, including microtasks and macrotasks.
+~ Single-threaded with a call stack | 2 | req | single thread, single-thread, call stack
+~ Task queues | 2 | req | queue, callback, web api, task
+~ Microtasks run before macrotasks | 3 | req | microtask, promise, macrotask, settimeout
+~ Why it matters | 1 | opt | block, non-blocking, ui, freeze
+? JavaScript runs on one thread with a call stack. Asynchronous work is handled by the browser and its callbacks are placed in queues. After each task the event loop runs all microtasks (promise callbacks) before the next macrotask such as a setTimeout callback. Long synchronous code blocks the loop and freezes the UI.
+
+@ Performance | H
+How would you improve the loading performance of a web page?
+~ Measure with Lighthouse and Core Web Vitals | 2 | req | lighthouse, core web vitals, lcp, cls, inp, measure
+~ Reduce and split JavaScript | 2 | req | bundle, code splitting, minif, tree shaking, lazy
+~ Optimise images and use caching or a CDN | 2 | req | image, webp, lazy load, cache, cdn, compress
+~ Avoid render-blocking resources | 1 | opt | render-blocking, defer, async, critical css, preload
+? Start by measuring with Lighthouse and the Core Web Vitals (LCP, CLS, INP). Then reduce JavaScript with minification, tree shaking and code splitting, compress and lazy load images, use caching and a CDN, and avoid render-blocking resources with defer and critical CSS.
+
+@ Accessibility | H
+How do you make a web application accessible?
+~ Semantic HTML | 2 | req | semantic, native element, button, label
+~ Keyboard navigation and focus | 2 | req | keyboard, focus, tab order, tabindex
+~ ARIA and text alternatives | 2 | req | aria, alt text, alt, screen reader
+~ Colour contrast and testing | 1 | opt | contrast, wcag, axe, test
+? Use semantic HTML and real form labels, make everything usable with a keyboard with a logical focus order, add alt text and ARIA attributes only where native elements are not enough, keep sufficient colour contrast (WCAG) and test with tools such as axe and a screen reader.
+
+@ Security | H
+What is XSS and how do you prevent it in a front-end application? How is it different from CORS?
+~ XSS injects malicious scripts | 2 | req | xss, cross-site scripting, inject, script
+~ Escape and sanitise output | 2 | req | escap, sanitiz, sanitis, dangerouslysetinnerhtml, innerhtml
+~ Content Security Policy | 1 | req | csp, content security policy
+~ CORS controls cross-origin access | 2 | req | cors, cross-origin, origin, same-origin
+? In XSS an attacker gets the page to run malicious script. Prevent it by escaping or sanitising untrusted data, avoiding innerHTML and dangerouslySetInnerHTML, and using a Content Security Policy. CORS is a different mechanism: it controls which origins may read responses from a server and does not stop injected scripts.
